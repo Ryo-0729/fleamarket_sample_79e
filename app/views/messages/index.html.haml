@@ -1,2 +1,95 @@
-%h1 Messages#index
-%p Find me in app/views/messages/index.html.haml
+.Header
+  .Header__top
+    .Logo
+      = image_tag("furima-title-logo.svg", alt: "logo", class: "Logo__image")
+    .Search
+      %input.Search__inputText{"placeholder": "キーワードから探す", "type": "text"}
+      %input.Search__submitBtn{"name": "commit", "type": "submit", "value": "検索"}
+
+  .Header__bottom
+    %p.Product-table 全ての商品一覧
+    .User
+      .User__login ログイン
+      .User__registration 新規会員登録
+
+
+
+
+
+.Main
+  .Main__caption
+    .Contents
+      %h1.Contents__title 人生を変えるフリマアプリ
+      %p.Contents__text 
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+
+      .Store-wrapper
+        = image_tag("app-store.svg", alt: "logo", class: "Store-wrapper__image")
+        = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
+
+
+
+  .Main__reason
+    %h2.Subtitle FURIMAが選ばれる理由
+    %ul.Lists
+
+      %li.List
+        .List__pict
+          %span.List__pict-number 1
+          = image_tag("pict-reason-01.jpg", alt: "logo", class: "List__pict-image")
+        %h3.List__text
+          %span 3分
+          ですぐに出品
+        %p.List__description 
+          スマホで入力するだけで簡単に出品できる
+
+      %li.List
+        .List__pict
+          %span.List__pict-number 2
+          = image_tag("pict-reason-02.jpg", alt: "logo", class: "List__pict-image")
+        %h3.List__text
+          %span シンプル
+          で使いやすい
+        %p.List__description 
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+
+      %li.List
+        .List__pict
+          %span.List__pict-number 3
+          = image_tag("pict-reason-03.jpg", alt: "logo", class: "List__pict-image")
+        %h3.List__text
+          手数料
+          %span 業界最安
+        %p.List__description 
+          最大3%でお得に出品 & 購入
+
+  .Main__top-feature
+
+
+
+  .Main__features
+
+
+
+  .Main__picup
+
+
+
+  .Main__lead
+
+
+
+
+
+
+
+
+.Footer
+  
+
+
+
+
+

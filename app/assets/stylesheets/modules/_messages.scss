@@ -1,3 +1,163 @@
 * {
   box-sizing: border-box;
 }
+
+
+
+// ヘッダー
+.Header{
+  padding: 0 60px;
+  width: 100%;
+  height: 100px;
+  &__top{
+    display: flex;
+    padding: 15px 0 0;
+    margin: 0 auto;
+    width: 70%;
+  }
+.Logo{
+  padding-bottom: 10px;
+  
+  border-radius: 4px;
+  &__image{
+    width:80%;
+  }
+}
+
+.Search{
+  display: flex;
+  width: 100%;
+  margin-top: 5px;
+  &__inputText{
+    width: calc(100% - 70px);
+    height: 36px;
+    padding: 0 0 0 5px;
+  }
+  &__submitBtn{
+    height: 36px;
+  }
+}
+
+
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+.Product-table{
+
+}
+
+.User{
+  display: flex;
+  margin-right: 30px;
+  &__login{
+    padding: 0 0 0 16px;
+  }
+  &__registration{
+    padding: 0 0 0 16px;
+  }
+}
+}
+
+
+
+
+// メイン画面
+.Main{
+
+  // 最初のキャプチャーの部分
+  &__caption{
+    background-image: url("bg-mainVisual-pict.jpg");
+    width: 100%;
+    height: 560px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+  
+.Contents{
+  width: 80%;
+  margin: 0 auto;
+  padding: 35px 0 0 0;
+  &__title{
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 60px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  &__text{
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.77778;
+    margin: 16px 0 0 0;
+  }
+.Store-wrapper{
+  display: flex;
+    margin: 24px 0 0 0;
+  &__image{
+    width: 180px;
+    margin-right: 10px;
+  }
+      }
+    }
+  }
+
+  // 理由の一覧の部分
+  &__reason{
+    padding: 60px 20px;
+  }
+.Subtitle{
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    position: relative;
+}
+.Lists{
+    text-align: center;
+    display: flex;
+    max-width: 1020px;
+    width: 100%;
+    margin: 0 auto;
+    }
+.List{
+    width: 30%;
+    margin: 16px 5% 0 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__pict{
+      position: relative;
+    }
+    &__pict-number{
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      left: 0;
+      border-radius: 4%;
+      font-size: 30px;
+      text-align: center;
+      margin: 0 5px 0 0;
+      padding: 5px 20px;
+      background-color: #3CCACE;
+      color: #fff;
+
+    }
+    &__pict-image{
+      width: 300px;
+      height: 300px;
+    }
+    }
+  
+}
