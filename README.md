@@ -94,7 +94,7 @@
 |token|string|null:false|
 
 ### Association
-- belongs_to :items'
+- belongs_to :user'
 
 
 ## petsテーブル
