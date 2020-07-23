@@ -15,9 +15,9 @@
 
 
 ### Association
-- has_many :items, dependent: destroy
-- belongs_to :sending, dependent: destroy
-- belongs_to :card, dependent: destroy
+- has_many :items, dependent: destroy'
+- has_many :sending, dependent: destroy'
+- has_many :card, dependent: destroy'
 - has_many :comments
 
 ## sendingsテーブル
@@ -30,15 +30,15 @@
 |last_name_kana|string|null:false|
 |first_name_kana|string|null:false|
 |postal_code|integer|null:false|
-|prefecture|string|null:false|
+|prefecture_id(acitve_hash)|integer|null: false|
 |city|string|null:false|
-|adress1|string|null:false|
-|adress2|string|null:false|
-|adress3|string|null:false|
+|block|string|null:false|
+|building|string|null:false|
+|roomnumber|null:false|
 |telephone|string|unique:true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user'
 
 
 ## itemsテーブル
@@ -52,30 +52,29 @@
 |text|text|null:false|
 |condition|integer|null:false|
 |price|integer|null:false|
-|brand|references|null: false, foreign_key:true|
-|size|references|null: false, foreign_key:true|
-|category|references|null: false, foreign_key:true|
-|postage_payer|references|null: false, foreign_key:true|
-|prefecture|references|null:false, foreign_key:true|
-|preparation_day|references|null: false, foreign_key:true|
-|item_img|references|null: false, foreign_key:true|
+|size_id(acitve_hash)|integer|null: false|
+|postage_payer_id(acitve_hash)|integer|null: false|
+|prefecture_id(acitve_hash)|integer|null: false|
+|preparation_id(acitve_hash)|integer|null: false|
 |completed_at|datetime|-------|
 
 
 ### Association
-- belongs_to :user, dependent: destroy
-- belongs_to :category, , dependent: destroy
-- belongs_to :brand, , dependent: destroy
+- belongs_to :user, dependent: destroy'
+- belongs_to :category, dependent: destroy'
+- belongs_to :brand, dependent: destroy'
+- belongs_to :item, dependent: destroy'
+- belongs_to :comment, dependent: destroy'
 
 
 ## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|references|null:false|
+|name|string|null:false|
 
 ### Association
-- has_many :items
+- has_many :items'
 
 
 ## categoriesテーブル
@@ -85,7 +84,7 @@
 |ancestry|string|null:false|
 
 ### Association
-- has_many :items
+- has_many :items'
 
 
 ## cardsテーブル
@@ -96,7 +95,7 @@
 |money|integer|null:false|
 
 ### Association
-- has_many :items
+- has_many :items'
 
 
 ## petsテーブル
@@ -106,7 +105,7 @@
 |item_id|references|null:false, foreign_key:true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user'
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -116,8 +115,8 @@
 |text|text|null:false|
 
 ### Association
-- belongs_to :user
-- belongs_to :item
+- belongs_to :user'
+- belongs_to :item'
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -126,4 +125,4 @@
 |item_id|references|null:false, foreign_key:true|
 
 ### Association
-- belongs_to :item
+- belongs_to :item'
