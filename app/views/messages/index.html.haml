@@ -1,2 +1,120 @@
-%h1 Messages#index
-%p Find me in app/views/messages/index.html.haml
+.wrapper
+  .header
+    = image_tag 'logo.png', class: 'icon'
+  .main
+    .main_header
+      %p.title 会員情報入力
+
+    .main_contents
+      .content
+        .content_form
+          .content_name
+            %p ニックネーム
+            %p.important
+              必須
+          %input{placeholder: "例) フリマ太郎", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p メールアドレス
+            %p.important
+              必須
+          %input{placeholder: "PC・携帯どちらでも可", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p パスワード
+            %p.important
+              必須
+          %input{placeholder: "7文字以上の半角英数字"}
+
+        .content_form
+          .content_name
+            %p パスワード(確認用)
+            %p.important
+              必須
+          %input{placeholder: "もう一度入力してください"}
+
+        .content_form
+          .content_name
+            %p お名前(全角)
+            %p.important
+              必須
+          %input{placeholder: "例) 山田"}
+          %input{placeholder: "例) 彩"}
+
+        .content_form
+          .content_name
+            %p お名前カナ(全角)
+            %p.important
+              必須
+          %input{placeholder: "例) ヤマダ"}
+          %input{placeholder: "例) アヤ"}
+
+        .content_form
+          .content_name
+            %p 生年月日
+            %p.important
+              必須
+          %input
+
+        .content_form
+          .content_name
+            %p 送付先氏名(全角)
+            %p.important
+              必須
+          %input{placeholder: "例) 山田"}
+          %input{placeholder: "例) 彩"}
+
+        .content_form
+          .content_name
+            %p 送付先氏名カナ(全角)
+            %p.important
+              必須
+          %input{placeholder: "例) ヤマダ"}
+          %input{placeholder: "例) アヤ"}
+
+        .content_form
+          .content_name
+            %p 郵便番号
+            %p.important
+              必須
+          %input
+
+        .content_form
+          .content_name
+            %p 都道府県
+            %p.important
+              必須
+          %input{placeholder: "例) 大阪府"}
+
+        .content_form
+          .content_name
+            %p 市区町村
+            %p.important
+              必須
+          %input{placeholder: "例) 大阪市浪速区"}
+
+        .content_form
+          .content_name
+            %p 番地
+            %p.important
+              必須
+          %input{placeholder: "例) 4−○−○"}
+
+        .content_form
+          .content_name
+            %p マンション名ビル名部屋番号
+          %input{placeholder: "例) 近鉄ビル"}
+
+        .content_form
+          .content_name
+            %p お届け先電話番号
+          %input{placeholder: "例) 0123-456-789"}
+
+        %input{type: "submit", placeholder: "登録", class: "submit_button"} 
+
+  .footer
+    = image_tag 'logo-white.png', class: 'icon'
+
+
