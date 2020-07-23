@@ -16,8 +16,8 @@
 
 ### Association
 - has_many :items, dependent: destroy'
-- has_many :sending, dependent: destroy'
-- has_many :card, dependent: destroy'
+- has_many :sendings, dependent: destroy'
+- has_many :cards, dependent: destroy'
 - has_many :comments
 
 ## sendingsテーブル
@@ -34,7 +34,7 @@
 |city|string|null:false|
 |block|string|null:false|
 |building|string|null:false|
-|roomnumber|null:false|
+|roomnumber|string|--------|
 |telephone|string|unique:true|
 
 ### Association
