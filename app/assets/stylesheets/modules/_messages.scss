@@ -1,3 +1,206 @@
 * {
   box-sizing: border-box;
 }
+
+.Body{
+  width: 100vw;
+  background: rgb(245, 245, 245);
+}
+
+
+//枠組み///////////////////////////
+
+.Wrapper {
+  display: flex;
+  margin: 0px auto 0;
+  padding: 40px 0;
+  width: 1020px;
+  background: rgb(245, 245, 245);
+}
+
+//サイドバー部分////////////////////
+
+.SideBar {
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  &__ListBox{
+    background-color: #fff;
+  }
+  &__List{
+    border: 1px solid rgb(245, 245, 245);
+    height: 48px;
+    padding: 10px;
+    a{
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+  }
+  &__Title{
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 30px;
+  }
+}
+
+
+
+//メイン部分/////////////////////////////////
+
+//TopSection
+
+.Main{
+  width: 700px;
+  float: right;
+  .TopSection{
+    height:155px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    a{
+      text-decoration: none;
+      display: block;
+    }
+    &__ImageBox{
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+    }
+    h3{
+    }
+    &__CountBox{
+      display: flex;
+      justify-content: center;
+    }
+    &__Group{
+      display: flex;
+    }
+    &__Score{
+      margin: 5px;
+    }
+  }
+  &__Center{
+    width: 100%;
+  }
+}
+
+//MainCenter
+
+
+.SelectBox{
+  height: 75px;
+  display: flex;
+  &__List{
+  background-color: #fff;
+  border: 1px solid rgb(245, 245, 245);
+  width: 50%;
+  text-align: center;
+  line-height: 72px;
+  border-top: 2px solid #ea352d;
+  a{
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    line-height: 72px;  
+    display: block;
+  }
+  }
+}
+
+.MainList{
+  margin-bottom: 100px;
+  background-color: #fff;
+}
+
+.ListBox{
+  &__List{
+    height: 75px;
+    border: 1px solid rgb(245, 245, 245);
+    font-size: 20px;
+    padding: 0px 20px;
+    display: flex;
+    a{
+      text-decoration: none;
+      color: #333;
+      display: block;
+      line-height: 70px;
+      font-size: 14px;
+      width: 100%;
+      padding: 0 10px;
+    }
+    img{
+      margin: 15px;
+    }
+  }
+  &__Flame{
+    background-color: rgb(245, 245, 245);
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  &__Show{
+    display: block;
+    text-align: center;
+  }
+}
+
+.Bottom{
+  background-color: #fff;
+  h2{
+    font-size: 16px;
+    border: 1px solid rgb(245, 245, 245);
+    height: 75px;
+    font-weight: 600;
+    line-height: 72px;
+    padding: 0 16px;
+  }
+  .Deal{
+    display: flex;
+    width: 100%;
+    height: 75px;
+    &__List{
+      width: 50%;
+      border: 1px solid rgb(245, 245, 245);
+      border-top: 2px solid #ea352d;
+      a{
+        display: block;
+        line-height: 72px;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.Detail{
+  font-size: 10px;
+  &__ListDealing{
+  }
+  &__ListPast{
+    display: none;
+  }
+  &__List{
+    height: 75px;
+    border: 1px solid #fff;
+    display: flex;
+    padding: 0 20px;
+    img{
+      margin: 15px;
+    }
+    a{
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
