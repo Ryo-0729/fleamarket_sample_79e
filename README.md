@@ -18,7 +18,7 @@
 - has_many :items, dependent: destroy
 - belongs_to :sending, dependent: destroy
 - belongs_to :card, dependent: destroy
-
+- has_many :comments
 
 ## sendingsテーブル
 
