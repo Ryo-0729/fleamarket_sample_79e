@@ -64,7 +64,7 @@
         %p.List__description 
           最大3%でお得に出品 & 購入！
 
-
+    -# 一番の理由の部分
   .Main__top-feature
     .Feature-inner
       %h2.Feature-inner__subtitle 会員数日本一位
@@ -79,7 +79,7 @@
         = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
 
 
-
+  -# 特徴一覧の部分
   .Main__features
     %h2.Subtitle FURIMAの特徴
     .Feature-items
@@ -113,6 +113,7 @@
           あります。
 
 
+  -#ピックアップ商品の部分
   .Main__picup
     .Main__picup-wrapper
       %h2.Subtitle-picup ピックアップカテゴリー
@@ -228,17 +229,40 @@
 
 
 
-
+  -# 今すぐ無料ダウンロードの部分
   .Main__lead
+    .Main__lead-inner
+      %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
+      %p.Main__lead-text 今すぐ無料ダウンロード！
+      .Main__lead-store-wrapper
+        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
 
 
-
-
-
-
-
-
+-# フッターの部分
 .Footer
+  %ul.Footer__contents
+    %li.Footer__contents-content
+      %h2 FURIMAについて
+      %ul
+        %li 会社概要
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li ポイントに関する特約
+    %li.Footer__contents-content
+      %h2 FURIMAを見る 
+      %ul
+        %li カテゴリー一覧
+        %li ブランド一覧
+    %li.Footer__contents-content
+      %h2 ヘルプ&ガイド 
+      %ul
+        %li FURIMAガイド
+        %li FURIMAロゴ利用ガイドライン
+        %li お知らせ
+  .Footer__logo
+    = image_tag("logo-white.png", alt: "logo", class: "Footer__logo-image")
+  %p @ FURIMA
   
 
 

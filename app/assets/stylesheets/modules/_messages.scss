@@ -298,5 +298,52 @@
     }
     
   }
+  &__lead{
+    background-image: url("bg-appBanner-pict.jpg");
+    padding: 100px 40px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+    &__lead-inner{
+      color: #fff;
+      text-align: center;
+    }
+      &__lead-title{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__lead-text{
+        font-size: 35px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+      &__lead-store-wrapper{
+        display: flex;
+        margin: 24px 0 0 0;
+        justify-content: center;
+        &__image{
+          width: 180px;
+          margin-right: 10px;
+        }
+      }
 
+
+}
+
+.Footer{
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+  &__contents{
+    display: flex;
+    margin: 0 auto;
+    width: 60%;
+    justify-content: space-around;
+  }
+    &__contents-content{
+
+    }
 }
