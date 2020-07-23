@@ -1,7 +1,8 @@
+-# ヘッダーの部分
 .Header
   .Header__top
     .Logo
-      = image_tag("furima-title-logo.svg", alt: "logo", class: "Logo__image")
+      = image_tag("logo.png", alt: "logo", class: "Logo__image")
     .Search
       %input.Search__inputText{"placeholder": "キーワードから探す", "type": "text"}
       %input.Search__submitBtn{"name": "commit", "type": "submit", "value": "検索"}
@@ -13,9 +14,7 @@
       .User__registration 新規会員登録
 
 
-
-
-
+-#  最初のキャプチャーの部分
 .Main
   .Main__caption
     .Contents
@@ -30,7 +29,7 @@
         = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
 
 
-
+  -#  理由の部分
   .Main__reason
     %h2.Subtitle FURIMAが選ばれる理由
     %ul.Lists
@@ -40,17 +39,17 @@
           %span.List__pict-number 1
           = image_tag("pict-reason-01.jpg", alt: "logo", class: "List__pict-image")
         %h3.List__text
-          %span 3分
+          %span.List__text--lightblue 3分
           ですぐに出品
         %p.List__description 
-          スマホで入力するだけで簡単に出品できる
+          スマホで入力するだけで簡単に出品できる！
 
       %li.List
         .List__pict
           %span.List__pict-number 2
           = image_tag("pict-reason-02.jpg", alt: "logo", class: "List__pict-image")
         %h3.List__text
-          %span シンプル
+          %span.List__text--lightblue シンプル
           で使いやすい
         %p.List__description 
           めんどくさい入力は必要なく、検索も購入もスムーズ！
@@ -61,19 +60,172 @@
           = image_tag("pict-reason-03.jpg", alt: "logo", class: "List__pict-image")
         %h3.List__text
           手数料
-          %span 業界最安
+          %span.List__text--lightblue 業界最安
         %p.List__description 
-          最大3%でお得に出品 & 購入
+          最大3%でお得に出品 & 購入！
+
 
   .Main__top-feature
+    .Feature-inner
+      %h2.Feature-inner__subtitle 会員数日本一位
+      %p.Feature-inner__details 
+      FURIMAは、フリマアプリで最も人気。
+      %br
+      出品・購入回数も業界最多です！
+      %br
+      ほしかったあの商品に出会えるかもしれません。
+      .Store-wrapper
+        = image_tag("app-store.svg", alt: "logo", class: "Store-wrapper__image")
+        = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
 
 
 
   .Main__features
+    %h2.Subtitle FURIMAの特徴
+    .Feature-items
+      .Feature-items__item
+        %figure
+          = image_tag("icon-01.png", alt: "logo", class: "Feature-items__item-image")
+        %h3.Feature-items__item-subtitle 簡単に売り買いできる
+        %p.Feature-items__item-details
+          スマホ一つで、いつでもどこでも簡単
+          %br
+          に出品・購入が可能！
 
+      .Feature-items__item
+        %figure
+          = image_tag("icon-03.png", alt: "logo", class: "Feature-items__item-image")
+        %h3.Feature-items__item-subtitle 売上金は即日振り込みに対応
+        %p.Feature-items__item-details
+          午前9時までに振込を依頼いただけれ
+          %br
+          ば、翌日に指定の口座に入金いたします!
+      
+      .Feature-items__item
+        %figure
+          = image_tag("icon-04.png", alt: "logo", class: "Feature-items__item-image")
+        %h3.Feature-items__item-subtitle 様々な支払いに対応
+        %p.Feature-items__item-details
+          お支払いは、クレジットカードだけでな
+          %br
+          く、ポイントや売上金など多彩な方法が
+          %br
+          あります。
 
 
   .Main__picup
+    .Main__picup-wrapper
+      %h2.Subtitle-picup ピックアップカテゴリー
+      .Container
+        %h3.Container__head 新規投稿商品
+        .Container__lists
+          .Picup-item
+            = image_tag("picup01.jpeg", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 ee
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  1000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0  
+                %p.Picup-item__note (税込)
+
+          .Picup-item
+            = image_tag("picup02.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product3
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  30000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
+
+          .Picup-item
+            = image_tag("picup03.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product2
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  20000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
+
+          .Picup-item
+            = image_tag("picup04.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product1
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  10000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0  
+                %p.Picup-item__note (税込)
+
+
+  .Main__picup.Main__picup2
+    .Main__picup-wrapper
+      %h2.Subtitle-picup ピックアップブランド
+      .Container
+        %h3.Container__head アーカイバ
+        .Container__lists
+          .Picup-item
+            = image_tag("picup01.jpeg", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 ee
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  1000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
+          .Picup-item
+            = image_tag("picup02.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product3
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  30000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
+
+          .Picup-item
+            = image_tag("picup03.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product2
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  20000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
+
+          .Picup-item
+            = image_tag("picup04.png", alt: "logo", class: "Picup-item＿image")
+            .Picup-item__body
+              %h3 product1
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  10000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0    
+                %p.Picup-item__note (税込)
+
 
 
 
