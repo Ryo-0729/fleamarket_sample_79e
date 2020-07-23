@@ -60,11 +60,11 @@
 
 
 ### Association
-- belongs_to :user, dependent: destroy'
-- belongs_to :category, dependent: destroy'
-- belongs_to :brand, dependent: destroy'
-- belongs_to :item, dependent: destroy'
-- belongs_to :comment, dependent: destroy'
+- belongs_to :user'
+- belongs_to :category'
+- belongs_to :brand'
+- belongs_to :item'
+- belongs_to :comment'
 
 
 ## brandsテーブル
@@ -95,7 +95,7 @@
 |token|string|null:false|
 
 ### Association
-- has_many :items'
+- belongs_to :items'
 
 
 ## petsテーブル
