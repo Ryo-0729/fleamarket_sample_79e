@@ -1,21 +1,5 @@
 
--# ヘッダーの部分
-.Header
-  .Header__top
-    = link_to root_path, class: "Logo" do
-      = image_tag("logo.png", alt: "logo", class: "Logo__image")
-    
-    = form_with url: root_path, method: :get, class: "Search", local:true do |form|
-      = form.text_field :keyword, placeholder: "キーワードから探す", class: "Search__inputText"
-      = form.submit  value: "",class: "Search__submitBtn", type:"submit"
-
-  .Header__bottom
-    = link_to '全ての商品一覧', root_path ,class: "Product-table"
-    .User
-      = link_to 'ログイン', root_path ,class: "User__login"
-      = link_to '新規会員登録', root_path ,class: "User__registration"
-      
-
+= render "header"
 
 -# 最初のキャプチャーの部分
 .Main
@@ -239,46 +223,7 @@
           = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
 
 
--# フッターの部分
-.Footer
-  %ul.Footer__contents
-    %li.Footer__contents-content
-      %h2.Footer__contents-subtitle FURIMAについて
-      %ul.Footer__contents-ul
-
-        %li.Footer__contents-li
-          = link_to '会社概要(運営会社)', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'プライバシーボリシー', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'FURIMA利用規約', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'ポイントに関する特約', root_path ,class: "Footer＿contents-a"
-        
-    %li.Footer__contents-content
-      %h2.Footer__contents-subtitle FURIMAを見る 
-      %ul.Footer__contents-ul
-
-        %li.Footer__contents-li
-          = link_to 'カテゴリー一覧', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'ブランド一覧', root_path ,class: "Footer＿contents-a"
-       
-
-    %li.Footer__contents-content
-      %h2.Footer__contents-subtitle ヘルプ&ガイド 
-      %ul.Footer__contents-ul
-
-        %li.Footer__contents-li
-          = link_to 'FURIMAガイド', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'FURIMAロゴ利用ガイドライン', root_path ,class: "Footer＿contents-a"
-        %li.Footer__contents-li
-          = link_to 'お知らせ', root_path ,class: "Footer＿contents-a"
-        
-  = link_to root_path, class: "Footer__logo" do
-    = image_tag("logo-white.png", alt: "logo", class: "Footer__logo-image")
-  %p.Footer__logo-text @ FURIMA
+= render "footer"
 
 
 -# 右下のカメラのロゴ部分
