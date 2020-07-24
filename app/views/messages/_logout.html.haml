@@ -1,0 +1,5 @@
+.Logout
+  .Logout__Form
+    = form_with model: @user do |form|
+      .Logout__Button
+        = form.submit "ログアウト", class: "Logout_Btn"

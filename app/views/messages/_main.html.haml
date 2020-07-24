@@ -12,15 +12,14 @@
   .Main__Center
     %ul.SelectBox
       %li.SelectBox__List
-        = link_to "お知らせ", "#"
+        = link_to "お知らせ", "#", class: "menu_item active"
       %li.SelectBox__List
-        = link_to "やることリスト", "#"
+        = link_to "やることリスト", "#", class: "menu_item"
     .MainList
       %ul.ListBox
         %li.ListBox__List
           = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
           = link_to "情報はここに入ります", "#"
-
         %li.ListBox__List
           = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
           = link_to "情報はここに入ります", "#"
@@ -32,6 +31,19 @@
           = link_to "情報はここに入ります", "#"
         %li.ListBox__List
           .ListBox__Flame
+            = link_to "一覧をみる", "#", class: "ListBox__Show"
+      %ul.ListBox.hide
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          .ListBoxTodo__Flame
             = link_to "一覧をみる", "#", class: "ListBox__Show"
   .Bottom
     %h2 購入した商品
@@ -52,3 +64,4 @@
         %li.Detail__List
         %li.Detail__List
       
+
