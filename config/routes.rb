@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  root 'messages#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+
+  root 'items#index'
+  
+  resources :items, only: [:index, :show, :new]
+  resources :users, only: [:index, :new]
+  resources :cards, only: [:new, :edit]
 end
