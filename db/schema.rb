@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_055215) do
+ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 2020_07_24_055215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
-    t.index ["item_id"], name: "index_posts_on_item_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["item_id"], name: "index_pets_on_item_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "sendings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_055215) do
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
-  add_foreign_key "posts", "items"
-  add_foreign_key "posts", "users"
+  add_foreign_key "pets", "items"
+  add_foreign_key "pets", "users"
   add_foreign_key "sendings", "users"
 end
