@@ -2,7 +2,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string¥null:|null:false|
+|nickname|string|null:false|
 |last_name|string|null:false|
 |first_name|string|null:false|
 |last_name_kana|string|null:false|
