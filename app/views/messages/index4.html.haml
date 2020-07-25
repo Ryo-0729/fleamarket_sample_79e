@@ -1,0 +1,45 @@
+.wrapper
+  .header
+    %a{href: "/"}
+      = image_tag 'logo.png', class: 'logo'
+  .main
+    .main_header
+      %p.title 会員登録完了
+
+    .main_contents
+      .content
+        .content_form
+          %p.confirmation_text
+            ありがとうございます。
+            %br
+            会員登録が完了しました。
+
+        %a{href: "/", class: "finish_button"}
+          メルカリをはじめる
+
+    %aside.appBanner
+      = image_tag 'bg-appBanner-pict.jpg', class: 'banner_image'
+      .inner
+        .inner_title
+          %h2 だれでもかんたん、人生を変えるフリマアプリ
+        .inner_text
+          %p 今すぐ無料ダウンロード！
+        .inner_icon
+          = image_tag 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg', class: "apple_icon"
+          = image_tag 'google-play-badge.png', style: "margin: 0px 0px 0px 0px;", width: "160px",  height: "-40px",  class: "google_icon"
+          %br{clear: "both"}
+
+    .footer
+      %ul.footer_text
+        %li
+          %a{href: "#"} プライバシーポリシー
+        %li
+          %a{href: "#"} FURIMA利用規約
+        %li
+          %a{href: "#"} 特定商取引に関する表記
+      
+      .footer_icon
+        %a{href: "/"}
+          = image_tag 'logo-white.png', class: 'logo_white'
+        %p.small
+          © FURIMA

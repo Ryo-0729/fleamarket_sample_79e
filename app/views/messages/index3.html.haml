@@ -1,0 +1,146 @@
+.wrapper
+  .header
+    %a{href: "/"}
+      = image_tag 'logo.png', class: 'logo'
+  .main
+    .main_header
+      %p.title 会員情報入力
+
+    .main_contents
+      .content
+        .content_form
+          .content_name
+            %p ニックネーム
+            %p.important
+              必須
+          %input{type: "text", placeholder: "例) フリマ太郎", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p メールアドレス
+            %p.important
+              必須
+          %input{type: "email", placeholder: "PC・携帯どちらでも可", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p パスワード
+            %p.important
+              必須
+          %input{type: "password", name: "example", placeholder: "7文字以上の半角英数字", class: "input_default"}
+          %p.comment
+            ※ 英字と数字の両方を含めて設定してください
+          
+        .content_form
+          .content_name
+            %p パスワード(確認用)
+            %p.important
+              必須
+          %input{type: "password", name: "example", placeholder: "もう一度入力してください", class: "input_default"}
+
+        .content_form
+          %h3 本人確認
+          %p.confirmation_text
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+        .content_form
+          .content_name
+            %p お名前(全角)
+            %p.important
+              必須
+          .input_half
+            %input{type: "text", placeholder: "例) 山田"}
+            %input{type: "text", placeholder: "例) 彩"}
+
+        .content_form
+          .content_name
+            %p お名前カナ(全角)
+            %p.important
+              必須
+          .input_half
+            %input{type: "text", placeholder: "例) ヤマダ"}
+            %input{type: "text", placeholder: "例) アヤ"}
+
+        .content_form
+          .content_name
+            %p 生年月日
+            %p.important
+              必須
+          %input{placeholder: "※ 仮置き"}
+          %p.comment 
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+        .content_form
+          .content_name
+            %p 送付先氏名(全角)
+            %p.important
+              必須
+          .input_half
+            %input{type: "text", placeholder: "例) 山田"}
+            %input{type: "text", placeholder: "例) 彩"}
+
+        .content_form
+          .content_name
+            %p 送付先氏名カナ(全角)
+            %p.important
+              必須
+          .input_half
+            %input{type: "text", placeholder: "例) ヤマダ"}
+            %input{type: "text", placeholder: "例) アヤ"}
+
+        .content_form
+          .content_name
+            %p 郵便番号
+            %p.important
+              必須
+          %input{type: "text", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p 都道府県
+            %p.important
+              必須
+          %input{type: "text", placeholder: "例) 大阪府", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p 市区町村
+            %p.important
+              必須
+          %input{type: "text", placeholder: "例) 大阪市浪速区", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p 番地
+            %p.important
+              必須
+          %input{type: "text", placeholder: "例) 4−○−○", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p マンション名ビル名部屋番号
+          %input{type: "text", placeholder: "例) 近鉄ビル", class: "input_default"}
+
+        .content_form
+          .content_name
+            %p お届け先電話番号
+          %input{type: "tel", name:"tel", placeholder: "例) 0123-456-789", class: "input_default"}
+
+        %a{href: "/messages/index4", class: "add_button"}
+          登録
+
+
+    .footer
+      %ul.footer_text
+        %li
+          %a{href: "#"} プライバシーポリシー
+        %li
+          %a{href: "#"} FURIMA利用規約
+        %li
+          %a{href: "#"} 特定商取引に関する表記
+      
+      .footer_icon
+        %a{href: "/"}
+          = image_tag 'logo-white.png', class: 'logo_white'
+        %p.small
+          © FURIMA

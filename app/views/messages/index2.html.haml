@@ -1,0 +1,57 @@
+.wrapper
+  .header
+    %a{href: "/"}
+      = image_tag 'logo.png', class: 'logo'
+  .main
+    .main_container 
+      %h2.main_head 新規会員登録
+      .main_forms
+        .content_form
+          %a{href: "/messages/index3", class: "mail_button"}
+            %i.far.fa-envelope
+            メールアドレスで登録する
+        
+        -# 仮置き SNSログイン実装時に変更してください
+        .content_form
+          %a{href: "#", class: "mail_button"}
+            %i.far.fa-envelope
+            メールアドレスで登録する
+
+        -# 仮置き SNSログイン実装時に変更してください
+        .content_form
+          %a{href: "#", class: "mail_button"}
+            %i.far.fa-envelope
+            メールアドレスで登録する
+
+        -# 仮置き SNSログイン実装時に変更してください
+        .content_form
+          %a{href: "#", class: "mail_button"}
+            %i.far.fa-envelope
+            メールアドレスで登録する
+      
+        .cotent-text
+          %p.text_info
+            登録することで、
+            %span<>
+            %a{href: "#"} 利用規約
+            %span<>
+            と
+            %span<>
+            %a{href: "#"} プライバシーポリシー
+            %span<>
+            に同意したものとみなされます。
+  
+  .footer
+    %ul.footer_text
+      %li
+        %a{href: "#"} プライバシーポリシー
+      %li
+        %a{href: "#"} FURIMA利用規約
+      %li
+        %a{href: "#"} 特定商取引に関する表記
+    
+    .footer_icon
+      %a{href: "/"}
+        = image_tag 'logo-white.png', class: 'logo_white'
+      %p.small
+        © FURIMA
