@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_07_25_140315) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,24 +94,35 @@ ActiveRecord::Schema.define(version: 2020_07_25_140315) do
     t.string "birth_day", null: false
     t.string "email", null: false
     t.string "password", null: false
+
+ActiveRecord::Schema.define(version: 2020_07_23_045106) do
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.string "reset_password_token", default: ""
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", default: "", null: false
+    t.string "lastname", limit: 11, default: "", null: false
+    t.string "firstname", limit: 11, default: "", null: false
+    t.string "lastname_kana", limit: 11, default: ""
+    t.string "firstname_kana", limit: 11, default: ""
+    t.date "birth_day"
+    t.string "tel_num", limit: 11, default: ""
+    t.string "send_lastname", limit: 11, default: ""
+    t.string "send_firstname", limit: 11, default: ""
+    t.string "send_lastname_kana", limit: 11, default: ""
+    t.string "send_firstname_kana", limit: 11, default: ""
+    t.integer "post_num"
+    t.string "prefectures", limit: 11, default: ""
+    t.string "city", limit: 11, default: ""
+    t.string "address", limit: 11, default: ""
+    t.string "address_2nd", limit: 11, default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cards", "users"
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
-  add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users"
-  add_foreign_key "pets", "items"
-  add_foreign_key "pets", "users"
-  add_foreign_key "sendings", "users"
 end
