@@ -1,7 +1,7 @@
 class CreateSendings < ActiveRecord::Migration[6.0]
   def change
     create_table :sendings do |t|
-      t.references :user, null: false
+      t.references :user, null: false, foreign_key: true, type: :integer
       t.string :last_name, null: false
       t.string :first_name, null: false
       t.string :last_name_kana, null: false

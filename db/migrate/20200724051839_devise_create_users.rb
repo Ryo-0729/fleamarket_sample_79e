@@ -24,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string       :address,            null: false
       t.text         :building
       t.string       :prefecture_id,      null: false
-      t.references   :user,               null: false, foreign_key:true
+      # t.references   :user,               null: false, foreign_key:true
       t.timestamps
 
       ## Recoverable
