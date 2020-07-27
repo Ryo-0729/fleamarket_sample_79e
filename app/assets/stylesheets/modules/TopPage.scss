@@ -169,8 +169,14 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          @media screen and (min-width:480px) and ( max-width: 1600px) { 
+            /*　画面サイズが480pxからはここを読み込む　*/
+            margin-right: 80px;
+          }
+          
           &__pict{
             position: relative;
+            
           }
           &__pict-number{
             position: absolute;
