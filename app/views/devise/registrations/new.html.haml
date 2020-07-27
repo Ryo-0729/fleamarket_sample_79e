@@ -1,0 +1,146 @@
+.user-registration
+  .user-form
+    %h1
+      会員情報入力
+    .form-user
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .firld
+          = f.label :ニックネーム
+          %span
+            必須
+          %br/
+          = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "input-default"
+
+        .firld
+          = f.label :メールアドレス
+          %span
+            必須
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
+
+        .firld
+          = f.label :パスワード
+          %span
+            必須
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
+          %p
+          ※ 英字と数字の両方を含めて設定してください
+          
+
+        .firld
+          = f.label :確認用パスワード
+          %span
+            必須
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "input-default"
+          %p
+          ※ 英字と数字の両方を含めて設定してください
+
+        .firld
+          本人確認
+          %p
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+        .firld
+          = f.label :お名前（全角）
+          %span
+            必須
+          .input-name
+            = f.text_field :last_name, placeholder: "例)山田", class: "input-default"
+
+            = f.text_field :first_name, placeholder: "例)彩", class: "input-default__lastname"
+
+        .firld
+          = f.label :お名前カナ（全角）
+          %span
+            必須
+          .input-name
+            = f.text_field :last_name_kana, placeholder: "例)ヤマダ", class: "input-default"
+            = f.text_field :first_name_kana, placeholder: "例)アヤ", class: "input-default__lastname"
+
+        .firld
+          = f.label :生年月日
+          %span
+            必須
+          %br/
+          = f.text_field :birthyear, placeholder: "1990（年）", class: "input-default"
+
+          = f.text_field :birthmonth, placeholder: "01（月）", class: "input-default"
+
+          = f.text_field :birthday, placeholder: "01（日）", class: "input-default"
+
+        .firld
+          %label
+            郵便番号
+          %span
+            必須
+        .firld
+          = f.text_field :post_cord, placeholder: "例）123-4567", class:"input-default"
+        .firld
+          %label
+            都道府県
+          %span
+            必須
+        .firld
+          -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: "Prefecture"
+          = f.text_field :prefecture_id, placeholder: "例）大阪府", class:"input-default"
+        .firld
+          %label
+            市区町村
+          %span
+            必須
+        .firld
+          = f.text_field :city, placeholder: "例）横浜市緑区", class:"input-default"
+        .firld
+          %label
+            番地
+          %span
+            必須
+        .firld
+          = f.text_field :address, placeholder: "例）青山1-1-1", class:"input-default"
+        .firld
+          %label
+            建物名
+          %span
+            任意
+        .firld
+          = f.text_field :building, placeholder: "例）柳ビル103", class:"input-default"
+        .firld
+          = f.label :携帯電話の番号
+          %span
+            必須
+          %br/
+          = f.text_field :telephone, placeholder: "携帯電話の番号を入力", class: "input-default"
+          %p
+          ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+        .form-user__text
+          「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+          = f.submit "次へ進む", class: "submit"
+
+          .form-user__text2
+            %p
+              本人情報の登録について
+            = icon "fas fa-angle-right", class: "fas fa-angle-right"
+  //= render "devise/shared/links"
+  
+  .fooder
+    %nav
+      %ul
+        %li
+          = link_to "プライバシーポリシー", root_path
+        %li
+          = link_to "フリーマケット利用規約", root_path
+        %li
+          = link_to "特定商取引に関する表記", root_path
+            
+
+    -# .fooder-image
+    -#   = link_to root_path do
+    -#     = image_tag "logo_white.svg", class: "fooder_logo"
