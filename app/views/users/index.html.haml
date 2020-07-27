@@ -9,8 +9,10 @@
     -# - content_for :css do
     = stylesheet_link_tag 'modules/users'
     = javascript_include_tag 'application'
+  %body
+    = yield
 
-.Body_Block
-  .Wrapper
-    = render "side_bar"
-    = render "new"
+    .Body_Block
+      .Wrapper
+        = render "side_bar"
+        = render "main"
