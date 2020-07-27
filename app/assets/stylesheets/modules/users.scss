@@ -1,3 +1,331 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/////mixin////////////////////////////////////////
+
+@mixin ImgColor{
+  background-color: #3CCACE;
+}
+
+@mixin BackColor{
+  background-color: rgb(245, 245, 245)
+}
+
+@mixin BorderGray{
+  border: 1px solid rgb(245, 245, 245);
+}
+
+
+/////大枠/////////////////////////////////////////
+* {
+  box-sizing: border-box;
+}
+
+.Body_Block{
+  @include BackColor;
+  width: 100vw;
+}
+
+.Wrapper {
+  display: flex;
+  margin: 0px auto 0;
+  padding: 40px 0;
+  width: 1020px;
+  @include BackColor;
+}
+
+////サイドバー//////////////////////////////////////
+
+.SideBar {
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  &__ListBox{
+    background-color: #fff;
+  }
+  &__List{
+    @include BorderGray;
+    height: 48px;
+    padding: 10px;
+    a{
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+  }
+  &__Title{
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 30px;
+  }
+}
+
+
+////メイン部分//////////////////////////////////////
+
+
+.Main{
+  width: 700px;
+  float: right;
+}
+
+
+/////上段部分///////////////
+.TopSection{
+  height:155px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  a{
+    text-decoration: none;
+    display: block;
+  }
+  &__ImageBox{
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+  h3{
+  }
+  &__CountBox{
+    display: flex;
+    justify-content: center;
+  }
+  &__Group{
+    display: flex;
+  }
+  &__Score{
+    margin: 5px;
+  }
+  &__Center{
+    width: 100%;
+  }
+}
+
+
+/////中段部分//////////////////
+.SelectBox{
+  height: 75px;
+  display: flex;
+  background-color: #fff;
+  &__List{
+  @include BorderGray;
+  width: 50%;
+  text-align: center;
+  line-height: 72px;
+  a{
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    line-height: 72px;  
+    display: block;
+  }
+  }
+}
+
+.MainList{
+  margin-bottom: 100px;
+  background-color: #fff;
+}
+
+.ListBox{
+  overflow: hidden;
+  &__List{
+    height: 75px;
+    @include BorderGray;
+    font-size: 20px;
+    padding: 0px 20px;
+    display: flex;
+    a{
+      text-decoration: none;
+      color: #333;
+      display: block;
+      line-height: 70px;
+      font-size: 14px;
+      width: 100%;
+      padding: 0 10px;
+    }
+    img{
+      margin: 15px;
+    }
+  }
+  &__Flame{
+    @include BackColor;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  &__Show{
+    display: block;
+    text-align: center;
+  }
+}
+
+
+/////下段部分//////////////////
+.Bottom{
+  background-color: #fff;
+  h2{
+    font-size: 16px;
+    @include BorderGray;
+    height: 75px;
+    font-weight: 600;
+    line-height: 72px;
+    padding: 0 16px;
+  }
+  .Deal{
+    display: flex;
+    width: 100%;
+    height: 75px;
+    &__List{
+      width: 50%;
+      @include BorderGray;
+      a{
+        display: block;
+        line-height: 72px;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.Detail{
+  font-size: 10px;
+  &__ListPast{
+    display: none;
+  }
+  &__List{
+    height: 75px;
+    border: 1px solid #fff;
+    display: flex;
+    padding: 0 20px;
+    img{
+      margin: 15px;
+    }
+    a{
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.hide{
+  display: none;
+}
+
+
+//////クレジット登録画面////////////////////////////////////
+
+.R-Content{
+  background-color: #fff;
+  height: 100%;
+  width: 700px;
+  h2{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 8px 24px;
+    text-align: center;
+    @include BorderGray;
+  }
+  form{
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+}
+
+.UserInfo{
+  margin-top: 25px;
+  select{
+    height: 50px;
+    width: 120px;
+  }
+}
+
+.CardNumber{
+  font-size: 16px;
+  margin: 8px 0;
+  label{
+    font-weight: 600;
+  }
+  span{
+    @include ImgColor;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.FormContent{
+  max-width: 343px;
+  margin: 0 auto;
+}
+
+.CardNumber-Form{
+  width: 100%;
+  height: 48px;
+  padding: 0 10px;
+}
+
+.SequirtyInfo{
+  font-size: 12px;
+  display: grid;
+  justify-content: end;
+  span{
+    color: black;
+  }
+}
+
+.Send_Btn{
+  margin: 40px 0;
+  @include ImgColor;
+  border: 1px solid #3CCACE;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+//////ログアウト画面////////////////////////////////////
+
+.Logout{
+  width: 700px;
+  height: 100%;
+  float: right;
+  background-color: #fff;
+  &__Form{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  &__Button{
+    font-weight: 600;
+    .Logout_Btn{
+      cursor: pointer;
+      @include ImgColor;
+      margin: 40px 0;
+      border: 1px solid #3CCACE;
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+  }
+}
+
+

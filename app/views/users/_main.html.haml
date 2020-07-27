@@ -1,0 +1,67 @@
+.Main
+  .TopSection
+    .TopSection__ImageBox
+      = image_tag "member_photo_noimage_thumb.png", size: "60x60", alt: "顔写真"
+    .h3  評価者
+    .TopSection__CountBox
+      %ul.TopSection__Group
+        %li.TopSection__Score
+          評価 1
+        %li.TopSection__Score
+          出品数 1
+  .Main__Center
+    %ul.SelectBox
+      %li.SelectBox__List
+        = link_to "お知らせ", "#", class: "menu_item active"
+      %li.SelectBox__List
+        = link_to "やることリスト", "#", class: "menu_item"
+    .MainList
+      %ul.ListBox
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          .ListBox__Flame
+            = link_to "一覧をみる", "#", class: "ListBox__Show"
+      %ul.ListBox.hide
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          .ListBoxTodo__Flame
+            = link_to "一覧をみる", "#", class: "ListBox__Show"
+  .Bottom
+    %h2 購入した商品
+    %ul.Deal
+      %li.Deal__List
+        = link_to "取引中", "#"
+      %li.Deal__List
+        = link_to "過去の取引", "#"
+    .Detail
+      %ul.Detail__ListDealing
+        %li.Detail__List
+          = image_tag "icon_brand.png", size: "40x40", alt: "顔写真"
+          = link_to "情報はここに入ります", "#"
+        %li.ListBox__List
+          .ListBox__Flame
+            = link_to "一覧をみる", "#", class: "ListBox__Show"
+      %ul.Detail__ListPast
+        %li.Detail__List
+        %li.Detail__List
+      
+
