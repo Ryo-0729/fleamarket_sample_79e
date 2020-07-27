@@ -1,0 +1,244 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'modules/TopPage'
+    = javascript_include_tag 'application'
+
+
+    = render "header"
+
+    -# 最初のキャプチャーの部分
+    .Main
+      .Main__caption
+        .Contents
+          %h1.Contents__title 人生を変えるフリマアプリ
+          %p.Contents__text 
+            FURIMAはだれでもかんたんに出品・購入できる
+            %br
+            フリマアプリです
+
+          .Store-wrapper
+            = link_to root_path do
+              = image_tag("app-store.svg", alt: "logo", class: "Store-wrapper__image")
+            = link_to root_path do
+              = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
+
+
+      -# 理由の部分
+      .Main__reason
+        %h2.Subtitle FURIMAが選ばれる理由
+        %ul.Lists
+
+          %li.List
+            .List__pict
+              %span.List__pict-number 1
+              = image_tag("pict-reason-01.jpg", alt: "logo", class: "List__pict-image")
+            %h3.List__text
+              %span.List__text--lightblue 3分
+              ですぐに出品
+            %p.List__description 
+              スマホで入力するだけで簡単に出品できる！
+
+          %li.List
+            .List__pict
+              %span.List__pict-number 2
+              = image_tag("pict-reason-02.jpg", alt: "logo", class: "List__pict-image")
+            %h3.List__text
+              %span.List__text--lightblue シンプル
+              で使いやすい
+            %p.List__description 
+              めんどくさい入力は必要なく、検索も購入もスムーズ！
+
+          %li.List
+            .List__pict
+              %span.List__pict-number 3
+              = image_tag("pict-reason-03.jpg", alt: "logo", class: "List__pict-image")
+            %h3.List__text
+              手数料
+              %span.List__text--lightblue 業界最安
+            %p.List__description 
+              最大3%でお得に出品 & 購入！
+
+
+        -# 一番の理由の部分
+      .Main__top-feature
+        .Feature-inner
+          %h2.Feature-inner__subtitle 会員数日本一位
+          %p.Feature-inner__details 
+          FURIMAは、フリマアプリで最も人気。
+          %br
+          出品・購入回数も業界最多です！
+          %br
+          ほしかったあの商品に出会えるかもしれません。
+          .Store-wrapper
+            = link_to root_path do
+              = image_tag("app-store.svg", alt: "logo", class: "Store-wrapper__image")
+            = link_to root_path do
+              = image_tag("google-play.svg", alt: "logo", class: "Store-wrapper__image")
+
+
+      -# 特徴一覧の部分
+      .Main__features
+        %h2.Subtitle FURIMAの特徴
+        .Feature-items
+          .Feature-items__item
+            %figure
+              = image_tag("icon-01.png", alt: "logo", class: "Feature-items__item-image")
+            %h3.Feature-items__item-subtitle 簡単に売り買いできる
+            %p.Feature-items__item-details
+              スマホ一つで、いつでもどこでも簡単に出品・購入が可能！
+
+          .Feature-items__item
+            %figure
+              = image_tag("icon-03.png", alt: "logo", class: "Feature-items__item-image")
+            %h3.Feature-items__item-subtitle 売上金は即日振り込みに対応
+            %p.Feature-items__item-details
+              午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+          
+          .Feature-items__item
+            %figure
+              = image_tag("icon-04.png", alt: "logo", class: "Feature-items__item-image")
+            %h3.Feature-items__item-subtitle 様々な支払いに対応
+            %p.Feature-items__item-details
+              お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+
+      -# ピックアップ商品の部分
+      .Main__picup
+        .Main__picup-wrapper
+          %h2.Subtitle-picup ピックアップカテゴリー
+          .Container
+            %h3.Container__head 新規投稿商品
+            .Container__lists
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 ee
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  1000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0  
+                    %p.Picup-item__note (税込)
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup02.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product3
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  30000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup03.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product2
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  20000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup04.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product1
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  10000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0  
+                    %p.Picup-item__note (税込)
+
+
+      -# ピックアップブランドの部分
+      .Main__picup.Main__picup2
+        .Main__picup-wrapper
+          %h2.Subtitle-picup ピックアップブランド
+          .Container
+            %h3.Container__head アーカイバ
+            .Container__lists
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 ee
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  1000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup02.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product3
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  30000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup03.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product2
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  20000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+              = link_to root_path, class: "Picup-item" do
+                = image_tag("picup04.png", alt: "logo", class: "Picup-item__image")
+                .Picup-item__body
+                  %h3 product1
+                  .Picup-item__details
+                    %ul.Picup-item__ul
+                      %li.Picup-item__li  10000円
+                      %li.Picup-item__li
+                        = icon('fas', 'star')
+                        0    
+                    %p.Picup-item__note (税込)
+
+
+      -# 今すぐ無料ダウンロードの部分
+      .Main__lead
+        .Main__lead-inner
+          %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
+          %p.Main__lead-text 今すぐ無料ダウンロード！
+          .Main__lead-store-wrapper
+            = link_to root_path do
+              = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+            = link_to root_path do
+              = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+
+
+    = render "footer"
+
+
+    -# 右下のカメラのロゴ部分
+    = link_to root_path do
+      .Purchase
+        %span.Purchase__text 出品する
+        = image_tag("icon_camera.png", alt: "logo", class: "Purchase__image")
+      
