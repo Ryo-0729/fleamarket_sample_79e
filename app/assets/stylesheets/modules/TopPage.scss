@@ -1,0 +1,450 @@
+
+// ヘッダー 上部
+.Header{
+  padding: 0 60px;
+  width: 100%;
+  height: 100px;
+  &__top{
+    display: flex;
+    padding: 15px 0 0;
+    margin: 0 auto;
+    width: 70%;
+  }
+    .Logo{
+      padding-bottom: 10px;
+      border-radius: 4px;
+      &__image{
+        width: 150px;
+        margin-right: 15px;
+      }
+    }
+
+  //検索エリア
+    .Search{
+      display: flex;
+      width: 100%;
+      margin-top: 5px;
+      &__inputText{
+        width: calc(100% - 100px);
+        height: 36px;
+        padding: 0 0 0 5px;
+      }
+      &__submitBtn{
+        height: 36px;
+        background-image: image-url('icon-search01.png');
+        width:40px;
+        background-size: 50%;
+        background-color: #3CCACE;
+        border: none;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        &:hover{
+         opacity: 0.7;
+        }
+      }
+    }
+
+  // ヘッダー下部
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+    .Product-table{
+      text-decoration: none;
+      color: black;
+      &:hover{
+        color: #ffb340;
+      }
+    }
+    .User{
+      display: flex;
+      margin-right: 60px;
+      &__login{
+        padding: 0 0 0 16px;
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+        &:hover{
+          color: #ffb340;
+        }
+      }
+      &__registration{
+        padding: 0 0 0 16px;
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        &:hover{
+          color: #ffb340;
+        }
+      }
+    }
+}
+
+
+// メイン画面
+.Main{
+  margin-top: 10px;
+  // 最初のキャプチャーの部分
+  &__caption{
+    background-image: image-url('bg-mainVisual-pict_pc.jpg');
+    width: 100%;
+    height: 560px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+  }
+    .Contents{
+      width: 80%;
+      margin: 0 auto;
+      padding: 35px 0 0 0;
+      &__title{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 60px;
+        line-height: 1.2;
+        color: #fff;
+      }
+      &__text{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+        color: #fff;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+      .Store-wrapper{
+        display: flex;
+        margin: 24px 0 0 0;
+        &__image{
+          width: 180px;
+          margin-right: 10px;
+          &:hover{
+          opacity: 0.7;
+            }
+          }
+      }
+    }
+  
+
+  // 理由の一覧の部分
+  &__reason{
+    padding: 60px 20px;
+  }
+    .Subtitle{
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      &::after{
+        content: "";
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .Lists{
+        text-align: center;
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+        }
+      .List{
+          width: 30%;
+          margin: 16px 5% 0 0;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &__pict{
+            position: relative;
+          }
+          &__pict-number{
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 5px 0 0;
+            padding: 5px 20px;
+            background-color: #3CCACE;
+            color: #fff;
+
+          }
+          &__pict-image{
+            width: 300px;
+            height: 300px;
+          }
+          &__text{
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 50px;
+            margin: 0 0 0 2px;
+          }
+          &__text--lightblue{
+            color: #3CCACE;
+          }
+    }
+
+
+  // 一番の特徴の部分
+  &__top-feature{
+    background-image: image-url('bg-topMiddleDl-pict.jpg');
+    background-position: bottom right;
+    height: 400px;
+    background-size: cover;
+    display: flex;
+    align-items: center; 
+  }
+    .Feature-inner{
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      &__subtitle{
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__details{
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+      .Store-wrapper{
+          display: flex;
+          margin: 24px 0 0 0;
+          &__image{
+            width: 180px;
+            margin-right: 10px;
+            &:hover{
+              opacity: 0.7;
+            }
+          }
+        }
+    }
+
+
+  // 特徴一覧の部分
+  &__features{
+    padding: 60px 100px;
+    background-color: #fff;
+    .Feature-items{
+      width: 70%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      &__item{
+        display: flex;
+        flex-direction: column;
+        width: calc(1 / 3 * 100%);
+        text-align: center;
+        padding: 0 20px;
+      }
+      &__item-image{
+        width: 70%;
+        text-align: center;
+        
+      }
+      &__item-subtitle{
+        margin: 38px 0 10px;
+        font-size: 19px;
+        font-weight: bold;
+      }
+      &__item-details{
+        margin: 0 0 40px;
+        font-size: 17px;
+        font-weight: 200;
+        text-align: left;
+      }
+    }
+
+  }
+
+
+  // ピックアップカテゴリー ピックアップブランドの部分
+  &__picup{
+    padding: 80px 0 0;
+    background-color: #f8f8f8;
+    height: 100%;
+  }
+  &__picup2{
+    padding-bottom: 80px;
+  }
+    .Subtitle-picup{
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    .Container{
+      &__head{
+        color: #3CCACE;
+        text-align: center;
+        font-size: 24px;
+      }
+      &__lists{
+        width: 780px;
+        margin: 26px auto 0;
+        display: flex; 
+      }
+        .Picup-item{
+          width: 220px;
+          text-decoration: none;
+          color: black;
+          display: block;
+          &:hover{
+            opacity: 0.7;
+          }
+          & img{
+            width:100%;
+            height: 150px;
+            object-fit: cover;
+          }
+          &__body{
+            background-color: white;
+            color: #333;
+            padding: 16px;
+          }
+          &__body h3{
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+            text-align: left;
+          }
+          &__details{
+
+          }
+          &__ul{
+            display: flex;
+            justify-content: space-between;
+          }
+          &__li{
+
+          }
+          &__note{
+            font-size: 10px;
+            text-align: left;
+
+          }
+        }
+    }
+
+  // だれでもダウンロードの部分
+  &__lead{
+    background-image: image-url('bg-appBanner-pict.jpg');
+    padding: 100px 40px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+    &__lead-inner{
+      color: #fff;
+      text-align: center;
+    }
+      &__lead-title{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__lead-text{
+        font-size: 35px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+      &__lead-store-wrapper{
+        display: flex;
+        margin: 24px 0 0 0;
+        justify-content: center;
+        &__image{
+          width: 180px;
+          margin-right: 10px;
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+      }
+}
+
+
+// フッターの部分
+.Footer{
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+  &__contents{
+    display: flex;
+    margin: 0 auto;
+    width: 50%;
+    justify-content: space-around;
+  }
+    &__contents-subtitle{
+      margin: 0 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &__contents-li a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 32px;
+      &:hover{
+        border-bottom: 1px solid white;
+      }
+    }
+  &__logo {
+    width: 160px;
+    margin: 0 auto;
+  }
+    &__logo img{
+      width: 160px;
+    }
+    &__logo-text{
+      font-size: 14px;
+    }
+}
+
+
+// 右下のカメラのアイコン部分
+.Purchase{
+  background-color: #3CCACE;
+  width: 120px;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+  &:hover{
+    opacity: 0.7;
+  }
+  &__text{
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  &__image{
+    width: 60%;
+    vertical-align: bottom;
+  }
+}

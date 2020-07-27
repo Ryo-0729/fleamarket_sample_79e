@@ -1,5 +1,19 @@
-%p マイページ
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag '/modules/users.scss', media: 'all', 'data-turbolinks-track': 'reload'
+    -# - content_for :css do
+    = stylesheet_link_tag 'modules/users'
+    = javascript_include_tag 'application'
+  %body
+    = yield
 
-= link_to 'クレカ登録', new_card_path, action: 'index'
-= link_to 'クレカ編集', "", action: 'index' 
-    -# edit_card_path でリンク出来ず（ファイル名をindexに変えてルーティング確認済み
+.Body_Block
+  .Wrapper
+    = render "side_bar"
+    = render "main"
+

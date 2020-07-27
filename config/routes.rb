@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       get 'index2'
     end
   end
-  resources :users, only: [:index, :new]
+  resources :users, only: [:index, :new] do
+    collection do
+      get 'logout'
+    end
+  end
   resources :cards, only: [:new, :edit]
 end
