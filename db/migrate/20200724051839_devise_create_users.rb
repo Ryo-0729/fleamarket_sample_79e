@@ -1,23 +1,31 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[6.0]
+class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      
-      t.string :nickname, null: false
-      t.string :last_name, null: false
-      t.string :firdt_name, null: false
-      t.string :last_name_kana, null: false
-      t.string :first_name_kana, null: false
-      t.string :birth_year, null: false
-      t.string :birth_month, null: false
-      t.string :birth_day, null: false
-      t.string :email, null: false, unique: true
-      t.string :password, null: false
-
-      
-      t.string :encrypted_password, null: false, default: ""
+      t.string       :nickname,            null:false
+      t.string       :email,               null: false, default: ""
+      t.string       :password,             null:false
+      t.string       :password_confirmation, null:false
+      t.string       :last_name,           null:false
+      t.string       :first_name,          null:false
+      t.string       :last_name_kana,      null:false
+      t.string       :first_name_kana,     null:false
+      t.string       :birthyear,           null:false
+      t.string       :birthmonth,          null:false
+      t.string       :birthday,            null:false
+      t.string       :telephone,           null:false
+      t.string       :encrypted_password,  null: false, default: ""
+      t.text         :icon
+      t.text         :text
+      t.integer      :post_cord,          null: false
+      t.string       :city,               null: false
+      t.string       :address,            null: false
+      t.text         :building
+      t.string       :prefecture_id,      null: false
+      # t.references   :user,               null: false, foreign_key:true
+      t.timestamps
 
       ## Recoverable
       t.string   :reset_password_token
@@ -45,11 +53,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       # t.datetime :locked_at
 
 
-      t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
+    add_index :users, :email,                  unique: true
+    add_index :users, :reset_password_token,   unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end

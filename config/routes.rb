@@ -14,6 +14,6 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  
+
   resources :cards, only: [:new, :edit]
 end

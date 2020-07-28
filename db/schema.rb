@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_140315) do
+ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.string "token", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_140315) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.bigint "item_id", null: false
     t.text "text", null: false
     t.index ["item_id"], name: "index_comments_on_item_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_140315) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.bigint "brand_id", null: false
     t.bigint "category_id", null: false
     t.string "name", null: false
@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(version: 2020_07_25_140315) do
   end
 
   create_table "pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_pets_on_item_id"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "sendings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
@@ -82,23 +82,32 @@ ActiveRecord::Schema.define(version: 2020_07_25_140315) do
     t.index ["user_id"], name: "index_sendings_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
+    t.string "email", default: "", null: false
+    t.string "password", null: false
+    t.string "password_confirmation", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "birth_year", null: false
-    t.string "birth_month", null: false
-    t.string "birth_day", null: false
-    t.string "email", null: false
-    t.string "password", null: false
+    t.string "birthyear", null: false
+    t.string "birthmonth", null: false
+    t.string "birthday", null: false
+    t.string "telephone", null: false
     t.string "encrypted_password", default: "", null: false
+    t.text "icon"
+    t.text "text"
+    t.integer "post_cord", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.text "building"
+    t.string "prefecture_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

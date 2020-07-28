@@ -66,6 +66,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn'
