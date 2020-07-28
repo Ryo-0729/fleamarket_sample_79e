@@ -10,7 +10,11 @@
         必須
     .putup-item-middle__content__comment
       画像をアップロードできます
-      %input.putup-item-middle__content__item-image{id: "fileInput", type: "file", accept: "image/*", value: "ファイルを選択", name: "photo", onChange: "photoPreview(event)"}
+    .PhotoBox
+      %label{class: "PhotoBox__Item-image"}
+        = icon('fa', 'camera')
+        %input.PhotoBox__Item-File{id: "fileInput", type: "file", accept: "image/*", value: "ファイルを選択", name: "photo", onChange: "photoPreview(event)"}
+        %span クリックしてファイルをアップロード
   .putup-item-middle__content
     .putup-item-middle__content__index
       .putup-item-middle__content__index__title
@@ -50,9 +54,9 @@
     .putup-item-middle__content__index
       .putup-item-middle__content__index__title
         ブランド
-      .putup-item-middle__content__index__any
-        任意
-      %input.putup-item-middle__content__item-brand{placeholder: "例) シャネル", type: "text"}
+      .putup-item-middle__content__index__essential
+        必須
+    %input.putup-item-middle__content__item-brand{placeholder: "例) シャネル", type: "text"}
   .putup-item-middle__content
     .putup-item-middle__content__index
       .putup-item-middle__content__index__title
@@ -144,28 +148,42 @@
       %option{value: "day1"} 1〜2日で発送
       %option{value: "day2"} 2〜3日で発送
       %option{value: "day3"} 4〜7日で発送
-  .putup-item-middle__content
-    .putup-item-middle__content__index
-      .putup-item-middle__content__index__title
-        販売価格
-      .putup-item-middle__content__index__essential
-        必須
-    %input.putup-item-middle__content__item-value{placeholder: "0", type: "number", name: "price", autocomplete: "off"}
-    .putup-item-middle__Alart 300以上9999999以下で入力してください
-    .putup-item-middle__Fee
-      .putup-item-middle__Fee__Form
-        .putup-item-middle__Fee__Form__left 販売手数料（10%）
-      %span ー
+  .CalcField
+    .CalcField__index
+      .CalcField__index__Field
+        .CalcField__index__Field__title
+          販売価格
+        .CalcField__index__Field__essential
+          必須
+      %input.CalcField__Item-value{placeholder: "0", type: "number", name: "price", autocomplete: "off"}
+    .CalcField__Alart 300以上9999999以下で入力してください
+    .CalcField__Fee
+      .CalcField__Fee__Left 販売手数料（10%）
+      %span.CalcField__Fee__Right ー
     %hr.Border
-    .putup-item-middle__Fee
-      .putup-item-middle__Fee__Form
-        .putup-item-middle__Fee__Form__left 販売利益
-      %span ー
-  .Button
-    %button.Button__Form__Red{type: "button"} 出品する
-    %button.Button__Form__Gray{type: "button"} 下書き保存
-    =link_to "#" do
-      もどる
+    .CalcField__Fee
+      .CalcField__Fee__Left 販売利益
+      %span.CalcField__Fee__Right ー
+  .putup-item-bottom
+    .Button
+      %button.Button__Form__Red{type: "button"} 出品する
+      %button.Button__Form__Gray{type: "button"} 下書きに保存
+      =link_to "#" do
+        もどる
 
-
-.putup-item-bottom
+.ItemFooter
+  .ItemFooter__Upper
+    %ul.ItemFooter__Upper__Box
+      %li.ItemFooter__Upper__Box__List
+        =link_to "#" do
+          プライバシーポリシー
+      %li.ItemFooter__Upper__Box__List
+        =link_to "#" do
+          利用規約
+      %li.ItemFooter__Upper__Box__List
+        =link_to "#" do
+          特定商品に関する表記
+  .ItemFooter__Lower
+    = link_to "#" do
+      = image_tag "logo.png", size: "100x25"
+    %h3 @FURIMA, Inc.
