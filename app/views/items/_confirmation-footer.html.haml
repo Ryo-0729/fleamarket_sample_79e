@@ -1,0 +1,12 @@
+// フッター
+.Footer
+  %ul.Footer__ul
+    %li.Footer__li 
+      = link_to "プライバシーポリシー", root_path
+    %li.Footer__li 
+      = link_to "メルカリ利用規約", root_path
+    %li.Footer__li 
+      = link_to "特定商取引に関する表記", root_path
+  = link_to root_path do
+    = image_tag("logo-white.png", alt: "logo", class: "Footer__image")
+  %p.Footer__copyright © FURIMA, Inc.

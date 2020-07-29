@@ -1,3 +1,249 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+.wrapper{
+  width: 100vw;
+  margin: 0px auto;
+  background-color: #eee;
+}
+.putup-item-top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 128px;
+}
+.putup-item-middle{
+  width: 700px;
+  height: calc(100% - 348px);
+  margin: 0px auto;
+  background-color: #fff;
+  &__content{
+    padding: 40px;
+    border-bottom: #eee solid 1px;
+    &__index{
+      display: flex;
+      &__title{
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &__essential{
+        width: 30px;
+        background-color: #3CCACE;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        line-height: 21px;
+        height: 23px;
+      }
+      &__any{
+        width: 30px;
+        background-color: #ccc;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        line-height: 21px;
+        height: 23px;
+      }
+    }
+    &__comment{
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    &__imageup{
+    }
+    &__item-name{
+      width: 620px;
+      height: 48px;
+      margin-top: 16px;
+      padding: 0px 16px;
+    }
+    &__item-description{
+      width: 620px;
+      margin-top: 16px;
+      padding: 13px 16px;
+    }
+    &__item-brand{
+      width: 620px;
+      height: 48px;
+      margin-top: 16px;
+      padding: 0px 16px;
+    }
+    &__item-value{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    height: 48px;
+    margin: 0;
+    outline: none;
+    padding: 0 16px;
+    width: inherit;
+    }
+  }
+  &__Fee{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: content-box;
+    display: flex;
+    height: 46px;
+    &__Right{
+      display: block;
+    }
+  }
+}
+
+.PhotoBox{
+  border: 1px dotted black;
+  height: 100px;
+  background-color: #eee;
+  text-align: center;
+  &__Item-image{
+    line-height: 75px;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    i{
+      font-size: 35px;
+      display: block;
+      height: 10px;
+      margin-top: 20px;
+    }
+    span{
+      font-size: 10px;
+    }
+  }
+  &__Item-File{
+  display: none;
+  }
+}
+
+.CalcField{
+  padding: 40px;
+  &__index{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+     &__Field{
+       display: flex;
+      &__title{
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &__essential{
+        width: 30px;
+        background-color: #3CCACE;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        line-height: 21px;
+        height: 23px;
+      }
+    }
+  }
+  &__Alart{
+    color: #ff0211;
+    font-size: 12px;
+    line-height: 1.4em;
+    margin: 4px 0 0;
+    text-align: right;
+    display: none;
+  }
+  &__Fee{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    &__Left{
+
+    }
+  }
+}
+
+
+.putup-item-bottom{
+  width: 100%;
+  height: 220px;
+  padding: 40px 0px 41px;
+}
+
+
+.Button{
+  padding: 0 40px;
+  width: 360px;
+  margin: 0px auto 32px;
+  &__Form__Red{
+    background-color: red;
+    color: #fff;
+    display: block;
+    width: 100%;
+    font-size: 17px;
+    min-height: 48px;
+    cursor: pointer;
+    padding: 0 24px;
+    border: red;
+    border-radius: 3px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  &__Form__Gray{
+    display: block;
+    width: 100%;
+    font-size: 17px;
+    min-height: 48px;
+    cursor: pointer;
+    padding: 0 24px;
+    border: #eee;
+    border-radius: 3px;
+    height: 50px;
+  }
+  a{
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #0095EE;
+    padding-top: 20px;
+  }
+}
+
+.ItemFooter{
+  width: 700px;
+  height: 100%;
+  margin: 0px auto;
+  &__Upper{
+    text-align: center;
+    padding: 20px;
+    &__Box{
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      &__List{
+        margin: 20px 0;
+        font-size: 12px;
+        a{
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+  &__Lower{
+    text-align: center;
+    h3{
+      font-size: 10px;
+    }
+  }
+}
+
+
+.select{
+  width: 620px;
+  height: 48px;
+  margin-top: 16px;
+  padding: 0px 56px 0px 16px;
+  font-size: 16px;
+}

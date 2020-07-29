@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new] do
     collection do
       get 'index2'
+      get 'confirmation'
     end
   end
+
   resources :users, only: [:index, :new] do
     collection do
       get 'logout'
     end
   end
+
   resources :cards, only: [:new, :edit]
 end
