@@ -12,10 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-  end
-
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "token", null: false
@@ -24,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry", null: false
+    t.string "ancestry"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "pets", "items"

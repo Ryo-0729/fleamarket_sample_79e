@@ -31,34 +31,20 @@
         .putup-item-middle__content__index__essential
           必須
       =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7"
-    -# .putup-item-middle__content
-    -#   .putup-item-middle__content__index
-    -#     .putup-item-middle__content__index__title
-    -#       カテゴリー
-    -#     .putup-item-middle__content__index__essential
-    -#       必須
-    -#   %select#category.select{name: "category"}
-    -#     %option{selected: "selected", value: "select"} 選択してください
-    -#     %option{value: "ladies"} レディース
-    -#     %option{value: "mens"} メンズ
-    -#     %option{value: "baby"} ベビー・キッズ
-    -#     %option{value: "interiors"} インテリア・住まい・小物
-    -#     %option{value: "books"} 本・音楽・ゲーム
-    -#     %option{value: "toys"} おもちゃ・ホビー・グッズ
-    -#     %option{value: "cosmetics"} コスメ・香水・美容
-    -#     %option{value: "electronics"} 家電・スマホ・カメラ
-    -#     %option{value: "sports"} スポーツ・レジャー
-    -#     %option{value: "handmade"} ハンドメイド
-    -#     %option{value: "tickets"} チケット
-    -#     %option{value: "cars"} 自動車・オートバイ
-    -#     %option{value: "others"} その他
-    -# .putup-item-middle__content
-    -#   .putup-item-middle__content__index
-    -#     .putup-item-middle__content__index__title
-    -#       ブランド
-    -#     .putup-item-middle__content__index__essential
-    -#       任意
-    -#   %input.putup-item-middle__content__item-brand{placeholder: "例) シャネル", type: "text"}
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          カテゴリー
+        .putup-item-middle__content__index__essential
+          必須
+      = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "select"}
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          ブランド
+        .putup-item-middle__content__index__essential
+          任意
+      = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
