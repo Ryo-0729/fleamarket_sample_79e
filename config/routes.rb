@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     collection do
       get 'index2'
     end
+    member do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
   end
   resources :users, only: [:index, :new] do
     collection do
@@ -14,5 +19,4 @@ Rails.application.routes.draw do
     end
   end
   resources :cards, only: [:new, :edit]
-  
 end

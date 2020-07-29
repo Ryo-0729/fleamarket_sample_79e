@@ -14,7 +14,9 @@
   .main_container
     .main_lists
       .title_box
-        %h1.title （カテゴリー名）の商品一覧
+        %h1.title
+        = "#{@category.name}の商品一覧"
+        - @items.each do |item|
         %ul.category__child.category__list
           - @categories.each do |category|
             %li.list 
