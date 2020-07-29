@@ -4,26 +4,30 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string       :nickname,            null:false
-      t.string       :email,               null: false, default: ""
-      t.string       :password,             null:false
-      t.string       :password_confirmation, null:false
-      t.string       :last_name,           null:false
-      t.string       :first_name,          null:false
-      t.string       :last_name_kana,      null:false
-      t.string       :first_name_kana,     null:false
-      t.string       :birthyear,           null:false
-      t.string       :birthmonth,          null:false
-      t.string       :birthday,            null:false
-      t.string       :telephone,           null:false
-      t.string       :encrypted_password,  null: false, default: ""
+      t.string       :nickname,            null:false, default: ""
+      t.string       :email,               null:false, default: ""
+      t.string       :password,             null:false, default: ""
+      t.string       :password_confirmation, null:false, default: ""
+      t.string       :last_name,           null:false, default: ""
+      t.string       :first_name,          null:false, default: ""
+      t.string       :last_name_kana,      null:false, default: ""
+      t.string       :first_name_kana,     null:false, default: ""
+      t.string       :birthyear,           null:false, default: ""
+      t.string       :birthmonth,          null:false, default: ""
+      t.string       :birthday,            null:false, default: ""
+      t.string       :telephone,           null:false, default: ""
+      t.string       :encrypted_password,  null:false, default: ""
       t.text         :icon
       t.text         :text
-      t.integer      :post_cord,          null: false
-      t.string       :city,               null: false
-      t.string       :address,            null: false
+      t.string       :post_first_name,      null:false, default: ""
+      t.string       :post_last_name,       null:false, default: ""
+      t.string       :post_first_name_kana, null:false, default: ""
+      t.string       :post_last_name_kana,  null:false, default: ""
+      t.string      :post_cord,          null:false, default: ""
+      t.string       :city,               null:false, default: ""
+      t.string       :address,            null:false, default: ""
       t.text         :building
-      t.string       :prefecture_id,      null: false
+      t.string       :prefecture_id,      null:false, default: ""
       # t.references   :user,               null: false, foreign_key:true
       t.timestamps
 
