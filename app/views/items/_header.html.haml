@@ -10,5 +10,11 @@
   .Header__bottom
     = link_to '全ての商品一覧', root_path ,class: "Product-table"
     .User
-      = link_to 'ログイン', root_path ,class: "User__login"
-      = link_to '新規会員登録', root_path ,class: "User__registration"
+    - if user_signed_in?
+      %h2
+        現在 #{current_user.nickname} さんがログインしています
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      %h2 現在ログインしていません
+      = link_to 'ログイン', new_user_session_path ,class: "User__login"
+      = link_to '新規会員登録', new_user_registration_path ,class: "User__registration"

@@ -313,6 +313,10 @@
   }
   &__Button{
     font-weight: 600;
+    a{
+      text-align: center;
+      text-decoration: none;
+    }
     .Logout_Btn{
       cursor: pointer;
       @include ImgColor;

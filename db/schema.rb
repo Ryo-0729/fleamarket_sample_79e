@@ -83,26 +83,30 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", null: false
+    t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
-    t.string "password", null: false
-    t.string "password_confirmation", null: false
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "birthyear", null: false
-    t.string "birthmonth", null: false
-    t.string "birthday", null: false
-    t.string "telephone", null: false
+    t.string "password", default: "", null: false
+    t.string "password_confirmation", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
+    t.string "birthyear", default: "", null: false
+    t.string "birthmonth", default: "", null: false
+    t.string "birthday", default: "", null: false
+    t.string "telephone", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.text "icon"
     t.text "text"
-    t.integer "post_cord", null: false
-    t.string "city", null: false
-    t.string "address", null: false
+    t.string "post_first_name", default: "", null: false
+    t.string "post_last_name", default: "", null: false
+    t.string "post_first_name_kana", default: "", null: false
+    t.string "post_last_name_kana", default: "", null: false
+    t.string "post_cord", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "address", default: "", null: false
     t.text "building"
-    t.string "prefecture_id", null: false
+    t.string "prefecture_id", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_password_token"

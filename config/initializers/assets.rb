@@ -16,6 +16,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( modules/TopPage.css )
 Rails.application.config.assets.precompile += %w( modules/users.css )
 Rails.application.config.assets.precompile += %w( modules/cards.css )
+Rails.application.config.assets.precompile += %w( modules/registration.css )
 Rails.application.config.assets.precompile += %w( modules/confirmation.css )
 Rails.application.config.assets.precompile += %w( modules/items.css )
 

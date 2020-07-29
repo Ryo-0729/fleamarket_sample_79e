@@ -1,5 +1,5 @@
 .Logout
   .Logout__Form
-    = form_with model: @user do |form|
-      .Logout__Button
-        = form.submit "ログアウト", class: "Logout_Btn"
+    -# = form_with model: @user do |form|
+    .Logout__Button
+      = link_to "ログアウト", destroy_user_session_path, class: "Logout_Btn",method: :delete
