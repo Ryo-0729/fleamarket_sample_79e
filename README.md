@@ -50,7 +50,7 @@
 |category_id|references|null:false, foreign_key:true|
 |name|string|null:false|
 |text|text|null:false|
-|condition|integer|null:false|
+|condition_id(active_hash)|integer|null:false|
 |price|integer|null:false|
 |size_id(acitve_hash)|integer|null: false|
 |postage_payer_id(acitve_hash)|integer|null: false|

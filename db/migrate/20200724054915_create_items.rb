@@ -7,8 +7,10 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :price
       t.text :text
-      t.integer :condition
+      t.integer :condition_id
+      t.integer :postage_payer_id
       t.integer :prefecture_id
+      t.integer :preparation_id
       t.datetime :completed_at
     end
   end

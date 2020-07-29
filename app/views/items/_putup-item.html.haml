@@ -57,32 +57,22 @@
     -#     .putup-item-middle__content__index__title
     -#       ブランド
     -#     .putup-item-middle__content__index__essential
-    -#       必須
+    -#       任意
     -#   %input.putup-item-middle__content__item-brand{placeholder: "例) シャネル", type: "text"}
-    -# .putup-item-middle__content
-    -#   .putup-item-middle__content__index
-    -#     .putup-item-middle__content__index__title
-    -#       商品の状態
-    -#     .putup-item-middle__content__index__essential
-    -#       必須
-    -#   %select#state.select{name: "state"}
-    -#     %option{selected: "selected", value: "select"} 選択してください
-    -#     %option{value: "state1"} 新品、未使用
-    -#     %option{value: "state2"} 未使用に近い
-    -#     %option{value: "state3"} 目立った傷や汚れなし
-    -#     %option{value: "state4"} やや傷や汚れあり
-    -#     %option{value: "state5"} 傷や汚れあり
-    -#     %option{value: "state6"} 全体的に状態が悪い
-    -# .putup-item-middle__content
-    -#   .putup-item-middle__content__index
-    -#     .putup-item-middle__content__index__title
-    -#       配送料の負担
-    -#     .putup-item-middle__content__index__essential
-    -#       必須
-    -#   %select#fee.select{name: "fee"}
-    -#     %option{selected: "selected", value: "select"} 選択してください
-    -#     %option{value: "fee1"} 送料込み(出品者負担)
-    -#     %option{value: "fee2"} 着払い(購入者負担)
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          商品の状態
+        .putup-item-middle__content__index__essential
+          必須
+      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          配送料の負担
+        .putup-item-middle__content__index__essential
+          必須
+      = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
@@ -90,33 +80,29 @@
         .putup-item-middle__content__index__essential
           必須
       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
-    -# .putup-item-middle__content
-    -#   .putup-item-middle__content__index
-    -#     .putup-item-middle__content__index__title
-    -#       発送までの日数
-    -#     .putup-item-middle__content__index__essential
-    -#       必須
-    -#   %select#day.select{name: "day"}
-    -#     %option{selected: "selected", value: "select"} 選択してください
-    -#     %option{value: "day1"} 1〜2日で発送
-    -#     %option{value: "day2"} 2〜3日で発送
-    -#     %option{value: "day3"} 4〜7日で発送
-    -# .CalcField
-    -#   .CalcField__index
-    -#     .CalcField__index__Field
-    -#       .CalcField__index__Field__title
-    -#         販売価格
-    -#       .CalcField__index__Field__essential
-    -#         必須
-    -#     %input.CalcField__Item-value{placeholder: "0", type: "number", name: "price", autocomplete: "off"}
-    -#   .CalcField__Alart 300以上9999999以下で入力してください
-    -#   .CalcField__Fee
-    -#     .CalcField__Fee__Left 販売手数料（10%）
-    -#     %span.CalcField__Fee__Right ー
-    -#   %hr.Border
-    -#   .CalcField__Fee
-    -#     .CalcField__Fee__Left 販売利益
-    -#     %span.CalcField__Fee__Right ー
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          発送までの日数
+        .putup-item-middle__content__index__essential
+          必須
+      = f.collection_select :preparation_id, Preparation.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+    .CalcField
+      .CalcField__index
+        .CalcField__index__Field
+          .CalcField__index__Field__title
+            販売価格
+          .CalcField__index__Field__essential
+            必須
+        = f.text_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: "300", max: "9999999"
+      .CalcField__Alart 300以上9999999以下で入力してください
+      .CalcField__Fee
+        .CalcField__Fee__Left 販売手数料（10%）
+        %span.CalcField__Fee__Right ー
+      %hr.Border
+      .CalcField__Fee
+        .CalcField__Fee__Left 販売利益
+        %span.CalcField__Fee__Right ー
     .putup-item-bottom
       .Button
         = f.submit "出品する", class: "Button__Form__Red"
