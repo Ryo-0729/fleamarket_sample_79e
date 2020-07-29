@@ -10,11 +10,7 @@
     = javascript_include_tag 'application'
 
 
-// ヘッダー
-.Header
-  .Header__logo 
-    = link_to root_path do
-      = image_tag("logo.png", alt: "logo", class: "Header__logo-image")
+= render "confirmation-header"
 
 // タイトル
 .Main
@@ -68,15 +64,4 @@
         = form_with url: root_path, method: :get, class: "Purchase__inner-box", local:true do |form|
           = form.submit  value: "購入する",class: "Purchase__inner-btn", type:"submit"
 
-// フッター
-.Footer
-  %ul.Footer__ul
-    %li.Footer__li 
-      = link_to "プライバシーポリシー", root_path
-    %li.Footer__li 
-      = link_to "メルカリ利用規約", root_path
-    %li.Footer__li 
-      = link_to "特定商取引に関する表記", root_path
-  = link_to root_path do
-    = image_tag("logo-white.png", alt: "logo", class: "Footer__image")
-  %p.Footer__copyright © Furima, Inc.
+= render "confirmation-footer"
