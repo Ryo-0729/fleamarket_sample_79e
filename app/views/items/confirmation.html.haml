@@ -1,0 +1,62 @@
+// 購入確認ページ(川崎が追加)
+%html
+  %head
+    = stylesheet_link_tag 'modules/confirmation'
+    = javascript_include_tag 'application'
+
+
+= render "confirmation-header"
+
+// タイトル
+.Main
+  .Main__wrapper
+    %section.Title-box
+      %h1.Title-box__title 購入内容の確認
+    
+    // 商品の概要
+    %section.Outline
+      .Outline__inner
+        %figure.Outline__inner-imagebox
+          = image_tag("pict-reason-01.jpg", alt: "logo", class: "Outline__inner-image")
+        .Outline__inner-textbox
+          %p.Outline__inner-heading 【即発送可能】スマホ
+          %p.Outline__inner-details
+            %span.Outline__inner-details--thin 送料込み(税込)
+            %span.Outline__inner-details--bold ¥1,700
+
+    // 支払い金額
+    %section.Amount
+      .Amount__money
+        %p 支払い金額
+        %p.Amount__money--big ¥1,700
+      .Amount__point 
+        .Amount__point-box
+          %span.Amount__point-box--square
+          %p.Amount__point-box--text ポイント
+          
+        %p.Amount__point-more 所持ポイント : P0
+
+    // 支払い方法
+    %section.Payment
+      .Payment__inner
+        %h2.Payment-way 支払い方法
+        = link_to root_path, class: "Payment-registration" do
+          = icon('fas', 'plus-circle')
+          %p.Payment-registration__text 登録してください
+
+    // 配送先
+    %section.Delivery
+      .Delivery__inner
+        %h2.Delivery-way 配送先
+        = link_to root_path, class: "Delivery-registration" do
+          = icon('fas', 'plus-circle')
+          %p.Delivery-registration__text 登録してください
+
+    // 購入ボタンエリア
+    %section.Purchase
+      .Purchase__inner
+        %p.Purchase__inner-warning  配送先と支払い方法の入力を完了してください
+        = form_with url: root_path, method: :get, class: "Purchase__inner-box", local:true do |form|
+          = form.submit  value: "購入する",class: "Purchase__inner-btn", type:"submit"
+
+= render "confirmation-footer"
