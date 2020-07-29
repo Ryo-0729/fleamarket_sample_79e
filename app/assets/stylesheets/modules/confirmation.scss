@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+.Header{
+  height: 128px;
+  background-color: rgb(245, 245, 245);
+  position: relative;
+  &__logo-image{
+    height: 49px;
+    width: 185px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+
+
+.Main{
+  background-color: rgb(245, 245, 245);
+  height: 100vh;
+  
+  &__wrapper{
+    background-color: white;
+    height: 800px;
+    width: 700px;
+    margin: 0 auto;
+  }
+  .Title-box{
+    max-width: 375px;
+    margin: 0px auto;
+    text-align: center;
+    padding: 32px 16px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    &__title{
+      font-size: 24px;
+      line-height: 34px;
+      font-weight: 600;
+      color: rgb(51, 51, 51);
+    }
+  }
+
+
+  .Outline{
+    max-width: 375px;
+    margin: 0px auto;
+    padding: 32px 16px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    &__inner{
+      display: flex;
+      }
+    &__inner-imagebox{
+      height: 80px;
+      width: 80px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 0;
+      overflow: hidden;
+    }
+    &__inner-imagebox img{
+      height: 100%;
+      width: 100%;
+    }
+    &__inner-textbox{
+      margin-left: 16px;
+      width: calc(375px - 130px);
+    }
+    &__inner-heading{
+      font-size: 14px;
+      line-height: 1.4em;
+      margin-bottom: 8px;
+    }
+    &__inner-details{
+      text-align: right;
+      width: 100%;
+      &--thin{
+        font-size: 12px;
+      }
+      &--bold{
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 8px;
+      }
+    }
+    }
+
+
+  .Amount{
+    max-width: 375px;
+    margin: 0px auto;
+    padding: 32px 16px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    &__money{
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 600;
+      align-items: center;
+      margin-bottom: 24px;
+      &--big{
+        font-size: 24px;
+      }
+    }
+    &__point{
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+   
+    &__point-box{
+      display: flex;
+      &--square{
+        background-color: rgb(211, 211, 211);
+        width: 20px;
+        display: inline-block;
+        height: 20px;
+      
+      }
+      &--text{
+        display: inline-block;
+        font-weight: 600;
+        line-height: 1.4em;
+        vertical-align: middle;
+        margin-left: 8px;
+      }
+    }
+    &__point-more{
+      font-size: 12px;
+      text-align: right;
+      line-height: 1.6;
+      max-width: 145px;
+    }
+  }
+}
+
+.Footer{
+  background-color: rgb(245, 245, 245);
+}

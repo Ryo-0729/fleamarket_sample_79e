@@ -1,0 +1,48 @@
+// 購入確認ページ(川崎が追加)
+
+.Header
+  .Header__logo 
+    = link_to root_path do
+      = image_tag("logo.png", alt: "logo", class: "Header__logo-image")
+.Main
+  .Main__wrapper
+    %section.Title-box
+      %h1.Title-box__title 購入内容の確認
+    
+    %section.Outline
+      .Outline__inner
+        %figure.Outline__inner-imagebox
+          = image_tag("pict-reason-01.jpg", alt: "logo", class: "Outline__inner-image")
+        .Outline__inner-textbox
+          %p.Outline__inner-heading 【即発送可能】スマホ
+          %p.Outline__inner-details
+            %span.Outline__inner-details--thin 送料込み(税込)
+            %span.Outline__inner-details--bold ¥1,700
+
+
+    %section.Amount
+      .Amount__money
+        %p 支払い金額
+        %p.Amount__money--big ¥1,700
+      .Amount__point 
+        .Amount__point-box
+          %span.Amount__point-box--square
+          %p.Amount__point-box--text ポイント
+          
+        %p.Amount__point-more 所持ポイント : P0
+
+
+    %section.Payment
+      %h1 支払い方法
+
+    %section.Delivery
+      %h1 配送先
+      
+    %section.Purchase
+      %h1 購入する
+.Footer
+  %ul
+    %li プライバシーポリシー
+    %li メルカリ利用規約
+    %li 特定商取引に関する表記
+    
