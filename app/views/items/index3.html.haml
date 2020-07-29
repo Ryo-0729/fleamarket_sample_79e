@@ -1,14 +1,28 @@
 // 購入確認ページ(川崎が追加)
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'modules/confirmation'
+    = javascript_include_tag 'application'
 
+
+// ヘッダー
 .Header
   .Header__logo 
     = link_to root_path do
       = image_tag("logo.png", alt: "logo", class: "Header__logo-image")
+
+// タイトル
 .Main
   .Main__wrapper
     %section.Title-box
       %h1.Title-box__title 購入内容の確認
     
+    // 商品の概要
     %section.Outline
       .Outline__inner
         %figure.Outline__inner-imagebox
@@ -19,7 +33,7 @@
             %span.Outline__inner-details--thin 送料込み(税込)
             %span.Outline__inner-details--bold ¥1,700
 
-
+    // 支払い金額
     %section.Amount
       .Amount__money
         %p 支払い金額
@@ -31,18 +45,38 @@
           
         %p.Amount__point-more 所持ポイント : P0
 
-
+    // 支払い方法
     %section.Payment
-      %h1 支払い方法
+      .Payment__inner
+        %h2.Payment-way 支払い方法
+        = link_to root_path, class: "Payment-registration" do
+          = icon('fas', 'plus-circle')
+          %p.Payment-registration__text 登録してください
 
+    // 配送先
     %section.Delivery
-      %h1 配送先
-      
+      .Delivery__inner
+        %h2.Delivery-way 配送先
+        = link_to root_path, class: "Delivery-registration" do
+          = icon('fas', 'plus-circle')
+          %p.Delivery-registration__text 登録してください
+
+    // 購入ボタンエリア
     %section.Purchase
-      %h1 購入する
+      .Purchase__inner
+        %p.Purchase__inner-warning  配送先と支払い方法の入力を完了してください
+        = form_with url: root_path, method: :get, class: "Purchase__inner-box", local:true do |form|
+          = form.submit  value: "購入する",class: "Purchase__inner-btn", type:"submit"
+
+// フッター
 .Footer
-  %ul
-    %li プライバシーポリシー
-    %li メルカリ利用規約
-    %li 特定商取引に関する表記
-    
+  %ul.Footer__ul
+    %li.Footer__li 
+      = link_to "プライバシーポリシー", root_path
+    %li.Footer__li 
+      = link_to "メルカリ利用規約", root_path
+    %li.Footer__li 
+      = link_to "特定商取引に関する表記", root_path
+  = link_to root_path do
+    = image_tag("logo-white.png", alt: "logo", class: "Footer__image")
+  %p.Footer__copyright © Furima, Inc.

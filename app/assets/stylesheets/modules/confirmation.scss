@@ -1,10 +1,32 @@
+// 購入確認ページのsassです(川崎が追加)
+
 * {
   box-sizing: border-box;
 }
 
+
+// 変数定義
+$section-color: rgb(51, 51, 51);
+$background-border-color: rgb(245, 245, 245);
+$warning-color: rgb(255, 2, 17);
+$success-color: rgb(0, 149, 238);
+$font-weight-bold: 600;
+
+
+
+// @mixin
+@mixin section-box() {
+    max-width: 375px;
+    margin: 0px auto;
+    padding: 32px 16px;
+    border-bottom: 1px solid $background-border-color;
+}
+
+
+
 .Header{
   height: 128px;
-  background-color: rgb(245, 245, 245);
+  background-color: $background-border-color;
   position: relative;
   &__logo-image{
     height: 49px;
@@ -21,35 +43,29 @@
 
 
 .Main{
-  background-color: rgb(245, 245, 245);
-  height: 100vh;
-  
+  background-color: $background-border-color;
   &__wrapper{
     background-color: white;
     height: 800px;
     width: 700px;
     margin: 0 auto;
   }
+
+  // タイトルの部分
   .Title-box{
-    max-width: 375px;
-    margin: 0px auto;
+    @include section-box();
     text-align: center;
-    padding: 32px 16px;
-    border-bottom: 1px solid rgb(245, 245, 245);
     &__title{
       font-size: 24px;
       line-height: 34px;
-      font-weight: 600;
-      color: rgb(51, 51, 51);
+      font-weight: $font-weight-bold;
+      color: $section-color;
     }
   }
 
-
+  // 商品概要
   .Outline{
-    max-width: 375px;
-    margin: 0px auto;
-    padding: 32px 16px;
-    border-bottom: 1px solid rgb(245, 245, 245);
+    @include section-box();
     &__inner{
       display: flex;
       }
@@ -88,12 +104,9 @@
     }
     }
 
-
+  // 支払い金額
   .Amount{
-    max-width: 375px;
-    margin: 0px auto;
-    padding: 32px 16px;
-    border-bottom: 1px solid rgb(245, 245, 245);
+    @include section-box();
     &__money{
       display: flex;
       justify-content: space-between;
@@ -115,15 +128,14 @@
     &__point-box{
       display: flex;
       &--square{
-        background-color: rgb(211, 211, 211);
+        background-color: #ccc;
         width: 20px;
         display: inline-block;
         height: 20px;
-      
       }
       &--text{
         display: inline-block;
-        font-weight: 600;
+        font-weight: $font-weight-bold;
         line-height: 1.4em;
         vertical-align: middle;
         margin-left: 8px;
@@ -136,8 +148,108 @@
       max-width: 145px;
     }
   }
+
+  // 支払い方法
+  .Payment{
+    @include section-box();
+  }
+    .Payment-way{
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+      margin-bottom: 16px;
+    }
+    .Payment-registration{
+      text-decoration: none;
+      color: $success-color;
+      display: flex;
+      font-size: 14px;
+      &__text{
+
+      }
+    }
+
+  // 配送先
+  .Delivery{
+    @include section-box();
+  }
+    .Delivery-way{
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+      margin-bottom: 16px;
+    }
+    .Delivery-registration{
+      text-decoration: none;
+      color: $success-color;
+      display: flex;
+      font-size: 14px;
+    }
+
+  // 購入ボタン
+  .Purchase{
+    max-width: 375px;
+    margin: 0px auto;
+    padding: 32px 16px 56px;
+      &__inner-warning{
+        color: $warning-color;
+        line-height: 1.5;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+      &__inner-btn{
+        background-color: #ccc;
+        color: #888;
+        border: none;
+        width: 100%;
+        min-height: 48px;
+        padding: 0 24px;
+        display: block;
+        font-size: 17px;
+        font-weight: $font-weight-bold;
+        border-radius: 4px;
+      }
+  }
+  
 }
 
+
+// フッター
 .Footer{
-  background-color: rgb(245, 245, 245);
+  background-color: $background-border-color;
+  padding: 40px 0px 41px;
+  text-align: center;
+  &__ul{
+    display: flex;
+    margin: 0 auto 40px;
+    align-items: center;
+    justify-content: center;
+  }
+  &__li{
+    margin: 16px 0px 0px 16px;
+    font-size: 12px;
+    
+  }
+  &__li a{
+    text-decoration: none;
+    color: $section-color;
+    &:hover{
+      border-bottom: 1px solid $section-color;
+      opacity: 0.6;
+    }
+  }
+  &__image{
+    width: 140px;
+    margin-bottom: 8px;
+  }
+  &__copyright{
+    font-size: 12px;
+  }
 }
+
+
+// プラスのアイコン(font-awesome)
+.fa-plus-circle{
+  margin-right: 4px;
+  margin-top: 3px;
+}
+
+
