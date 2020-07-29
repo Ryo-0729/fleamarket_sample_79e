@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   end
 
   def index2
+    @categories = Category.all
+    @items = Item.all
   end
 
 end
