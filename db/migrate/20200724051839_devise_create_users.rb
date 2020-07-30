@@ -28,6 +28,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string       :address,            null:false, default: ""
       t.text         :building
       t.string       :prefecture_id,      null:false, default: ""
+      
       # t.references   :user,               null: false, foreign_key:true
       t.timestamps
 
