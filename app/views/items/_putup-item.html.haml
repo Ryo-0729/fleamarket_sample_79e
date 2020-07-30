@@ -3,6 +3,7 @@
     = image_tag "logo.png", size: "185x49"
 .putup-item-middle
   = form_for @item do |f|
+    = render 'layouts/error_messages', model: f.object
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
@@ -37,7 +38,7 @@
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "select"}
+      = f.select :category_id, options_for_select( Category.where(ancestry: nil).map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "select"}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
