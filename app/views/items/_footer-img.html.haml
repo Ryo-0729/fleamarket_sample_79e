@@ -1,0 +1,9 @@
+.Main__lead
+  .Main__lead-inner
+    %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
+    %p.Main__lead-text 今すぐ無料ダウンロード！
+    .Main__lead-store-wrapper
+      = link_to root_path do
+        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+      = link_to root_path do
+        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
