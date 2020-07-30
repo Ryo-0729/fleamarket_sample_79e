@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+
   def index
   end
 
@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @category_parent_array = Category.where(ancestry: nil)
     @item = Item.new
     @item.item_images.new
   end
@@ -26,6 +27,7 @@ class ItemsController < ApplicationController
   def confirmation
   end
 
+  private
   def item_params
     params.require(:item).permit(:name, :price, :text, :category_id, :brand_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
