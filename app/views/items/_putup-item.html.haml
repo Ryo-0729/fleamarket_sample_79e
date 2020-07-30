@@ -11,12 +11,13 @@
           必須
       .putup-item-middle__content__comment
         画像をアップロードできます
-      .PhotoBox
+      #image-box.PhotoBox
         %label{class: "PhotoBox__Item-image"}
           = icon('fa', 'camera')
           = f.fields_for :item_images do |i|
-            = i.file_field :image, class: "PhotoBox__Item-File"
-            %span クリックしてファイルをアップロード
+            .js-file_group{"data-index": "#{i.index}"}
+              = i.file_field :image, class: 'PhotoBox__Item-File js-file'
+      %span.js-remove 削除
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
