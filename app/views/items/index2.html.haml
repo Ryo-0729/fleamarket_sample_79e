@@ -1,49 +1,12 @@
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title FleamarketSample79e
-    = csrf_meta_tags
-    = csp_meta_tag
-    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 'modules/TopPage', 'modules/items2'
-    = javascript_include_tag 'application'
+%h1 カテゴリー一覧
+%ul.categories
+  - @parents.each do |parent|
+    %li.parents= link_to "#{parent.name}", index2_items_path(parent)
 
-= render "header"
+    %ul.categories__children
+      - parent.children.each do |child|
+        %li.childern= link_to "#{child.name}", index2_items_path(child)
 
-.main
-  .main_container
-    .main_lists
-      .title_box
-        %h1.title
-        = "#{@category.name}の商品一覧"
-        - @items.each do |item|
-        %ul.category__child.category__list
-          - @categories.each do |category|
-            %li.list 
-              = category.name
-
-      .image_lists
-        .Container__lists
-          = link_to root_path, class: "Picup-item" do
-            = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
-            .Picup-item__body
-              %h3 ee
-              .Picup-item__details
-                %ul.Picup-item__ul
-                  %li.Picup-item__li  1000円
-                  %li.Picup-item__li
-                    = icon('fas', 'star')
-                    0  
-                %p.Picup-item__note (税込)
-
-.Main__lead
-  .Main__lead-inner
-    %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
-    %p.Main__lead-text 今すぐ無料ダウンロード！
-    .Main__lead-store-wrapper
-      = link_to root_path do
-        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
-      = link_to root_path do
-        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
-
-=render "footer"
+        %ul.categories__grandchildren
+          - child.children.each do |grandchild|
+            %li= link_to "#{grandchild.name}", index2_items_path(grandchild)

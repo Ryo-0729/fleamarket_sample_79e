@@ -1,0 +1,63 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'modules/TopPage', 'modules/items2'
+    = javascript_include_tag 'application'
+
+
+= render "header"
+
+.main
+  .main_container
+    .main_lists
+      .title_box
+        %h1.title （カテゴリー名）の商品一覧
+        %ul.category__child.category__list
+          -# - parent.children.each do |child|
+          -#   %li.list 
+          -#     = link_to "#", class: "category__child--name" do
+          -#       = child.name
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+          %li.list カテゴリー名
+
+      .image_lists
+        .Container__lists
+          = link_to root_path, class: "Picup-item" do
+            = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
+            .Picup-item__body
+              %h3 ee
+              .Picup-item__details
+                %ul.Picup-item__ul
+                  %li.Picup-item__li  1000円
+                  %li.Picup-item__li
+                    = icon('fas', 'star')
+                    0  
+                %p.Picup-item__note (税込)
+
+
+        
+
+.Main__lead
+  .Main__lead-inner
+    %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
+    %p.Main__lead-text 今すぐ無料ダウンロード！
+    .Main__lead-store-wrapper
+      = link_to root_path do
+        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+      = link_to root_path do
+        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+
+=render "footer"

@@ -5,12 +5,7 @@ Rails.application.routes.draw do
   
   resources :items, only: [:index, :show, :new] do
     collection do
-      get 'index2'
-    end
-    member do
-      get 'parent'
-      get 'child'
-      get 'grandchild'
+      get 'index2', 'index3'
     end
   end
   resources :users, only: [:index, :new] do
