@@ -37,7 +37,7 @@
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.select :category_id, options_for_select( Category.where(ancestry: nil).map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, { class: "select"}
+      = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, required: true, class: "select"
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
