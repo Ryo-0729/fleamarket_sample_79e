@@ -12,6 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "token", null: false
@@ -39,16 +43,18 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.bigint "category_id"
     t.string "name", null: false
-    t.integer "price", null: false
     t.text "text", null: false
-    t.integer "brand_id"
+    t.bigint "category_id", null: false
+    t.string "brand"
     t.integer "condition_id", null: false
     t.integer "postage_payer_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "preparation_id", null: false
+    t.integer "price", null: false
     t.datetime "completed_at"
+    t.integer "buyer_id"
+    t.integer "seller_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end

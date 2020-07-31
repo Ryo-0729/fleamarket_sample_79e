@@ -117,11 +117,11 @@ ja:
       even: は偶数にしてください
       exclusion: は予約されています
       greater_than: は%{count}より大きい値にしてください
-      greater_than_or_equal_to: は%{count}以上の値にしてください
+      greater_than_or_equal_to: は%{count}円以上にしてください #出品
       inclusion: は一覧にありません
       invalid: は不正な値です
       less_than: は%{count}より小さい値にしてください
-      less_than_or_equal_to: は%{count}以下の値にしてください
+      less_than_or_equal_to: は%{count}円以下にしてください #出品
       model_invalid: 'バリデーションに失敗しました: %{errors}'
       not_a_number: は数値で入力してください
       not_an_integer: は整数で入力してください
@@ -205,3 +205,19 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+# 商品出品ページ
+  activerecord:
+    models:
+      item: 商品
+    attributes:
+      item:
+        item_images: 商品画像
+        name: 商品名
+        text: 商品説明
+        category: カテゴリー
+        condition_id: 商品の状態
+        postage_payer_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        preparation_id: 発送までの日数
+        price: 販売価格
+        

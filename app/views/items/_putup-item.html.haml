@@ -17,7 +17,6 @@
           = icon('fa', 'camera')
           = f.fields_for :item_images do |i|
             = i.file_field :image, class: "PhotoBox__Item-File"
-            %span クリックしてファイルをアップロード
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
@@ -38,14 +37,14 @@
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.select :category_id, options_for_select( Category.where(ancestry: nil).map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "select"}
+      = f.select :category_id, options_for_select( Category.where(ancestry: nil).map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, { class: "select"}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           ブランド
         .putup-item-middle__content__index__essential
           任意
-      = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      =f.text_field :brand, class: "select", placeholder: "入力してください"
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
@@ -92,6 +91,7 @@
         %span.CalcField__Fee__Right ー
     .putup-item-bottom
       .Button
+        = f.hidden_field :seller_id, value: current_user.id
         = f.submit "出品する", class: "Button__Form__Red"
         %button.Button__Form__Gray{type: "button"} 下書きに保存
         =link_to "#" do
