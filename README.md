@@ -46,13 +46,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null:false, foreign_key:true|
-|brand_id|references|null:false, foreign_key:true|
 |category_id|references|null:false, foreign_key:true|
 |name|string|null:false|
 |text|text|null:false|
-|condition|integer|null:false|
+|brand|string||
+|condition_id(active_hash)|integer|null:false|
 |price|integer|null:false|
-|size_id(acitve_hash)|integer|null: false|
 |postage_payer_id(acitve_hash)|integer|null: false|
 |prefecture_id(acitve_hash)|integer|null: false|
 |preparation_id(acitve_hash)|integer|null: false|
