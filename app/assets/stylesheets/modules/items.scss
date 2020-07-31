@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .wrapper{
   width: 100vw;
   margin: 0px auto;
@@ -159,7 +160,6 @@
     align-items: center;
     height: 70px;
     &__Left{
-
     }
   }
 }
@@ -212,7 +212,7 @@
 
 .ItemFooter{
   width: 700px;
-  height: 100%;
+  height: 100vh;
   margin: 0px auto;
   &__Upper{
     text-align: center;
@@ -246,4 +246,421 @@
   margin-top: 16px;
   padding: 0px 56px 0px 16px;
   font-size: 16px;
+}
+
+
+/////////商品詳細ページ////////////////////////////
+body{
+  width: 100%;
+  background-color: #eee;
+  position: absolute;
+}
+
+.Wrapper{
+  width: 700px;
+  background-color: #eee;
+  margin: 40px auto 0;
+  position: relative;
+}
+
+
+.Showtop{
+  background-color: #fff;
+  padding: 24px 40px 40px;
+  &__Name{
+    font-size: 24px;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-weight: bold;
+    color: #333;
+    font-family: monospace;
+  }
+  &__Display{
+    display: flex;
+    justify-content: center;
+    &__Image{
+      height: 360px;
+      width: 300px;
+      &__Main{
+        height: 300px;
+        width: 300px;
+      }
+      &__GroupLists{
+        height: 60px;
+        width: 100%;
+        display: flex;
+        &__List{
+          width: 60px;
+          height: 60px;
+          border: 1px solid white;
+          img{
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+    &__ListBox{
+      margin-left: 10px;
+      th{
+        height: 55px;
+        font-size: 14px;
+        border: 1px solid #f5f5f5;
+        font-weight: 400;
+        background: #eee;
+        padding: 8px;
+      }
+      td{
+        border: 1px solid #f5f5f5;
+        background-color: #fff;
+        padding: 8px;
+        font-size: 14px;
+        a{
+          text-decoration: none;
+          color: #0099e8;
+        }
+      }
+    }
+  }
+  &__PriceField{
+    text-align: center;
+    margin: 10px;
+    &__Price{
+      font-size: 50px;
+      font-weight: 600;
+    }
+    &__Tax{
+      margin-left: 15px;
+      font-size: 12px;
+    }
+    &__SendFee{
+      font-size: 16px;
+    }
+  }
+  &__Alert{
+    background-color: red;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 2px;
+    height: 50px;
+    width: 100%;
+    a{
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      line-height: 60px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      display: block;
+      margin-top: 16px;
+      background: #ea352d;
+      text-align: center;
+    }
+  }
+}
+
+.StoreName{
+  a{
+    text-decoration: none;
+    color: #0099e8;
+  }
+}
+
+.GoodBtn{
+  &__Good{
+    a{
+      text-decoration: none;
+      i{
+        color: rgb(245, 140, 158);
+      }
+    }
+  }
+  &__Bad{
+    a{
+      text-decoration: none;
+      color: #0099e8;
+    }
+  }
+}
+
+.MessageField{
+  margin-top: 15px;
+}
+
+.ShowMessage{
+  background-color: #fff;
+  padding: 20px;
+  &__Caution{
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+    margin-bottom: 10px;
+  }
+  textarea{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  input{
+    width: 100%;
+    height: 50px;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+  }
+}
+
+.ShowIcon{
+  background-color: #fff;
+  height: 100px;
+  margin-top: 20px;
+  &__Box{
+    padding-top: 20px;
+    text-align: center;
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+.fb-blue{
+  color: #4267b2
+}
+
+.tw-blue{
+  color: #1da1f2
+}
+
+.line-green{
+  color: #00B900
+}
+
+.pinterest{
+  color: #aa262a;
+}
+
+.ShowBottom{
+  width: 100%;
+  margin-bottom: 100px;
+  .ShowUser{
+    h3{
+      font-size: 22px;
+      margin: 10px 0 8px;
+      a{
+        color: #0099e8;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+    &__ItemGroup{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      &__ItemBox{
+        background-color: #fff;
+        width: 220px;
+        height: 330px;
+        margin: 5px;
+        
+        a{
+          text-decoration: none;
+          color: #333;
+        }
+        &__Image{
+          width: 220px;
+          height: 220px;
+          img{
+            max-width: 100%;
+            height: auto;
+          }
+        }
+        &__Details{
+          padding: 8px;
+          height: 110px;
+          h3{
+            font-size: 16px; 
+            height: 50px;
+          }
+          p{
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Main{
+  &__lead{
+    background-image: image-url('bg-appBanner-pict.jpg');
+    padding: 100px 40px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+    &__lead-inner{
+      color: #fff;
+      text-align: center;
+    }
+      &__lead-title{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__lead-text{
+        font-size: 35px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      }
+      &__lead-store-wrapper{
+        display: flex;
+        margin: 24px 0 0 0;
+        justify-content: center;
+        &__image{
+          width: 180px;
+          margin-right: 10px;
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+      }
+    
+}
+
+.GoodBtn{
+  display: flex;
+  &__Good{
+    margin-right: 15px;
+  }
+}
+
+
+// フッターの部分
+.Footer{
+padding: 60px 0;
+color: #fff;
+background-color: #272727;
+text-align: center;
+&__contents{
+  display: flex;
+  margin: 0 auto;
+  width: 50%;
+  justify-content: space-around;
+}
+  &__contents-subtitle{
+    margin: 0 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__contents-li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 32px;
+    &:hover{
+      border-bottom: 1px solid white;
+    }
+  }
+&__logo {
+  width: 160px;
+  margin: 0 auto;
+}
+  &__logo img{
+    width: 160px;
+  }
+  &__logo-text{
+    font-size: 14px;
+  }
+}
+
+// ヘッダー 上部
+.Header{
+  padding: 0 60px;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  &__top{
+    display: flex;
+    padding: 15px 0 0;
+    margin: 0 auto;
+    width: 70%;
+  }
+    .Logo{
+      padding-bottom: 10px;
+      border-radius: 4px;
+      &__image{
+        width: 150px;
+        margin-right: 15px;
+      }
+    }
+
+  //検索エリア
+    .Search{
+      display: flex;
+      width: 100%;
+      margin-top: 5px;
+      &__inputText{
+        width: calc(100% - 100px);
+        height: 36px;
+        padding: 0 0 0 5px;
+      }
+      &__submitBtn{
+        height: 36px;
+        background-image: image-url('icon-search01.png');
+        width:40px;
+        background-size: 50%;
+        background-color: #3CCACE;
+        border: none;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        &:hover{
+         opacity: 0.7;
+        }
+      }
+    }
+
+  // ヘッダー下部
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+    .Product-table{
+      text-decoration: none;
+      color: black;
+      &:hover{
+        color: #ffb340;
+      }
+    }
+    .User{
+      display: flex;
+      margin-right: 60px;
+      &__login{
+        padding: 0 0 0 16px;
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+        &:hover{
+          color: #ffb340;
+        }
+      }
+      &__registration{
+        padding: 0 0 0 16px;
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        &:hover{
+          color: #ffb340;
+        }
+      }
+    }
 }
