@@ -67,34 +67,34 @@ describe Item do
     end
 
     it "is invalid with a name that has more than 41 characters " do
-      string = "aaaaaaaaaa"
+      string = "a"
       user = create(:user)
-      item = build(:item, user_id: user.id, name: "#{string * 4}a")
+      item = build(:item, user_id: user.id, name: "#{string * 41}")
       item.valid?
       expect(item.errors[:name]).to include("は40文字以内で入力してください")
     end
 
     it "is valid with a name that has less than 40 characters " do
-      string = "aaaaaaaaaa"
+      string = "a"
       user = create(:user)
       category = create(:category)
-      item = build(:item, user_id: user.id, name: "#{string * 4}")
+      item = build(:item, user_id: user.id, name: "#{string * 40}")
       expect(item).to be_valid
     end
 
     it "is invalid with a text that has more than 1001 characters " do
-      string = "aaaaaaaaaa"
+      string = "a"
       user = create(:user)
-      item = build(:item, user_id: user.id, text: "#{string * 100}a")
+      item = build(:item, user_id: user.id, text: "#{string * 1001}")
       item.valid?
       expect(item.errors[:text]).to include("は1000文字以内で入力してください")
     end
 
     it "is valid with a text that has less than 1000 characters " do
-      string = "aaaaaaaaaa"
+      string = "a"
       user = create(:user)
       category = create(:category)
-      item = build(:item, user_id: user.id, text: "#{string * 100}")
+      item = build(:item, user_id: user.id, text: "#{string * 1000}")
       expect(item).to be_valid
     end
 
