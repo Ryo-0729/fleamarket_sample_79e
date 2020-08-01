@@ -2,7 +2,8 @@
   %h2.R-Content__Title
     クレジットカード情報入力
   .FormContent
-    = form_with model: @credit, method: :post, id: "cardCreateForm" do |form|
+    -# = form_with model: @credit, method: :post, id: "cardCreateForm" do |form|
+    = form_with url: pay_cards_path, method: :post, id: "charge-form", name: "inputForm",local: true do |form|
       .UserInfo
         .CardNumber
           %label
@@ -64,9 +65,13 @@
         .SequirtyInfo
           %span
             カード裏面の番号とは？
-        #card_token.creditForm__submitfield
-          = form.submit "追加する", class: 'creditsSubmit', id: "token_submit"
-
+        -# #card_token.creditForm__submitfield
+        -#   = form.submit "追加する", class: 'creditsSubmit', id: "token_submit"
+        
+        #card_token
+        -# #token
+        %br
+        = form.submit "追加する", id: "token_submit"
 
 
 
