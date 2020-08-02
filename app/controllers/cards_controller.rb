@@ -57,9 +57,9 @@ class CardsController < ApplicationController
 
   private
 
-  def card_params
-    params.require(:card).permit(:user_id, :customer_id, :card_id)
-  end
+  # def card_params
+  #   params.require(:card).permit(:user_id, :customer_id, :card_id)
+  # end
  
   # def set_card
   #   @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
