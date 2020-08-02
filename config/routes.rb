@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'purchase/index'
+  get 'purchase/done'
   devise_for :users
   root 'items#index'
   
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:new, :show, :destroy] do
     collection do
       post 'pay', to: 'cards#pay'
-      post'card_params', to: 'cards#card_params'
+
     end
   end
 end
