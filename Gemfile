@@ -73,6 +73,9 @@ gem 'jquery-rails'
 gem 'active_hash'
 gem 'ancestry'
 gem 'fog-aws'
+gem 'payjp'
+gem 'pry-byebug'
+gem 'dotenv-rails'
 
 group :production do
   gem 'unicorn'

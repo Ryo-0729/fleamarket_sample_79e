@@ -2,11 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'items#index'
+
   
   resources :items, only: [:index, :show, :new, :create] do
     collection do
       get 'index2'
       get 'confirmation'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
     end
   end
 
@@ -16,5 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:new, :edit]
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+
+    end
+  end
 end

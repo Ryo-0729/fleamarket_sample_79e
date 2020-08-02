@@ -1,0 +1,57 @@
+.show
+  .show__frame
+    .show__frame__title
+      登録クレジットカード情報
+    .credit_card__list
+      .credit_card__list__title
+        クレジットカード一覧
+      .credit_card__list__frame
+        .credit_card_info
+          -# .credit_card_info__brand
+          -#   # showメソッドで定義した@card_srcを呼び出し
+          -#   # 画像をcardsというフォルダを作り、入れておく
+          -#   = image_tag "cards/#{@card_src}", class: "credit_card_info__brand__img", alt: @card_brand
+          .credit_card_info__numbers
+            .number
+              -# Pay.jpから取得したカード番号の末尾４桁を取得
+            = "**** **** **** " + @default_card_information.last4
+            .expiration_date
+              .expiration_date__title
+                有効期限
+              .expiration_date__info
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+        .destroy__function
+          .destroy__function__link
+            -# # 削除ボタンを作成、押すとdestroyメソッドが働くように
+            = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form',  name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+              %button.delete-btn 削除する
+
+
+
+
+
+
+
+
+
+
+
+-# .form-content
+-#   %br
+-#   = "**** **** **** " + @default_card_information.last4
+-#   %br
+-#   - exp_month = @default_card_information.exp_month.to_s
+-#   - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+-#   = exp_month + " / " + exp_year
+-#   = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form',  name: "inputForm") do
+-#     %input{ type: "hidden", name: "card_id", value: "" }
+-#     %button.delete-btn 削除する
+
+
+
+
+
+
