@@ -46,14 +46,18 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.bigint "brand_id", null: false
-    t.bigint "category_id", null: false
     t.string "name", null: false
-    t.integer "price", null: false
     t.text "text", null: false
-    t.integer "condition", null: false
+    t.bigint "category_id", null: false
+    t.string "brand"
+    t.integer "condition_id", null: false
+    t.integer "postage_payer_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "preparation_id", null: false
+    t.integer "price", null: false
     t.datetime "completed_at"
-    t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.integer "buyer_id"
+    t.integer "seller_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -123,7 +127,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "pets", "items"

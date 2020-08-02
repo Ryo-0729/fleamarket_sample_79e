@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     collection do
       get 'index2'
       get 'confirmation'
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'items#done'
     end
   end
 
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
 
     end
   end
+
 end
 
 
