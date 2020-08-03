@@ -57,6 +57,8 @@ class CardsController < ApplicationController
 
   private
 
+  
+  
   # def card_params
   #   params.require(:card).permit(:user_id, :customer_id, :card_id)
   # end

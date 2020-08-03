@@ -56,9 +56,9 @@
     %section.Purchase
       .Purchase__inner
         %p.Purchase__inner-warning  配送先と支払い方法の入力を完了してください
-        = form_with url: root_path, method: :get, class: "Purchase__inner-box", local:true do |form|
+        = form_with url: buy_items_path, method: :post, class: "Purchase__inner-box", local:true do |form|
+          = form.hidden_field :buyer_id, value: current_user.id
           = form.submit  value: "購入する",class: "Purchase__inner-btn", type:"submit"
-
 
 
       %h2 購入を確定しますか？

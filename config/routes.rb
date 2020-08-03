@@ -7,10 +7,23 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create] do
     collection do
       get 'index2'
-      get 'confirmation'
-      post 'pay', to: 'items#pay'
-      get 'done', to: 'items#done'
+      post 'buy'
+
     end
+    member do
+      get 'confirmation'
+    end
+
+    # collection do
+    #   get 'index2'
+    #   # get 'confirmation'
+    #   post 'pay', to: 'items#pay'
+    #   get 'done', to: 'items#done'
+    # end
+    # member do
+    #   get 'confirmation'
+    # end
+
   end
 
   resources :users, only: [:index, :new] do
@@ -19,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:new, :show, :destroy] do
+  resources :cards, only: [:new, :show, :destroy, :edit] do
     collection do
       post 'pay', to: 'cards#pay'
 

@@ -74,7 +74,7 @@
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
     %btn
-      =link_to "#" do
+      =link_to confirmation_item_path(@item) do
         購入画面に進む
   .Showtop__Detail
   .Showtop__Footer
@@ -83,7 +83,7 @@
   .ShowMessage
     .ShowMessage__Caution
       相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    %form{:action => "#", :method => "post"}
+    %form{:action => "", :method => "post"}
     %textarea{:cols => "40", :name => "kansou", :rows => "4"}
     %input{:type => "submit", :value => "コメントする"}/
 
