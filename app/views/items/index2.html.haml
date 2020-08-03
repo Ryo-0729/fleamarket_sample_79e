@@ -1,12 +1,12 @@
 %h1 カテゴリー一覧
 %ul.categories
   - @parents.each do |parent|
-    %li.parents= link_to "#{parent.name}", index2_items_path(parent)
+    %li.parents= link_to "#{parent.name}", index3_item_path(parent)
 
     %ul.categories__children
       - parent.children.each do |child|
-        %li.childern= link_to "#{child.name}", index2_items_path(child)
+        %li.childern= link_to "#{child.name}", index3_item_path(child)
 
         %ul.categories__grandchildren
           - child.children.each do |grandchild|
-            %li= link_to "#{grandchild.name}", index2_items_path(grandchild)
+            %li= link_to "#{grandchild.name}", index3_item_path(grandchild)

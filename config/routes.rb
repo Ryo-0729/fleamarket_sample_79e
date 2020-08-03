@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   
   resources :items, only: [:index, :show, :new] do
     collection do
-      get 'index2', 'index3'
+      get 'index2'
+    end
+    member do
+      get 'index3'
     end
   end
   resources :users, only: [:index, :new] do
