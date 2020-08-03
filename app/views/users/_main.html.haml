@@ -2,7 +2,7 @@
   .TopSection
     .TopSection__ImageBox
       = image_tag "member_photo_noimage_thumb.png", size: "60x60", alt: "顔写真"
-    .h3  評価者
+    .h3  #{current_user.nickname}さん
     .TopSection__CountBox
       %ul.TopSection__Group
         %li.TopSection__Score

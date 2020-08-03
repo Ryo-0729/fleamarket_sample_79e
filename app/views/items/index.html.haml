@@ -114,56 +114,23 @@
           .Container
             %h3.Container__head 新規投稿商品
             .Container__lists
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 ee
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  1000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0  
-                    %p.Picup-item__note (税込)
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup02.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product3
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  30000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup03.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product2
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  20000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup04.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product1
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  10000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0  
-                    %p.Picup-item__note (税込)
-
+              .Container__lists__show
+              - @items.last(4).each do |item|
+                = link_to item_path(item.id), class: "Picup-item" do
+                  - item.item_images.each do |image|
+                    =image_tag image.image.to_s
+                  .Picup-item__body
+                    %h3 
+                      =item.name
+                    .Picup-item__details
+                      %ul.Picup-item__ul
+                        %li.Picup-item__li
+                          =item.price
+                          円
+                        %li.Picup-item__li
+                          = icon('fas', 'star')
+                          0  
+                      %p.Picup-item__note (税込)
 
       -# ピックアップブランドの部分
       .Main__picup.Main__picup2
