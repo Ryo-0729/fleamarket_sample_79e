@@ -1,10 +1,13 @@
 .Showtop
   .Showtop__Name
-    %h3 メンズ 10足セット
+    %td
+      .StoreName
+        =link_to "#" do
+          = @item.name
   .Showtop__Display
     .Showtop__Display__Image
       .Showtop__Display__Image__Main
-        = image_tag "131313.jpg", size: "300x300", alt: "写真"
+        = image_tag @item.item_images.last.image.to_s, size: '300x300'
       .Showtop__Display__Image__GroupLists
         .Showtop__Display__Image__GroupLists__List
           = image_tag "131313.jpg", alt: "写真"
@@ -25,7 +28,7 @@
           %td
             .StoreName
               =link_to "#" do
-                靴下屋
+                = @it.user.nickname
             .GoodBtn
               .GoodBtn__Good
                 =link_to "#" do
@@ -42,34 +45,50 @@
           %td
             .CategoryName
               =link_to "#" do
-                カテゴリー
-            .CategoryName
-              =link_to "#" do
-                %i.fa.fa-angle-right 靴下
-            .CategoryName
-              =link_to "#" do
-                %i.fa.fa-angle-right 靴下
+                = @category.category.name
+
         %tr.Showtop__Display__ListBox__List
           %th ブランド
           %td
+            .CategoryName
+              =link_to "#" do
+                = @category.brand
 
         %tr.Showtop__Display__ListBox__List
           %th 商品状態
-          %td 新品、未使用
+          %td
+            .CategoryName
+              =link_to "#" do
+                = @category.condition_id
+
         %tr.Showtop__Display__ListBox__List
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td
+            .CategoryName
+              =link_to "#" do
+                = @category.postage_payer_id
+
         %tr.Showtop__Display__ListBox__List
           %th 配送方法
           %td ゆうゆうメルカリ便
+
         %tr.Showtop__Display__ListBox__List
           %th 配送元地域
-          %td 大阪府
+          %td
+            .CategoryName
+              =link_to "#" do
+                = @category.prefecture_id
+
         %tr.Showtop__Display__ListBox__List
           %th 発送日の目安
-          %td 1〜2日で発送
+          %td
+            .CategoryName
+              =link_to "#" do
+                = @category.preparation_id
+
   .Showtop__PriceField
-    %span.Showtop__PriceField__Price ¥2,500
+    %span.Showtop__PriceField__Price
+      = @category.price
     %span.Showtop__PriceField__Tax (税込)
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
