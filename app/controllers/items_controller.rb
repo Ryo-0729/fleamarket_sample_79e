@@ -28,9 +28,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    flash[:success] = "商品は削除されました"
-    redirect_to root_path
+    if @item.destroy
+      flash[:success] = "商品は削除されました"
+      redirect_to root_path
+    else
+      redirect_to item_path
+    end
   end
 
   def index2

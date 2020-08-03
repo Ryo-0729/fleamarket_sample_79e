@@ -59,14 +59,14 @@
           %td
             .CategoryName
               =link_to "#" do
-                = @category.condition_id
+                = @category.condition.name
 
         %tr.Showtop__Display__ListBox__List
           %th 配送料の負担
           %td
             .CategoryName
               =link_to "#" do
-                = @category.postage_payer_id
+                = @category.postage_payer.name
 
         %tr.Showtop__Display__ListBox__List
           %th 配送方法
@@ -77,7 +77,7 @@
           %td
             .CategoryName
               =link_to "#" do
-                = @category.prefecture_id
+                = @category.prefecture.name
 
         %tr.Showtop__Display__ListBox__List
           %th 発送日の目安
