@@ -26,6 +26,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    flash[:success] = "商品は削除されました"
+    redirect_to root_path
+  end
+
   def index2
   end
   
