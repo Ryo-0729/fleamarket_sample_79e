@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create] do
     collection do
       get 'index2'
+      post 'buy'
+    end
+    member do
       get 'confirmation'
     end
   end

@@ -84,7 +84,7 @@
           %td
             .CategoryName
               =link_to "#" do
-                = @category.preparation_id
+                = @item.preparation_id
 
   .Showtop__PriceField
     %span.Showtop__PriceField__Price
@@ -93,7 +93,7 @@
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
     %btn
-      =link_to "#" do
+      =link_to confirmation_item_path(@item) do
         購入画面に進む
   .Showtop__Detail
   .Showtop__Footer

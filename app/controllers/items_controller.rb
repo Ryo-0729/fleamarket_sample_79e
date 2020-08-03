@@ -30,11 +30,20 @@ class ItemsController < ApplicationController
   end
   
   def confirmation
+    @item = Item.find(params[:id])
+  end
+
+  def buy
+    if @buyer_id = Item.create(buyer_id: params[:buyer_id], id: params[:id])
+      redirect_to root_path
+    else
+      render :confirmation
+    end
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :buyer_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def item_images_params
