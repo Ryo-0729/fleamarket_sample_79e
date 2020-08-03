@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.all
     @item = Item.find(params[:id])
     @it = Item.joins(:user).find(params[:id])
     @category = Item.joins(:category).find(params[:id])
