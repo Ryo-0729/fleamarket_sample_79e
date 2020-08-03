@@ -6,9 +6,7 @@ class ItemsController < ApplicationController
 
   def show
     @items = @category.set_items
-    @items = @items.where(category_id: start_id..end_id).order("created_at DESC")
-    # buyer_id 追加後、上記コードを以下のコードに変更する。
-    # @items = @items.where(buyer_id: nil).order("created_at DESC").page(params[:page]).per(9)
+    @items = @items.where(buyer_id: nil).order("created_at DESC")
   end
 
   def new
@@ -19,7 +17,8 @@ class ItemsController < ApplicationController
   end
 
   def index3
-    
+    @items = Item.all
+    @item_images = ItemImage.all
   end
 
   private
