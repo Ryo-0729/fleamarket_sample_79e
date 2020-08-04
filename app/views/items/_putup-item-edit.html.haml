@@ -47,19 +47,6 @@
               - @item.item_images.length.upto(4) do |i|
                 %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
         
-      -# .putup-item-middle__content__index
-      -#   .putup-item-middle__content__index__title
-      -#     出品画像
-      -#   .putup-item-middle__content__index__essential
-      -#     必須
-      -# .putup-item-middle__content__comment
-      -#   画像をアップロードできます
-      -# #image-box
-      -#   = f.fields_for :item_images do |i|
-      -#     .js-file_group{"data-index": "#{i.index}"}
-      -#       = i.file_field :image, class: 'js-file'
-      -#       %br/
-      -#       %span.js-remove 削除
 
     .putup-item-middle__content
       .putup-item-middle__content__index

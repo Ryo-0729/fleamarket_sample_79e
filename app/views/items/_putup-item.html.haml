@@ -5,8 +5,7 @@
   = form_with model:@item, local:true do |f|
     = render 'layouts/error_messages', model: f.object
     .putup-item-middle__content
-      -# %h2.sell__block__head
-      -#   商品の情報を入力
+      
       .putup-item-middle__content__form
         .putup-item-middle__content__form__upload
           .putup-item-middle__content__form__upload__block
@@ -28,19 +27,6 @@
                 %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_item_images_attributes_3_image" }
                 %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_item_images_attributes_4_image" }
                   
-      -# .putup-item-middle__content__index
-      -#   .putup-item-middle__content__index__title
-      -#     出品画像
-      -#   .putup-item-middle__content__index__essential
-      -#     必須
-      -# .putup-item-middle__content__comment
-      -#   画像をアップロードできます
-      -# #image-box
-      -#   = f.fields_for :item_images do |i|
-      -#     .js-file_group{"data-index": "#{i.index}"}
-      -#       = i.file_field :image, class: 'js-file'
-      -#       %br/
-      -#       %span.js-remove 削除
 
     .putup-item-middle__content
       .putup-item-middle__content__index
