@@ -117,8 +117,7 @@
               .Container__lists__show
               - @items.last(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
-                  - item.item_images.each do |image|
-                    =image_tag image.image.to_s
+                  =image_tag item.item_images[0].image.to_s
                   .Picup-item__body
                     %h3 
                       =item.name
