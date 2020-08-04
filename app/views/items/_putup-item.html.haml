@@ -95,8 +95,8 @@
         = f.hidden_field :seller_id, value: current_user.id
         = f.submit "出品する", class: "Button__Form__Red"
         %button.Button__Form__Gray{type: "button"} 下書きに保存
-        = link_to "マイページ", users_path
-        
+        =link_to users_path do
+          マイページ
 
 .ItemFooter
   .ItemFooter__Upper
@@ -111,6 +111,6 @@
         =link_to "#" do
           特定商品に関する表記
   .ItemFooter__Lower
-    = link_to root_path
+    = link_to root_path do
       = image_tag "logo.png", size: "100x25"
     %h3 @FURIMA, Inc.
