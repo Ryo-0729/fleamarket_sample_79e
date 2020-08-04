@@ -105,9 +105,12 @@
     %span.Showtop__PriceField__Tax (税込)
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
-    %btn
-      =link_to "#" do
-        購入画面に進む
+    - if user_signed_in? && current_user.id == @item.user_id
+      = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
+    - else
+      %btn
+        =link_to "#" do
+          購入画面に進む
   .Showtop__Detail
   .Showtop__Footer
 

@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = "商品が出品されました"
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
@@ -26,10 +27,28 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "商品は削除されました"
+      redirect_to root_path
+    else
+      redirect_to item_path
+    end
+  end
+
   def index2
   end
   
   def confirmation
+  end
+
+  def search
+    @items = Item.search(params[:name])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private
