@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'items#index'
   
-  resources :items, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
+  resources :items do
     collection do
       get 'index2'
       get 'confirmation'
