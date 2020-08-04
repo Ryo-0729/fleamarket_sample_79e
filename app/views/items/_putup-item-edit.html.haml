@@ -1,12 +1,15 @@
 .putup-item-top
   = link_to "#" do
     = image_tag "logo.png", size: "185x49"
+
 .putup-item-middle
+  - if flash[:notice]
+    .alert
+      - flash[:notice].each do |message|
+        %p.alert__sentence=message
+  
   = form_with model:@item, local:true do |f|
-    = render 'layouts/error_messages', model: f.object
     .putup-item-middle__content
-      -# %h2.sell__block__head
-      -#   商品の情報を入力
       .putup-item-middle__content__form
         .putup-item-middle__content__form__upload
           .putup-item-middle__content__form__upload__block
