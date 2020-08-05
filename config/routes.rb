@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'index2'
       get 'confirmation'
     end
+    member do
+      get 'index3'
+    end
   end
 
   resources :users, only: [:index, :new] do

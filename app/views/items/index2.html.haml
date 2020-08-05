@@ -1,1 +1,39 @@
-商品一覧ページです
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'modules/TopPage', 'modules/items2'
+    = javascript_include_tag 'application'
+
+= render "header"
+
+.main
+  .main_container
+    .main_index
+      .parent_category
+        - @parents.each do |parent|
+          %li.parents= link_to "#{parent.name}", index3_item_path(parent)
+        %ul.categories
+          - @parents.each do |parent|
+            %li.parents_title= link_to "#{parent.name}", index3_item_path(parent)
+            %ul.categories__children
+              - parent.children.each do |child|
+                %li.childern= link_to "#{child.name}", index3_item_path(child)
+                %ul.categories__grandchildren
+                  - child.children.each do |grandchild|
+                    %li= link_to "#{grandchild.name}", index3_item_path(grandchild)
+
+.Main__lead
+  .Main__lead-inner
+    %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
+    %p.Main__lead-text 今すぐ無料ダウンロード！
+    .Main__lead-store-wrapper
+      = link_to root_path do
+        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+      = link_to root_path do
+        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+
+=render "footer"

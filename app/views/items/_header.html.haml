@@ -8,7 +8,7 @@
       = form.submit  value: "",class: "Search__submitBtn", type:"submit"
 
   .Header__bottom
-    = link_to '全ての商品一覧', root_path ,class: "Product-table"
+    = link_to '全ての商品一覧', index2_items_path ,class: "Product-table"
     .User
     - if user_signed_in?
       %h2

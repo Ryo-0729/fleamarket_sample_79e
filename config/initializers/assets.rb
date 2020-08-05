@@ -19,4 +19,6 @@ Rails.application.config.assets.precompile += %w( modules/cards.css )
 Rails.application.config.assets.precompile += %w( modules/registration.css )
 Rails.application.config.assets.precompile += %w( modules/confirmation.css )
 Rails.application.config.assets.precompile += %w( modules/items.css )
+Rails.application.config.assets.precompile += %w( modules/items2.css )
+Rails.application.config.assets.precompile += %w( modules/items3.css )
 
