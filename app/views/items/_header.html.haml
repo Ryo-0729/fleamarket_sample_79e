@@ -13,7 +13,7 @@
     - if user_signed_in?
       %h2
         現在 #{current_user.nickname} さんがログインしています
-      = link_to "マイページ", users_path
+      = link_to "マイページ", users_path, class: "User__Mypage"
     - else
       %h2 現在ログインしていません
       = link_to 'ログイン', new_user_session_path ,class: "User__login"

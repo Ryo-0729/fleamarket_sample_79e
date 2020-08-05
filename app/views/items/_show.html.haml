@@ -7,18 +7,30 @@
   .Showtop__Display
     .Showtop__Display__Image
       .Showtop__Display__Image__Main
-        = image_tag @item.item_images.last.image.to_s, size: '300x300'
+        -if @item.item_images[0].present?
+          = image_tag "#{@item.item_images[0].image}", alt: '写真', size: '300x300', class: 'mainImage'
+        - else
       .Showtop__Display__Image__GroupLists
         .Showtop__Display__Image__GroupLists__List
-          = image_tag "131313.jpg", alt: "写真"
+          -if @item.item_images[0].present?
+            = image_tag "#{@item.item_images[0].image}", alt: '写真', class: 'thumb'
+          - else
         .Showtop__Display__Image__GroupLists__List
-          = image_tag "131313.jpg", alt: "写真"
+          -if @item.item_images[1].present?
+            = image_tag "#{@item.item_images[1].image}", alt: '写真', class: 'thumb'
+          - else
         .Showtop__Display__Image__GroupLists__List
-          = image_tag "131313.jpg", alt: "写真"
+          -if @item.item_images[2].present?
+            = image_tag "#{@item.item_images[2].image}", alt: '写真', class: 'thumb'
+          - else
         .Showtop__Display__Image__GroupLists__List
-          = image_tag "131313.jpg", alt: "写真"
+          -if @item.item_images[3].present?
+            = image_tag "#{@item.item_images[3].image}", alt: '写真', class: 'thumb'
+          - else
         .Showtop__Display__Image__GroupLists__List
-          = image_tag "131313.jpg", alt: "写真"
+          -if @item.item_images[4].present?
+            = image_tag "#{@item.item_images[4].image}", alt: '写真', class: 'thumb'
+          - else
     %table.Showtop__Display__ListBox
       %tbody
         %colgroup{:span => "1", :style => "width:120px; background-color:#FF9900;"}
@@ -39,7 +51,6 @@
                   %i.fas.fa-frown
                 %span 100
 
-            
         %tr.Showtop__Display__ListBox__List
           %th カテゴリー
           %td
@@ -84,19 +95,21 @@
           %td
             .CategoryName
               =link_to "#" do
-                = @category.preparation_id
+                = @category.preparation.name
 
   .Showtop__PriceField
     %span.Showtop__PriceField__Price
+      ¥
       = @category.price
     %span.Showtop__PriceField__Tax (税込)
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
     - if user_signed_in? && current_user.id == @item.user_id
       = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
+      = link_to 'この商品を編集する', edit_item_path, method: :get, class: 'Item-Delete'
     - else
       %btn
-        =link_to "#" do
+        =link_to "#" ,class: 'Item-Purchase' do
           購入画面に進む
   .Showtop__Detail
   .Showtop__Footer
@@ -186,66 +199,21 @@
             .ShowUser__ItemGroup__Details__Price
               %p ￥1,100
 
-  .ShowUser
-    %h3.ShowUser__Title
-      =link_to "#" do
-        靴下屋さんのその他の出品
-    .ShowUser__ItemGroup
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
+:javascript
+  $(function() {
+    $('img.thumb').mouseover(function(){
+    var selectedSrc = $(this).attr('src').replace(/^(.+)_thumb(\.gif|\.jpg|\.png+)$/, "$1"+"$2");
+    
+    $('img.mainImage').stop().fadeOut(50,
+    function(){
+    $('img.mainImage').attr('src', selectedSrc);
+    $('img.mainImage').stop().fadeIn(200);
+    }
+    );
+    $(this);
+    });
+    
+    $('img.thumb').mouseout(function(){
+    $(this).css({"border":""});
+    });
+  });
