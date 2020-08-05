@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
+
   def index
     @items = Item.all.order(id: :desc)
   end
@@ -54,11 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:name])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.search(params[:keyword])
   end
 
   # privateの中に入れないでください

@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     collection do
       get 'index2'
       get 'confirmation'
+      get 'search'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+
     end
   end
 

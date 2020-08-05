@@ -1,0 +1,19 @@
+.Search_container
+  .Search
+    .h2 検索結果
+    .Search__results
+      - @items.each do |item|
+        = link_to item_path(item) do
+          .Search__results__list
+            .Search__results__list__image
+              - item.item_images.each do |image|
+                =image_tag image.image.to_s, class: 'picture'
+            .Search__results__list__image__price
+              ¥
+              = item.price
+              .Search__results__list__image__text
+                -# = item.show_soldout_item(item)
+            .Search__results__list__text
+              .Search__results__list__content
+                = item.name
+                .Search__results__list__content__hidden
