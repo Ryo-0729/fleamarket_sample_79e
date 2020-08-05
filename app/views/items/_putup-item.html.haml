@@ -15,7 +15,7 @@
       #image-box
         = f.fields_for :item_images do |i|
           .js-file_group{"data-index": "#{i.index}"}
-            = i.file_field :image, class: 'js-file'
+            = i.file_field :image, class: 'js-file', required: true
             %br/
             %span.js-remove 削除
     .putup-item-middle__content
@@ -24,21 +24,34 @@
           商品名
         .putup-item-middle__content__index__essential
           必須
-      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで"
+      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで", maxlength: "40", required: true
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           商品の説明
         .putup-item-middle__content__index__essential
           必須
-      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7"
-    .putup-item-middle__content
+      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7", maxlength: "1000", required: true
+    #category_box.putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select"
+      .pulldown#parent_box
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category", required: true
+      .pulldown.item_input__body__category__children#children_box
+      -#親カテゴリー選択によって子カテゴリー表示
+      .pulldown.item_input__body__category__grandchildren#grandchildren_box
+      -#子カテゴリー選択によって孫カテゴリー表示
+    #size_box.putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          サイズ
+        .putup-item-middle__content__index__essential
+          任意
+      .pulldown#size_selectbox
+        =f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
@@ -52,28 +65,28 @@
           商品の状態
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "select", required: true}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           配送料の負担
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, {prompt: "選択してください"}, {class: "select", required: true}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           発送元の地域
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "select", required: true}
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           発送までの日数
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :preparation_id, Preparation.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      = f.collection_select :preparation_id, Preparation.all, :id, :name, {prompt: "選択してください"}, {class: "select", required: true}
     .CalcField
       .CalcField__index
         .CalcField__index__Field
@@ -81,7 +94,7 @@
             販売価格
           .CalcField__index__Field__essential
             必須
-        = f.text_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: "300", max: "9999999"
+        = f.number_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: 300, max: 9999999, required: true
       .CalcField__Alart 300以上9999999以下で入力してください
       .CalcField__Fee
         .CalcField__Fee__Left 販売手数料（10%）
@@ -95,7 +108,7 @@
         = f.hidden_field :seller_id, value: current_user.id
         = f.submit "出品する", class: "Button__Form__Red"
         %button.Button__Form__Gray{type: "button"} 下書きに保存
-        =link_to "#" do
+        =link_to root_path do
           もどる
 
 .ItemFooter
@@ -111,6 +124,6 @@
         =link_to "#" do
           特定商品に関する表記
   .ItemFooter__Lower
-    = link_to "#" do
+    = link_to root_path do
       = image_tag "logo.png", size: "100x25"
     %h3 @FURIMA, Inc.

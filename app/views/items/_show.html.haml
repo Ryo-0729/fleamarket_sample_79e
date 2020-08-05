@@ -93,7 +93,8 @@
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
     - if user_signed_in? && current_user.id == @item.user_id
-      = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
+      %div{"data-turbolinks" => "false"}
+        = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
     - else
       %btn
         =link_to "#" do
