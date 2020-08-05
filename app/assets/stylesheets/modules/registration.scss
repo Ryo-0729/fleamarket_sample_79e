@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+.field_with_errors {
+  display: contents;
+}
+
 .header {
   height: 128px;
   text-align: center;

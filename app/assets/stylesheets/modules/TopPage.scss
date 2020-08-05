@@ -64,6 +64,10 @@
     .User{
       display: flex;
       margin-right: 60px;
+      &__Mypage{
+        text-decoration: none;
+        right: 50px;
+      }
       &__login{
         padding: 0 0 0 16px;
         display: inline-block;
@@ -311,16 +315,16 @@
           display: block;
           margin-right: 10px;
           border: 1px solid #ffb340;
+          border-radius: 5px;
           &:hover{
             opacity: 0.7;
           }
           & img{
             width:100%;
             height: 150px;
-            object-fit: cover;
           }
           &__body{
-            background-color: white;
+            background-color: rgba(240, 236, 236, 0.859);
             color: #333;
             padding: 16px;
           }
@@ -343,7 +347,6 @@
           &__note{
             font-size: 10px;
             text-align: left;
-
           }
         }
     }

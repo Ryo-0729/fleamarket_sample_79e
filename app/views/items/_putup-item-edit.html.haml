@@ -1,11 +1,16 @@
 .putup-item-top
   = link_to "#" do
     = image_tag "logo.png", size: "185x49"
+
 .putup-item-middle
-  = form_with model:@item, local:true do |f|
-    = render 'layouts/error_messages', model: f.object
-    .putup-item-middle__content
+  - if flash[:alerting]
+    .alert
+      - flash[:alerting].each do |message|
+        %p.alert__sentence=message
       
+  
+  = form_with model:@item, local:true do |f|
+    .putup-item-middle__content
       .putup-item-middle__content__form
         .putup-item-middle__content__form__upload
           .putup-item-middle__content__form__upload__block
@@ -15,18 +20,34 @@
           %p 最大5枚までアップロードできます
           .post__drop__box__container
             .prev-content
+
+            
+              - @item.item_images.each do |image|
+                .preview-box
+                  .upper-box
+                    = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                  .lower-box
+                    .update-box
+                      %label.edit-btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
             .label-content
-              %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+
+            
+              = f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               = f.fields_for :item_images do |i|
+
+                //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
                 = i.file_field :image, class: "hidden-field"
+                = i.check_box:_destroy, class: "hidden-checkbox"
                 
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_item_images_attributes_1_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_item_images_attributes_2_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_item_images_attributes_3_image" }
-                %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_item_images_attributes_4_image" }
-                  
+              //5つのfile_fieldを準備するに当たって、足りない分を表示
+              - @item.item_images.length.upto(4) do |i|
+                %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+        
 
     .putup-item-middle__content
       .putup-item-middle__content__index
@@ -34,7 +55,7 @@
           商品名
         .putup-item-middle__content__index__essential
           必須
-      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで", maxlength: "40"
+      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで"
     
     .putup-item-middle__content
       .putup-item-middle__content__index
@@ -42,27 +63,15 @@
           商品の説明
         .putup-item-middle__content__index__essential
           必須
-      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7", maxlength: "1000"
+      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7"
     
-    .putup-item-middle__content#category_box
+    .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      #parent_box
-        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
-      #children_box
-      #grandchildren_box
-    
-    #size_box.putup-item-middle__content
-      .putup-item-middle__content__index
-        .putup-item-middle__content__index__title
-          サイズ
-        .putup-item-middle__content__index__essential
-          任意
-      .pulldown#size_selectbox
-        =f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+      = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select"
     
     .putup-item-middle__content
       .putup-item-middle__content__index
@@ -111,24 +120,22 @@
             販売価格
           .CalcField__index__Field__essential
             必須
-        .CalcField__index__Form
-          .CalcField__index__Form__En ¥
-          = f.number_field :price, class: "CalcField__index__Form__Item-value", placeholder: "0", autocomplete: "off", min: 300, max: 9999999
+        = f.text_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: "300", max: "9999999"
       .CalcField__Alart 300以上9999999以下で入力してください
       .CalcField__Fee
         .CalcField__Fee__Left 販売手数料（10%）
-        %span#SalesFee.CalcField__Fee__Right ー
+        %span.CalcField__Fee__Right ー
       %hr.Border
       .CalcField__Fee
         .CalcField__Fee__Left 販売利益
-        %span#SalesProfit.CalcField__Fee__Right ー
+        %span.CalcField__Fee__Right ー
     .putup-item-bottom
       .Button
         = f.hidden_field :seller_id, value: current_user.id
-        = f.submit "出品する", class: "Button__Form__Red"
+        = f.submit "編集する", class: "Button__Form__Red"
         %button.Button__Form__Gray{type: "button"} 下書きに保存
-        =link_to users_path do
-          マイページ
+        =link_to "#" do
+          もどる
 
 .ItemFooter
   .ItemFooter__Upper
@@ -143,6 +150,6 @@
         =link_to "#" do
           特定商品に関する表記
   .ItemFooter__Lower
-    = link_to root_path do
+    = link_to "#" do
       = image_tag "logo.png", size: "100x25"
     %h3 @FURIMA, Inc.
