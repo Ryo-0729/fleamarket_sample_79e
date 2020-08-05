@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
     t.string "name", null: false
     t.text "text", null: false
     t.bigint "category_id", null: false
+    t.integer "size_id"
     t.string "brand"
     t.integer "condition_id", null: false
     t.integer "postage_payer_id", null: false

@@ -34,7 +34,7 @@
           商品名
         .putup-item-middle__content__index__essential
           必須
-      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで"
+      =f.text_field :name, class: "putup-item-middle__content__item-name", placeholder: "40文字まで", maxlength: "40"
     
     .putup-item-middle__content
       .putup-item-middle__content__index
@@ -42,15 +42,27 @@
           商品の説明
         .putup-item-middle__content__index__essential
           必須
-      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7"
+      =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7", maxlength: "1000"
     
-    .putup-item-middle__content
+    .putup-item-middle__content#category_box
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select"
+      #parent_box
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
+      #children_box
+      #grandchildren_box
+    
+    #size_box.putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          サイズ
+        .putup-item-middle__content__index__essential
+          任意
+      .pulldown#size_selectbox
+        =f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
     
     .putup-item-middle__content
       .putup-item-middle__content__index
@@ -99,7 +111,7 @@
             販売価格
           .CalcField__index__Field__essential
             必須
-        = f.text_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: "300", max: "9999999"
+        = f.number_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: 300, max: 9999999
       .CalcField__Alart 300以上9999999以下で入力してください
       .CalcField__Fee
         .CalcField__Fee__Left 販売手数料（10%）
