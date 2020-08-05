@@ -66,6 +66,13 @@ describe Item do
       expect(item.errors[:price]).to include("は数値で入力してください")
     end
 
+    it "is valid without item_image " do
+      item = build(:item)
+      item_image = build(:item_image, item_id: item.id, image: "")
+      item_image.valid?
+      expect(item_image.errors[:image]).to include("を入力してください")
+    end
+
     it "is invalid with a name that has more than 41 characters " do
       string = "a"
       user = create(:user)

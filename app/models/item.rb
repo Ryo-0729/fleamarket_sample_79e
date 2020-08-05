@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :preparation
+  belongs_to_active_hash :size
 
   validates :item_images, presence: true
   validates :name, presence: true, length: { maximum: 40 }

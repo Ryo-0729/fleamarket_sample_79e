@@ -115,7 +115,7 @@
             %h3.Container__head 新規投稿商品
             .Container__lists
               .Container__lists__show
-              - @items.last(4).each do |item|
+              - @items.first(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
                   = image_tag item.item_images[0].image.to_s
                   .Picup-item__body
