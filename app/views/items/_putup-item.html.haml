@@ -98,11 +98,11 @@
       .CalcField__Alart 300以上9999999以下で入力してください
       .CalcField__Fee
         .CalcField__Fee__Left 販売手数料（10%）
-        %span.CalcField__Fee__Right ー
+        %span#SalesFee.CalcField__Fee__Right ー
       %hr.Border
       .CalcField__Fee
         .CalcField__Fee__Left 販売利益
-        %span.CalcField__Fee__Right ー
+        %span#SalesProfit.CalcField__Fee__Right ー
     .putup-item-bottom
       .Button
         = f.hidden_field :seller_id, value: current_user.id
