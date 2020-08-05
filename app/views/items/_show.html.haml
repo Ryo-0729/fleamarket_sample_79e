@@ -8,28 +8,28 @@
     .Showtop__Display__Image
       .Showtop__Display__Image__Main
         -if @item.item_images[0].present?
-          = image_tag "#{@item.item_images[0].image}", alt: '写真', size: '300x300'
+          = image_tag "#{@item.item_images[0].image}", alt: '写真', size: '300x300', class: 'mainImage'
         - else
       .Showtop__Display__Image__GroupLists
         .Showtop__Display__Image__GroupLists__List
+          -if @item.item_images[0].present?
+            = image_tag "#{@item.item_images[0].image}", alt: '写真', class: 'thumb'
+          - else
+        .Showtop__Display__Image__GroupLists__List
           -if @item.item_images[1].present?
-            = image_tag "#{@item.item_images[1].image}", alt: '写真'
+            = image_tag "#{@item.item_images[1].image}", alt: '写真', class: 'thumb'
           - else
         .Showtop__Display__Image__GroupLists__List
           -if @item.item_images[2].present?
-            = image_tag "#{@item.item_images[2].image}", alt: '写真'
+            = image_tag "#{@item.item_images[2].image}", alt: '写真', class: 'thumb'
           - else
         .Showtop__Display__Image__GroupLists__List
           -if @item.item_images[3].present?
-            = image_tag "#{@item.item_images[3].image}", alt: '写真'
+            = image_tag "#{@item.item_images[3].image}", alt: '写真', class: 'thumb'
           - else
         .Showtop__Display__Image__GroupLists__List
           -if @item.item_images[4].present?
-            = image_tag "#{@item.item_images[4].image}", alt: '写真'
-          - else
-        .Showtop__Display__Image__GroupLists__List
-          -if @item.item_images[5].present?
-            = image_tag "#{@item.item_images[5].image}", alt: '写真'
+            = image_tag "#{@item.item_images[4].image}", alt: '写真', class: 'thumb'
           - else
     %table.Showtop__Display__ListBox
       %tbody
@@ -51,7 +51,6 @@
                   %i.fas.fa-frown
                 %span 100
 
-            
         %tr.Showtop__Display__ListBox__List
           %th カテゴリー
           %td
@@ -198,3 +197,22 @@
               レディース 5足セット
             .ShowUser__ItemGroup__Details__Price
               %p ￥1,100
+
+:javascript
+  $(function() {
+    $('img.thumb').mouseover(function(){
+    var selectedSrc = $(this).attr('src').replace(/^(.+)_thumb(\.gif|\.jpg|\.png+)$/, "$1"+"$2");
+    
+    $('img.mainImage').stop().fadeOut(50,
+    function(){
+    $('img.mainImage').attr('src', selectedSrc);
+    $('img.mainImage').stop().fadeIn(200);
+    }
+    );
+    $(this);
+    });
+    
+    $('img.thumb').mouseout(function(){
+    $(this).css({"border":""});
+    });
+  });

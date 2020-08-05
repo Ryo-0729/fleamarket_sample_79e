@@ -309,8 +309,9 @@ body{
       height: 360px;
       width: 300px;
       &__Main{
-        height: 300px;
-        width: 300px;
+        height: 304px;
+        width: 304px;
+        border: 2px solid #47e2d5;
       }
       &__GroupLists{
         height: 60px;
@@ -325,6 +326,7 @@ body{
             height: 80%;
             margin-top: 5px;
             margin-right: 5px;
+            border: 1px solid #47e2d5;
           }
           img:hover{
             transform:scale(1.2,1.2);
