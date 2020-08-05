@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create] do
     collection do
       get 'index2'
-      post 'buy'
-
     end
     member do
       get 'confirmation'
+      post 'buy'
+      get 'card'
+      # get 'set_item'
+      # get 'take_card'
+ 
     end
 
     # collection do
