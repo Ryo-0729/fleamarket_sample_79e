@@ -139,8 +139,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-     &__Field{
-       display: flex;
+    &__Field{
+      display: flex;
       &__title{
         margin-right: 10px;
         font-size: 14px;
@@ -154,6 +154,15 @@
         text-align: center;
         line-height: 21px;
         height: 23px;
+      }
+    }
+    &__Form{
+      display: flex;
+      &__En{
+        margin-right: 5px;
+      }
+      &__Item-value{
+        width: 100px;
       }
     }
   }
@@ -175,6 +184,18 @@
   }
 }
 
+#size_box{
+  display: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance:textfield;
+}
 
 .putup-item-bottom{
   width: 100%;

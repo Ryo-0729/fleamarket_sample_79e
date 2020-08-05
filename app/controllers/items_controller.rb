@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def create
@@ -23,6 +24,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
+      @category_parent_array = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -59,9 +61,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  # privateの中に入れないでください
+  def get_category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end
+
+  # privateの中に入れないでください
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :size_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def item_upgrade_params
@@ -78,6 +90,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
 end
