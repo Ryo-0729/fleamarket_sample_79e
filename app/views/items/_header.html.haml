@@ -3,7 +3,7 @@
     = link_to root_path, class: "Logo" do
       = image_tag("logo.png", alt: "logo", class: "Logo__image")
     
-    = form_with url: root_path, method: :get, class: "Search", local:true do |form|
+    = form_with url: search_items_path, method: :get, class: "Search", local:true do |form|
       = form.text_field :keyword, placeholder: "キーワードから探す", class: "Search__inputText"
       = form.submit  value: "",class: "Search__submitBtn", type:"submit"
 

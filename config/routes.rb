@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'index2'
       get 'confirmation'
+      get 'search'
     end
   end
 

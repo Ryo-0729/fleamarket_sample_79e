@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :search]
 
   def index
     @items = Item.all
@@ -44,11 +44,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:name])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.search(params[:keyword])
   end
 
   private
