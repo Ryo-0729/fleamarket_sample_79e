@@ -111,7 +111,9 @@
             販売価格
           .CalcField__index__Field__essential
             必須
-        = f.number_field :price, class: "CalcField__Item-value", placeholder: "0", autocomplete: "off", min: 300, max: 9999999
+        .CalcField__index__Form
+          .CalcField__index__Form__En ¥
+          = f.number_field :price, class: "CalcField__index__Form__Item-value", placeholder: "0", autocomplete: "off", min: 300, max: 9999999
       .CalcField__Alart 300以上9999999以下で入力してください
       .CalcField__Fee
         .CalcField__Fee__Left 販売手数料（10%）
