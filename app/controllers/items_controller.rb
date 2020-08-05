@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
     if @item.update(item_upgrade_params)
       redirect_to root_path
     else
-      redirect_back fallback_location: edit_item_path, flash:{notice: @item.errors.full_messages}
+      redirect_back fallback_location: edit_item_path, flash:{alerting: @item.errors.full_messages}
     end
   end
 

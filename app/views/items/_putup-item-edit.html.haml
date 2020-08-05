@@ -3,10 +3,11 @@
     = image_tag "logo.png", size: "185x49"
 
 .putup-item-middle
-  - if flash[:notice]
+  - if flash[:alerting]
     .alert
-      - flash[:notice].each do |message|
+      - flash[:alerting].each do |message|
         %p.alert__sentence=message
+      
   
   = form_with model:@item, local:true do |f|
     .putup-item-middle__content
