@@ -118,6 +118,135 @@
               - @items.first(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
                   = image_tag item.item_images[0].image.to_s
+
+                  -# buyer_idがある時は sold out を表示
+                  - @item = Item.find(item.id)
+                  - if @item.buyer_id.present?
+                    .items__sold
+                      .items__sold__inner
+                        SOLD
+                        
+                  .Picup-item__body
+                    %h3 
+                      =item.name
+                    .Picup-item__details
+                      %ul.Picup-item__ul
+                        %li.Picup-item__li
+                          =item.price
+                          円 (税込)
+                        %li.Picup-item__li
+                          = icon('fas', 'star', class: 'star')
+                          0  
+
+      -# ピックアップブランドの部分
+      .Main__picup
+        .Main__picup-wrapper
+          %h2.Subtitle-picup
+          .Container
+            %h3.Container__head レディースの新着アイテム
+            .Container__lists
+              .Container__lists__show
+              - @ladies.first(4).each do |item|
+                = link_to item_path(item.id), class: "Picup-item" do
+                  = image_tag item.item_images[0].image.to_s
+
+                  -# buyer_idがある時は sold out を表示
+                  - @item = Item.find(item.id)
+                  - if @item.buyer_id.present?
+                    .items__sold
+                      .items__sold__inner
+                        SOLD
+
+                  .Picup-item__body
+                    %h3 
+                      =item.name
+                    .Picup-item__details
+                      %ul.Picup-item__ul
+                        %li.Picup-item__li
+                          =item.price
+                          円 (税込)
+                        %li.Picup-item__li
+                          = icon('fas', 'star', class: 'star')
+                          0  
+
+      .Main__picup
+        .Main__picup-wrapper
+          %h2.Subtitle-picup
+          .Container
+            %h3.Container__head メンズの新着アイテム
+            .Container__lists
+              .Container__lists__show
+              - @mens.first(4).each do |item|
+                = link_to item_path(item.id), class: "Picup-item" do
+                  = image_tag item.item_images[0].image.to_s
+
+                  -# buyer_idがある時は sold out を表示
+                  - @item = Item.find(item.id)
+                  - if @item.buyer_id.present?
+                    .items__sold
+                      .items__sold__inner
+                        SOLD
+
+                  .Picup-item__body
+                    %h3 
+                      =item.name
+                    .Picup-item__details
+                      %ul.Picup-item__ul
+                        %li.Picup-item__li
+                          =item.price
+                          円 (税込)
+                        %li.Picup-item__li
+                          = icon('fas', 'star', class: 'star')
+                          0  
+
+      .Main__picup
+        .Main__picup-wrapper
+          %h2.Subtitle-picup
+          .Container
+            %h3.Container__head 家電・スマホ・カメラの新着アイテム
+            .Container__lists
+              .Container__lists__show
+              - @electricalappliances.first(4).each do |item|
+                = link_to item_path(item.id), class: "Picup-item" do
+                  = image_tag item.item_images[0].image.to_s
+
+                  -# buyer_idがある時は sold out を表示
+                  - @item = Item.find(item.id)
+                  - if @item.buyer_id.present?
+                    .items__sold
+                      .items__sold__inner
+                        SOLD
+
+                  .Picup-item__body
+                    %h3 
+                      =item.name
+                    .Picup-item__details
+                      %ul.Picup-item__ul
+                        %li.Picup-item__li
+                          =item.price
+                          円 (税込)
+                        %li.Picup-item__li
+                          = icon('fas', 'star' , class: 'star')
+                          0  
+
+      .Main__picup
+        .Main__picup-wrapper
+          %h2.Subtitle-picup
+          .Container
+            %h3.Container__head 本・おもちゃ・ゲームの新着アイテム
+            .Container__lists
+              .Container__lists__show
+              - @hobby.first(4).each do |item|
+                = link_to item_path(item.id), class: "Picup-item" do
+                  = image_tag item.item_images[0].image.to_s
+
+                  -# buyer_idがある時は sold out を表示
+                  - @item = Item.find(item.id)
+                  - if @item.buyer_id.present?
+                    .items__sold
+                      .items__sold__inner
+                        SOLD
+
                   .Picup-item__body
                     %h3 
                       =item.name
@@ -127,65 +256,9 @@
                           =item.price
                           円
                         %li.Picup-item__li
-                          = icon('fas', 'star')
+                          = icon('fas', 'star', class: 'star')
                           0  
                       %p.Picup-item__note (税込)
-
-      -# ピックアップブランドの部分
-      .Main__picup.Main__picup2
-        .Main__picup-wrapper
-          %h2.Subtitle-picup ピックアップブランド
-          .Container
-            %h3.Container__head アーカイバ
-            .Container__lists
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup01.jpg", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 ee
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  1000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup02.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product3
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  30000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup03.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product2
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  20000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
-              = link_to root_path, class: "Picup-item" do
-                = image_tag("picup04.png", alt: "logo", class: "Picup-item__image")
-                .Picup-item__body
-                  %h3 product1
-                  .Picup-item__details
-                    %ul.Picup-item__ul
-                      %li.Picup-item__li  10000円
-                      %li.Picup-item__li
-                        = icon('fas', 'star')
-                        0    
-                    %p.Picup-item__note (税込)
-
 
       -# 今すぐ無料ダウンロードの部分
       .Main__lead
