@@ -99,6 +99,14 @@
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
+          発送方法
+        .putup-item-middle__content__index__essential
+          必須
+      = f.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
           発送までの日数
         .putup-item-middle__content__index__essential
           必須

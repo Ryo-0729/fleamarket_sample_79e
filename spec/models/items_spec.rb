@@ -52,6 +52,13 @@ describe Item do
       expect(item.errors[:prefecture_id]).to include("を入力してください")
     end
 
+    it "is valid without shipping_method_id " do
+      user = build(:user)
+      item = build(:item, user_id: user.id, shipping_method_id: "")
+      item.valid?
+      expect(item.errors[:shipping_method_id]).to include("を入力してください")
+    end
+
     it "is valid without preparation_id " do
       user = build(:user)
       item = build(:item, user_id: user.id, preparation_id: "")

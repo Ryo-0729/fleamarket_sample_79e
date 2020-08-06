@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 2020_07_25_060005) do
     t.integer "condition_id", null: false
     t.integer "postage_payer_id", null: false
     t.integer "prefecture_id", null: false
+    t.integer "shipping_method_id", null: false
     t.integer "preparation_id", null: false
     t.integer "price", null: false
-    t.timestamp "completed_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "buyer_id"
     t.integer "seller_id"
     t.index ["category_id"], name: "index_items_on_category_id"
