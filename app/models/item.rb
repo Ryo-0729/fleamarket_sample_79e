@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_method
   belongs_to_active_hash :preparation
   belongs_to_active_hash :size
 
@@ -18,6 +19,7 @@ class Item < ApplicationRecord
   validates :condition_id, presence: true
   validates :postage_payer_id, presence: true
   validates :prefecture_id, presence: true
+  validates :shipping_method_id, presence: true
   validates :preparation_id, presence: true
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 

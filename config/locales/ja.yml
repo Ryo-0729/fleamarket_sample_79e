@@ -218,6 +218,7 @@ ja:
         condition_id: 商品の状態
         postage_payer_id: 配送料の負担
         prefecture_id: 発送元の地域
+        shipping_method_id: 発送方法
         preparation_id: 発送までの日数
         price: 販売価格
         
