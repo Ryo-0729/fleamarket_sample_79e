@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :category_lists, :category_item_lists]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_category_links, only: :category_item_lists
+  before_action :set_card, only: [:confirmation, :buy]
+  before_action :set_item, only: [:confirmation, :buy]
 
   def index
     @items = Item.all.order(id: :desc)
@@ -58,11 +60,7 @@ class ItemsController < ApplicationController
   end
   
   def confirmation
-    @item = Item.find(params[:id])
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-      
-    else
+    if card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
@@ -86,8 +84,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @card = Card.find_by(user_id: current_user.id)
-    @item = Item.find(params[:id])
     if Item.update(buyer_id: params[:buyer_id], id: params[:id])
       # redirect_to root_path
       Payjp::Charge.create(
@@ -156,6 +152,16 @@ class ItemsController < ApplicationController
 
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
