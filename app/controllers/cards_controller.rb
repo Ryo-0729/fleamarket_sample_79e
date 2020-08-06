@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
   require "payjp"
+  before_action :set_card, only: [:destroy, :show]
 
 
   def edit
@@ -12,12 +13,10 @@ class CardsController < ApplicationController
   end
 
   def pay #payjpとCardのデータベース作成
-    Payjp.api_key = "sk_test_d67de103723148f5ae6a7676"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     #保管した顧客IDでpayjpから情報取
     
-    if params['payjp-token'].blank?
-      redirect_to new_card_path
-    else
+    if params['payjp-token'].present?
       customer = Payjp::Customer.create(
         card: params['payjp-token'],
         metadata: {user_id: current_user.id}
@@ -30,31 +29,29 @@ class CardsController < ApplicationController
       
       else
         redirect_to new_cards_path
-        # redirect_to pay_cards_path
       end
+
+    else
+      redirect_to new_card_path
     end
   end
 
   def destroy #PayjpとCardデータベースを削除
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-    else
-      Payjp.api_key = "sk_test_d67de103723148f5ae6a7676"
-      customer = Payjp::Customer.retrieve(card.customer_id)
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
+    else
     end
       redirect_to new_card_path
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-      redirect_to new_card_path 
-    else
-      Payjp.api_key = "sk_test_d67de103723148f5ae6a7676"
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
 
       @card_brand = @default_card_information.brand
       case @card_brand
@@ -71,8 +68,16 @@ class CardsController < ApplicationController
       when "Discover"
         @card_image = "card_dc_b.gif"
       end
+ 
+    else
+      redirect_to new_card_path 
 
     end
   end
 
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
 end

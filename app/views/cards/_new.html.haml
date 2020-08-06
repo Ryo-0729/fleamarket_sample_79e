@@ -2,7 +2,6 @@
   %h2.R-Content__Title
     クレジットカード情報入力
   .FormContent
-    -# = form_with model: @credit, method: :post, id: "cardCreateForm" do |form|
     = form_with url: pay_cards_path, method: :post, id: "charge-form", name: "inputForm",local: true do |form|
       .UserInfo
         .CardNumber
@@ -58,17 +57,14 @@
             セキュリティーコード
           %span
             必須
-        -# = form.text_field :card_id, placeholder: "カード背面4桁もしくは3桁の番号", class: "CardNumber-Form"
         = text_field_tag "cvc", "", class: "securityInput", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
  
       
         .SequirtyInfo
           %span
             カード裏面の番号とは？
-        -# #card_token.creditForm__submitfield
-        -#   = form.submit "追加する", class: 'creditsSubmit', id: "token_submit"
+
         
         #card_token
-        -# #token
         %br
         = form.submit "登録する", id: "token_submit"

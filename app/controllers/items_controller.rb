@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
     if card.blank?
       
     else
-      Payjp.api_key = "sk_test_d67de103723148f5ae6a7676"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
 
@@ -96,7 +96,6 @@ class ItemsController < ApplicationController
       :currency => 'jpy', #日本円
       )
     
-      # flash[:notice] = "購入が完了しました"
 
       redirect_to confirmation_item_path, notice: '購入が完了されました'
     else
