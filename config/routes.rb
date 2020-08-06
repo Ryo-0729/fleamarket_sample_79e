@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   resources :items do
     collection do
-      get 'index2'
+      get 'category_lists'
       get 'confirmation'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -13,9 +13,7 @@ Rails.application.routes.draw do
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
-    member do
-      get 'index3'
+      get 'category_item_lists'
     end
   end
 

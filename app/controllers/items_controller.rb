@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :index2, :index3]
+  before_action :move_to_index, except: [:index, :show, :category_lists, :category_item_lists]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
-  before_action :set_category, only: :index3
+  before_action :set_category_links, only: :category_item_lists
 
   def index
     @items = Item.all
@@ -49,14 +49,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  def index2
+  def category_lists
     @parents = Category.where(ancestry: nil)
   end
   
   def confirmation
   end
 
-  def index3
+  def category_item_lists
     @items = @category.set_items
     @items = @items.where(buyer_id: nil)
   end
@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
-  def set_category
+  def set_category_links
     @category = Category.find(params[:id])
     if @category.has_children?
       @category_links = @category.children

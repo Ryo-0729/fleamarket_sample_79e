@@ -5,7 +5,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 'modules/TopPage', 'modules/items3'
+    = stylesheet_link_tag 'modules/TopPage', 'modules/category_item_lists'
     = javascript_include_tag 'application'
 
 -# 上記class名重複防止の記述
@@ -20,7 +20,7 @@
           = "#{@category.name}の商品一覧"
         %ul.category__child.category__list
           - @category_links.each do |category|
-            = link_to category.name, index3_item_path(category)
+            = link_to category.name, category_item_lists_item_path(category)
 
       .image_lists
         - @items.each do |item|
@@ -40,14 +40,6 @@
                     0  
                 %p.Picup-item__note (税込)
 
-.Main__lead
-  .Main__lead-inner
-    %h2.Main__lead-title だれでもかんたん、人生を変えるフリマアプリ
-    %p.Main__lead-text 今すぐ無料ダウンロード！
-    .Main__lead-store-wrapper
-      = link_to root_path do
-        = image_tag("app-store.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
-      = link_to root_path do
-        = image_tag("google-play.svg", alt: "logo", class: "Main__lead-store-wrapper__image")
+=render "footer-img"
 
 =render "footer"
