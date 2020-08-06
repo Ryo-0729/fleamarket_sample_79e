@@ -45,6 +45,36 @@ class ItemsController < ApplicationController
       Payjp.api_key = "sk_test_d67de103723148f5ae6a7676"
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
+
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_image = "card_visa_b.gif"
+      when "JCB"
+        @card_image = "card_jcb_b.gif"
+      when "MasterCard"
+        @card_image = "card_master_b.gif"
+      when "American Express"
+        @card_image = "card_amex_b.gif"
+      when "Diners Club"
+        @card_image = "card_diners_b.gif"
+      when "Discover"
+        @card_image = "card_dc_b.gif"
+      end
+
+      # @card_info = customer.cards.retrieve(card.card_id)
+      # case @card_info.brand
+      # when "Visa"
+      #   @card_src = "logo_visa_ph001.png"
+      # when "JCB"
+      #   @card_src = "jcb-logomark-img-01.gif"
+      # when "MasterCard"
+      #   @card_src = "mc_vrt_pos.svg"
+      # when "American Express"
+      #   @card_src = "amex-logomark-img-04.gif"
+      # when "Diners Club"
+      #   @card_src = "diners-logomark-img-01.gif"
+      # end
     end
 
     @address = User.where(id: current_user.id).first
@@ -67,9 +97,9 @@ class ItemsController < ApplicationController
       :currency => 'jpy', #日本円
       )
     
-        redirect_to root_path, notice: '購入が完了しました'
-   
-      # redirect_to root_path
+      # flash[:notice] = "購入が完了しました"
+
+      redirect_to confirmation_item_path, notice: '購入が完了されました'
     else
       render :confirmation
     end
@@ -103,7 +133,7 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end  
-  
+end
   # def take_card
   #   @card = Card.find_by(user_id: current_user.id)
   # end
@@ -127,7 +157,7 @@ class ItemsController < ApplicationController
 
 
 
-end
+
 
 
 

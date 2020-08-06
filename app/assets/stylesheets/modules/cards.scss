@@ -132,3 +132,96 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+
+//////クレジット登録完了画面////////////////////////////////////
+
+.show {
+  background-color: #fff;
+  height: 100%;
+  width: 700px;
+
+ 
+ 
+}
+.show__frame {
+  width: 500px;
+  height: 250px;
+  border: 1px solid gray;
+  background-color: #fff;
+
+
+}
+.show__frame__title {
+  padding: 30px;
+  text-align: center;
+  h2 {
+    font-size: 25px;
+  }
+}
+
+.credit_card__list {
+  display: flex;
+  justify-content: center;
+
+}
+
+.expiration_date {
+  display: flex;
+}
+
+
+
+.credit_card_info__numbers {
+  width: 300px;
+  height: 100px;
+
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.number_lits {
+  width:160px;
+  height: 70px;
+  padding: 10px;
+  margin-left: 5px;
+  background-color: #fff;
+}
+
+
+
+.credit_card_info {
+  display: flex;
+  align-items: center;
+}
+
+.credit_card_info__numbers {
+  display: flex;
+}
+
+.expiration_date__info {
+  margin-left: 10px;
+}
+
+.destroy__function {
+  margin-left: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.destroy__function__link {
+  font-size: 20px;
+
+}
+
+.destroy__function{
+
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
