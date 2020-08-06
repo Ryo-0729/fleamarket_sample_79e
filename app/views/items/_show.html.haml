@@ -81,7 +81,10 @@
 
         %tr.Showtop__Display__ListBox__List
           %th 配送方法
-          %td ゆうゆうメルカリ便
+          %td
+            .CategoryName
+              =link_to "#" do
+                = @category.shipping_method.name
 
         %tr.Showtop__Display__ListBox__List
           %th 配送元地域
