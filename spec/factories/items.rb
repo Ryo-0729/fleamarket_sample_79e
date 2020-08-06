@@ -1,13 +1,14 @@
 FactoryBot.define do
   factory :item do
-    name              {"ビール"}
-    text              {"アルコール飲料です"}
-    brand             {"アサヒ"}
-    condition_id      {1}
-    postage_payer_id  {2}
-    prefecture_id     {16}
-    preparation_id    {1} 
-    price          {300}
+    name                {"ビール"}
+    text                {"アルコール飲料です"}
+    brand               {"アサヒ"}
+    condition_id        {1}
+    postage_payer_id    {2}
+    prefecture_id       {16}
+    shipping_method_id  {1}
+    preparation_id      {1}
+    price               {300}
     user
     category
     after(:build) do |item|
