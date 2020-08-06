@@ -1,0 +1,33 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'modules/TopPage', 'modules/category_lists'
+    = javascript_include_tag 'application'
+
+-# 上記class名重複防止の記述
+
+= render "header"
+
+.main
+  .main_container
+    .main_index
+      .parent_category
+        - @parents.each do |parent|
+          %li.parents= link_to "#{parent.name}", category_item_lists_item_path(parent)
+        %ul.categories
+          - @parents.each do |parent|
+            %li.parents_title= link_to "#{parent.name}", category_item_lists_item_path(parent)
+            %ul.categories__children
+              - parent.children.each do |child|
+                %li.childern= link_to "#{child.name}", category_item_lists_item_path(child)
+                %ul.categories__grandchildren
+                  - child.children.each do |grandchild|
+                    %li= link_to "#{grandchild.name}", category_item_lists_item_path(grandchild)
+
+=render "footer-img"
+
+=render "footer"
