@@ -2,14 +2,15 @@
   %h2.R-Content__Title
     クレジットカード情報入力
   .FormContent
-    = form_with model: @user do |form|
+    -# = form_with model: @credit, method: :post, id: "cardCreateForm" do |form|
+    = form_with url: pay_cards_path, method: :post, id: "charge-form", name: "inputForm",local: true do |form|
       .UserInfo
         .CardNumber
           %label
             カード番号
           %span
             必須
-        = form.text_field :card_id, placeholder: "半角数字のみ", class: "CardNumber-Form"
+          = text_field_tag "card_number", "", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
         .CardImage
 
       .UserInfo
@@ -18,7 +19,7 @@
             有効期限
           %span
             必須
-        %select
+        %select#exp_month{name: "exp_month", type: "text"}
           %option{:value => "01"} 01
           %option{:value => "02"} 02
           %option{:value => "03"} 03
@@ -35,18 +36,19 @@
         %span
           月
 
-        %select
-          %option{:value => "20"} 20
-          %option{:value => "21"} 21
-          %option{:value => "22"} 22
-          %option{:value => "23"} 23
-          %option{:value => "24"} 24
-          %option{:value => "25"} 25
-          %option{:value => "26"} 26
-          %option{:value => "27"} 27
-          %option{:value => "28"} 28
-          %option{:value => "29"} 29
-          %option{:value => "30"} 30
+        %select#exp_year{name: "exp_year", type: "text"}
+          %option{:value => "2020"} 20
+          %option{:value => "2021"} 21
+          %option{:value => "2022"} 22
+          %option{:value => "2023"} 23
+          %option{:value => "2024"} 24
+          %option{:value => "2025"} 25
+          %option{:value => "2026"} 26
+          %option{:value => "2027"} 27
+          %option{:value => "2028"} 28
+          %option{:value => "2029"} 29
+          %option{:value => "2030"} 30
+
         %span
           年
 
@@ -56,10 +58,17 @@
             セキュリティーコード
           %span
             必須
-        = form.text_field :card_id, placeholder: "カード背面4桁もしくは3桁の番号", class: "CardNumber-Form"
+        -# = form.text_field :card_id, placeholder: "カード背面4桁もしくは3桁の番号", class: "CardNumber-Form"
+        = text_field_tag "cvc", "", class: "securityInput", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+ 
       
         .SequirtyInfo
           %span
             カード裏面の番号とは？
-
-        = form.submit "追加する", class: "Send_Btn"
+        -# #card_token.creditForm__submitfield
+        -#   = form.submit "追加する", class: 'creditsSubmit', id: "token_submit"
+        
+        #card_token
+        -# #token
+        %br
+        = form.submit "登録する", id: "token_submit"

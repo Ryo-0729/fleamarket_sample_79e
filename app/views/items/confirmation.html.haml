@@ -12,51 +12,87 @@
   .Main__wrapper
     %section.Title-box
       %h1.Title-box__title 購入内容の確認
-    
+
     // 商品の概要
     %section.Outline
       .Outline__inner
         %figure.Outline__inner-imagebox
-          = image_tag("pict-reason-01.jpg", alt: "logo", class: "Outline__inner-image")
+          = image_tag("#{@item.item_images[0].image.to_s}", alt: "logo", class: "Outline__inner-image")
+            -if @item.buyer_id.present? 
+            .items-box_photo__sold
+              .items-box_photo__sold__inner SOLD
         .Outline__inner-textbox
-          %p.Outline__inner-heading 【即発送可能】スマホ
+          %p.Outline__inner-heading #{@item.name.to_s}
           %p.Outline__inner-details
             %span.Outline__inner-details--thin 送料込み(税込)
-            %span.Outline__inner-details--bold ¥1,700
+            %span.Outline__inner-details--bold ¥#{@item.price.to_s(:delimited)}
+            
 
     // 支払い金額
     %section.Amount
       .Amount__money
         %p 支払い金額
-        %p.Amount__money--big ¥1,700
-      .Amount__point 
-        .Amount__point-box
-          %span.Amount__point-box--square
-          %p.Amount__point-box--text ポイント
+        %p.Amount__money--big ¥#{@item.price.to_s(:delimited)}
+      -# .Amount__point 
+      -#   .Amount__point-box
+      -#     %span.Amount__point-box--square
+      -#     %p.Amount__point-box--text ポイント
           
-        %p.Amount__point-more 所持ポイント : P0
+      -#   %p.Amount__point-more 所持ポイント : P0
 
-    // 支払い方法
     %section.Payment
       .Payment__inner
         %h2.Payment-way 支払い方法
-        = link_to root_path, class: "Payment-registration" do
-          = icon('fas', 'plus-circle')
-          %p.Payment-registration__text 登録してください
+        .user_info_box
+          .user_info_boxleft
+            .user_info_text
+            - if @default_card_information.blank?
+              = link_to new_card_path, class: "Payment-registration" do
+                = icon('fas', 'plus-circle')
+                %p.Payment-registration__text 登録してください
+            - else
+              = image_tag "cards/#{@card_image}",width:'66',height:'50', alt:'master-card'
+              .user_info_textbox
+              = "**** **** **** " + "#{@default_card_information.last4}"
+              %br
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              = "有効期限 " + exp_month + " / " + exp_year
+              %br
+          .change_link
+            = link_to new_card_path, class: "Payment-registration" do
+              = icon('fas', 'plus-circle')
+              %p.Payment-registration__text 変更する
+
 
     // 配送先
     %section.Delivery
       .Delivery__inner
-        %h2.Delivery-way 配送先
-        = link_to root_path, class: "Delivery-registration" do
-          = icon('fas', 'plus-circle')
-          %p.Delivery-registration__text 登録してください
+        .Delivery_left
+          %h2.Delivery-way 配送先
+          = @address.post_cord
+          %br
+          = @address.prefecture_id
+          = @address.city
+          = @address.address
+          = @address.building
+          %br
+          = ("#{@address.post_first_name + @address.post_last_name}")
+        .Delivery_right
+          = link_to root_path, class: "Delivery-registration" do
+            = icon('fas', 'plus-circle')
+            %p.Delivery-registration__text 変更する
+
+
 
     // 購入ボタンエリア
     %section.Purchase
       .Purchase__inner
-        %p.Purchase__inner-warning  配送先と支払い方法の入力を完了してください
-        = form_with url: root_path, method: :get, class: "Purchase__inner-box", local:true do |form|
-          = form.submit  value: "購入する",class: "Purchase__inner-btn", type:"submit"
-
+        %p.Purchase__inner-warning 
+        = form_with url: buy_item_path, action: :buy, method: :post, class: "Purchase__inner-box", local:true do |form|
+          = form.hidden_field :buyer_id, value: current_user.id
+          - if @item.buyer_id.present? || @default_card_information.blank?
+            -# = form.submit value: "売り切れです",class: "Purchase__inner-btn", type:"submit"
+          - else
+            = form.submit value: "購入する",class: "Purchase__inner-btn", type:"submit"
 = render "confirmation-footer"

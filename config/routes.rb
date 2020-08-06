@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'category_item_lists'
+      get 'confirmation'
+      post 'buy'
+      get 'card'
     end
   end
 
@@ -24,5 +27,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:new, :edit]
+  resources :cards, only: [:new, :show, :destroy, :edit] do
+    collection do
+      post 'pay', to: 'cards#pay'
+
+    end
+  end
 end
