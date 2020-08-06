@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   def index
     @items = Item.all.order(id: :desc)
+    @ladies = Item.where(category_id: "1").order(id: :desc)
+    @mens = Item.where(category_id: "199").order(id: :desc)
+    @electricalappliances = Item.where(category_id: "889").order(id: :desc)
+    @hobby = Item.where(category_id: "617").order(id: :desc)
   end
 
   def show
