@@ -588,6 +588,19 @@ body{
 }
 
 
+.Search-Wrapper{
+  width: 100%;
+  background-color: #eee;
+  margin: 40px auto 0;
+  width: 1020px;
+  display: flex;
+}
+
+.Search_container{
+  width: 700px;
+}
+
+
 // フッターの部分
 .Footer{
 padding: 60px 0;
@@ -713,6 +726,41 @@ text-align: center;
     }
 }
 
+
+.LeftSide{
+  width: 270px;
+}
+
+.Search_container{
+  width: 100%;
+}
+
+.Search{
+  &__results{
+    display: flex;
+    flex-wrap: wrap;
+    &__list{
+      width: 250px;
+      height: 300px;
+      &__image{
+        width: 150px;
+        height: 200px;
+        &__price{
+          width: 100%;
+        }
+      }
+      &__content{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.picture{
+  width: 200px;
+  height: 200px;
+}
+
 .Item-Purchase{
   margin-top: 70px;
   color: white;
@@ -832,3 +880,4 @@ text-align: center;
     }
   }
 }
+

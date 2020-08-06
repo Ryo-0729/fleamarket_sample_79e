@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_category_links, only: :category_item_lists
 
   def index
-    @items = Item.all
+    @items = Item.all.order(id: :desc)
   end
 
   def show
@@ -62,11 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:name])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.search(params[:keyword])
   end
 
   # privateの中に入れないでください
