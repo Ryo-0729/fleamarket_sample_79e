@@ -132,12 +132,12 @@
                     .Picup-item__details
                       %ul.Picup-item__ul
                         %li.Picup-item__li
-                          =item.price
+                          =item.price.to_s(:delimited)
                           円 (税込)
                         %li.Picup-item__li
                           = icon('fas', 'star', class: 'star')
                           0  
-
+      
       -# ピックアップブランドの部分
       .Main__picup
         .Main__picup-wrapper
@@ -149,7 +149,7 @@
               - @ladies.first(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
                   = image_tag item.item_images[0].image.to_s
-
+  
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
@@ -163,7 +163,7 @@
                     .Picup-item__details
                       %ul.Picup-item__ul
                         %li.Picup-item__li
-                          =item.price
+                          =item.price.to_s(:delimited)
                           円 (税込)
                         %li.Picup-item__li
                           = icon('fas', 'star', class: 'star')
@@ -193,7 +193,7 @@
                     .Picup-item__details
                       %ul.Picup-item__ul
                         %li.Picup-item__li
-                          =item.price
+                          =item.price.to_s(:delimited)
                           円 (税込)
                         %li.Picup-item__li
                           = icon('fas', 'star', class: 'star')
@@ -223,7 +223,7 @@
                     .Picup-item__details
                       %ul.Picup-item__ul
                         %li.Picup-item__li
-                          =item.price
+                          =item.price.to_s(:delimited)
                           円 (税込)
                         %li.Picup-item__li
                           = icon('fas', 'star' , class: 'star')
@@ -253,7 +253,7 @@
                     .Picup-item__details
                       %ul.Picup-item__ul
                         %li.Picup-item__li
-                          =item.price
+                          =item.price.to_s(:delimited)
                           円
                         %li.Picup-item__li
                           = icon('fas', 'star', class: 'star')
