@@ -51,10 +51,16 @@
         .putup-item-middle__content__index__essential
           必須
       #parent_box
-        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
+        %select#parent_category.select
+          %option{value: 0} 選択してください
+          - @category_parent_array.each do |parent|
+            %option{value: "#{parent.id}"} #{parent.name}
       #children_box
+        %select#children_category.select
+          %option{"data-category": "", value: ""} 選択してください
       #grandchildren_box
-    
+        = f.collection_select :category_id, {}, :id, :name, {include_blank: "選択してください"}, class: "select", id: "grandchildren_category"
+
     #size_box.putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
