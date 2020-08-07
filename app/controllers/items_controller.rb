@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :category_lists, :category_item_lists]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_category_links, only: :category_item_lists
+  before_action :set_card, only: [:confirmation, :buy]
+  before_action :set_item, only: [:confirmation, :buy]
 
   def index
     @items = Item.all.order(id: :desc)
@@ -58,6 +60,45 @@ class ItemsController < ApplicationController
   end
   
   def confirmation
+    if card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_image = "card_visa_b.gif"
+      when "JCB"
+        @card_image = "card_jcb_b.gif"
+      when "MasterCard"
+        @card_image = "card_master_b.gif"
+      when "American Express"
+        @card_image = "card_amex_b.gif"
+      when "Diners Club"
+        @card_image = "card_diners_b.gif"
+      when "Discover"
+        @card_image = "card_dc_b.gif"
+      end
+    end
+  end
+
+  def buy
+    if Item.update(buyer_id: params[:buyer_id], id: params[:id])
+      # redirect_to root_path
+      Payjp::Charge.create(
+      :amount => @item.price, 
+      :customer => @card.customer_id, 
+      :currency => 'jpy', #日本円
+      )
+    
+
+      redirect_to confirmation_item_path, notice: '購入が完了されました'
+    else
+      render :confirmation
+    end
+
+    @address = User.where(id: current_user.id).first
   end
 
   def category_item_lists
@@ -111,6 +152,16 @@ class ItemsController < ApplicationController
 
   def set_category
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end

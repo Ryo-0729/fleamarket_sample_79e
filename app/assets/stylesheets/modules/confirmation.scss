@@ -16,7 +16,7 @@ $font-weight-bold: 600;
 
 // @mixin
 @mixin section-box() {
-    max-width: 375px;
+    max-width: 455px;
     margin: 0px auto;
     padding: 32px 16px;
     border-bottom: 1px solid $background-border-color;
@@ -45,6 +45,7 @@ $font-weight-bold: 600;
 .Main{
   background-color: $background-border-color;
   &__wrapper{
+    position: relative;
     background-color: white;
     height: 800px;
     width: 700px;
@@ -83,7 +84,7 @@ $font-weight-bold: 600;
     }
     &__inner-textbox{
       margin-left: 16px;
-      width: calc(375px - 130px);
+      width: calc(445px - 200px);
     }
     &__inner-heading{
       font-size: 14px;
@@ -165,6 +166,15 @@ $font-weight-bold: 600;
       font-size: 14px;
     }
 
+    .user_info_box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .user_info_boxleft {
+      display: flex;
+    }
+
   // 配送先
   .Delivery{
     @include section-box();
@@ -181,15 +191,23 @@ $font-weight-bold: 600;
       font-size: 14px;
     }
 
+    .Delivery__inner{
+      display: flex;
+      justify-content: space-between;
+    }
+
+
   // 購入ボタン
   .Purchase{
-    max-width: 375px;
+    max-width: 445px;
     margin: 0px auto;
     padding: 32px 16px 56px;
+
+
       &__inner-warning{
         color: $warning-color;
         line-height: 1.5;
-        margin-bottom: 24px;
+        margin-bottom: 2px;
         font-size: 14px;
       }
       &__inner-btn{
@@ -248,3 +266,26 @@ $font-weight-bold: 600;
 }
 
 
+.items-box_photo__sold{
+  width: 0;
+  height: 0;
+  border-width: 120px 120px 0 0;
+  border-color: #ea352d transparent transparent transparent;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-style: solid;
+  &__inner{
+    top: -90px;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
