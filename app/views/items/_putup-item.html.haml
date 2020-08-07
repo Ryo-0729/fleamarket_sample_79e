@@ -50,11 +50,15 @@
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      #parent_box
-        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
-      #children_box
-      #grandchildren_box
-    
+      - if controller.action_name == 'new'
+        #parent_box
+          = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
+        #children_box
+        #grandchildren_box
+      - else
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category", name: "item[category_id]"
+        = f.collection_select :category_id, @category_children_array, :id, :name, {include_blank: "選択してください", selected: @item.category.parent_id}, class: "select", id: "children_category children_box"
+        = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {include_blank: "選択してください", selected: @item.category.id}, class: "select ", id: "grandchildren_category grandchildren_box"
     #size_box.putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title

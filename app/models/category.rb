@@ -20,4 +20,13 @@ class Category < ApplicationRecord
     end
   end
 
+  def set_form_items
+    if children?
+      start_id = self.children.first.id
+      end_id = self.children.last.id
+      items = Item.where(category_id: start_id..end_id)
+      return items
+    end
+  end
+  
 end
