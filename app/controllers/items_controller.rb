@@ -47,6 +47,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
   def update
     if @item.update(item_upgrade_params)
       redirect_to root_path
@@ -114,12 +118,15 @@ class ItemsController < ApplicationController
   # privateの中に入れないでください
   def get_category_children
     @category_children = Category.find(params[:parent_name]).children
+    # 下のコードのコメントアウトを外して上のコードをコメントアウトすれば編集ページで最初から全てのカテゴリーを表示できます。でも出品できなくなる問題が発生します。
+    # @category_children = Category.find(params[:category_id]).children
   end
 
   # privateの中に入れないでください
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+
 
   private
   def item_params
