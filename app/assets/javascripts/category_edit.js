@@ -1,3 +1,4 @@
+// 全てのカテゴリーを最初から表示させるjs 商品編集ページ
 //　オプションを作成
 $(function(){
   function appendOption(category){
@@ -17,7 +18,7 @@ $(function(){
     $('.listing-select-wrapper--edit').append(childSelectHTML);
   }
 
-// 孫カテゴリー用のhtmlを作成。孫カテゴリーのidが欲しいのでname="product[category_id]"としています。
+// 孫カテゴリー用のhtmlを作成。孫カテゴリーのidが欲しいのでname="item[category_id]"としています。
   function appendGrandChild(insertHTML) {
     var grandChildSelect = '';
     grandChildSelect = `<div class="listing-select-wrapper--edit__grandchild">
