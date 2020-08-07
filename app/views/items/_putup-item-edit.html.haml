@@ -65,14 +65,38 @@
           必須
       =f.text_area :text, class: "putup-item-middle__content__item-description", placeholder: "商品の説明（必須 1,000文字以内）", rows: "7"
     
-    .putup-item-middle__content
+    -# .putup-item-middle__content
+    -#   .putup-item-middle__content__index
+    -#     .putup-item-middle__content__index__title
+    -#       カテゴリー
+    -#     .putup-item-middle__content__index__essential
+    -#       必須
+    -#   = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @category_children&.roots}, class: "select"
+      
+    
+    .putup-item-middle__content#category_box
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      = f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select"
+      .listing-select-wrapper--edit
+        .listing-select-wrapper--edit__parent
+          = f.collection_select :category_id, Category.roots, :id, :name ,{prompt: "選択してください", selected:  @item.category.parent.parent_id}, {class: 'listing-select-wrapper--edit__parent--select select', id: 'parent_category_edit', name: "" }
+        .listing-select-wrapper--edit__child
+          = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name ,{prompt: "選択してください", selected: @item.category.parent_id}, {class: 'listing-select-wrapper--edit__child--select select', id: 'child_category_edit', name: "" }
+        .listing-select-wrapper--edit__grandchild
+          = f.collection_select :category_id,@item.category.parent.children, :id, :name ,{prompt: "選択してください", selected: @item.category.id}, {class: 'listing-select-wrapper--edit__grandchild--select select', id: 'grandchild_category_edit', name: "item[category_id]" }
     
+    .putup-item-middle__content
+      .putup-item-middle__content__index
+        .putup-item-middle__content__index__title
+          サイズ
+        .putup-item-middle__content__index__essential
+          任意
+      .pulldown#size_selectbox
+        =f.collection_select :size_id, Size.all, :id, :name, {prompt: "選択してください"}, {class: "select"}
+
     .putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
