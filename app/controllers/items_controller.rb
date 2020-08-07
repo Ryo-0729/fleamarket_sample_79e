@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_category_links, only: :category_item_lists
+  before_action :set_card, only: [:confirmation, :buy]
+  before_action :set_item, only: [:confirmation, :buy]
+
   def index
     @items = Item.all.order(id: :desc)
     ladies = Category.find(1)
@@ -45,6 +49,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
   def update
     if @item.update(item_upgrade_params)
       redirect_to root_path
@@ -57,15 +65,64 @@ class ItemsController < ApplicationController
   end
   
   def confirmation
+    if card.present?
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_image = "card_visa_b.gif"
+      when "JCB"
+        @card_image = "card_jcb_b.gif"
+      when "MasterCard"
+        @card_image = "card_master_b.gif"
+      when "American Express"
+        @card_image = "card_amex_b.gif"
+      when "Diners Club"
+        @card_image = "card_diners_b.gif"
+      when "Discover"
+        @card_image = "card_dc_b.gif"
+      end
+    end
+  end
+
+  def buy
+    if Item.update(buyer_id: params[:buyer_id], id: params[:id])
+      # redirect_to root_path
+      Payjp::Charge.create(
+      :amount => @item.price, 
+      :customer => @card.customer_id, 
+      :currency => 'jpy', #日本円
+      )
+    
+
+      redirect_to confirmation_item_path, notice: '購入が完了されました'
+    else
+      render :confirmation
+    end
+
+    @address = User.where(id: current_user.id).first
   end
 
   def search
-    @items = Item.search(params[:name])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.search(params[:keyword])
   end
+
+  # privateの中に入れないでください
+  def get_category_children
+    @category_children = Category.find(params[:parent_name]).children
+    # 下のコードのコメントアウトを外して上のコードをコメントアウトすれば編集ページで最初から全てのカテゴリーを表示できます。でも出品できなくなる問題が発生します。
+    # @category_children = Category.find(params[:category_id]).children
+  end
+
+  # privateの中に入れないでください
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
 
   private
   def item_params
@@ -83,6 +140,20 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end  
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
+  end
 
   def set_item
     @item = Item.find(params[:id])
