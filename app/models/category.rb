@@ -19,5 +19,5 @@ class Category < ApplicationRecord
       return self.items
     end
   end
-
+  
 end

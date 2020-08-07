@@ -103,7 +103,7 @@
   .Showtop__PriceField
     %span.Showtop__PriceField__Price
       ¥
-      = @category.price
+      = @category.price.to_s(:delimited)
     %span.Showtop__PriceField__Tax (税込)
     %span.Showtop__PriceField__SendFee 送料込み
   .Showtop__Alert
