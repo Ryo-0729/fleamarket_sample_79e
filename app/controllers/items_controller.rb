@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def create
@@ -35,6 +36,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
+      @category_parent_array = Category.where(ancestry: nil)
       render :new
     end
   end
