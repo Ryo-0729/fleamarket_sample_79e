@@ -26,18 +26,22 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @category_parent_array = Category.where(ancestry: nil)
-    @category = Category.find(@item[:category_id])
-    @ancestry_grandchildren = @category[:ancestry]
-    @ancestry_children = @ancestry_grandchildren.to_i.numerator
-    @category_children_array = Category.where(ancestry: @ancestry_children)
-    @category_grandchildren_array = Category.where(ancestry: @ancestry_grandchildren)
     if @item.save
       flash[:notice] = "商品が出品されました"
       redirect_to root_path
     else
       @item = Item.new(item_params)
       @item.item_images.new(item_images_params)
-      render :new
+      if @category.present?
+        @category = Category.find(@item[:category_id])
+        @ancestry_grandchildren = @category[:ancestry]
+        @ancestry_children = @ancestry_grandchildren.to_i.numerator
+        @category_children_array = Category.where(ancestry: @ancestry_children)
+        @category_grandchildren_array = Category.where(ancestry: @ancestry_grandchildren)
+        render :new
+      else
+        render :new
+      end
     end
   end
 

@@ -2,7 +2,7 @@
   = link_to root_path do
     = image_tag "logo.png", size: "185x49"
 .putup-item-middle
-  = form_with model:@item, local:true do |f|
+  = form_with model: @item, local:true do |f|
     = render 'layouts/error_messages', model: f.object
     .putup-item-middle__content
       
@@ -56,9 +56,15 @@
         #children_box
         #grandchildren_box
       - else
-        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category", name: "item[category_id]"
-        = f.collection_select :category_id, @category_children_array, :id, :name, {include_blank: "選択してください", selected: @item.category.parent_id}, class: "select", id: "children_category children_box"
-        = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {include_blank: "選択してください", selected: @item.category.id}, class: "select ", id: "grandchildren_category grandchildren_box"
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select parent_category_box", id: "parent_category"
+        -if @category.present?
+          = f.collection_select :category_id, @category_children_array, :id, :name, {include_blank: "選択してください", selected: @item.category.parent_id}, class: "select", id: "children_category children_box"
+          = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {include_blank: "選択してください", selected: @item.category.id}, class: "select ", id: "grandchildren_category grandchildren_box"
+        -else
+          %select#category.select{name: "category"}
+            %option{selected: "selected", value: "select"} 選択してください
+          %select#category.select{name: "category"}
+            %option{selected: "selected", value: "select"} 選択してください
     #size_box.putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
