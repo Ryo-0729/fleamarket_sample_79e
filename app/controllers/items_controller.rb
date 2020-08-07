@@ -31,12 +31,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @category_parent_array = Category.where(ancestry: nil)
     if @item.save
       flash[:notice] = "商品が出品されました"
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
-      @category_parent_array = Category.where(ancestry: nil)
       render :new
     end
   end
