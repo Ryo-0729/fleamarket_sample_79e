@@ -62,7 +62,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def index2
+  def category_lists
+    @parents = Category.where(ancestry: nil)
   end
   
   def confirmation
