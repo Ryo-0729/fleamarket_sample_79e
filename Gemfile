@@ -77,6 +77,7 @@ gem 'gretel'
 gem 'payjp'
 gem 'pry-byebug'
 gem 'dotenv-rails'
+gem 'ransack'
 
 group :production do
   gem 'unicorn'

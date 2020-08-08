@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy, :confirmation, :buy]
   before_action :set_category_links, only: :category_item_lists
   before_action :set_card, only: [:confirmation, :buy]
+  before_action :set_category, only: [:new, :create]
 
   def index
     @items = Item.all.order(id: :desc)
@@ -165,10 +166,10 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-  private
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
 
 end
+
