@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id, 
       :currency => 'jpy', #日本円
       )
-    
+      flash[:notice] = "購入が完了しました"
 
       redirect_to confirmation_item_path, notice: '購入が完了されました'
     else
