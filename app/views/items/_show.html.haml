@@ -140,67 +140,21 @@
 .ShowBottom
   .ShowUser
     %h3.ShowUser__Title
-      =link_to "#" do
-        靴下屋さんのその他の出品
+      = @item.seller.nickname
+      さんのその他の出品
     .ShowUser__ItemGroup
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 15足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 15足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 15足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
-
-      .ShowUser__ItemGroup__ItemBox
-        =link_to "#" do
-          .ShowUser__ItemGroup__ItemBox__Image
-            = image_tag "131313.jpg", alt: "写真"
-          .ShowUser__ItemGroup__ItemBox__Details
-            %h3.ShowUser__ItemGroup__Details__Title
-              レディース 5足セット
-            .ShowUser__ItemGroup__Details__Price
-              %p ￥1,100
+      - @otheritems.each do |item|
+        .ShowUser__ItemGroup__ItemBox
+          = link_to item_path(item.id), class: "Picup-item" do
+            .ShowUser__ItemGroup__ItemBox__Image
+              = image_tag item.item_images[0].image.to_s, size: "300x250"
+            .ShowUser__ItemGroup__ItemBox__Details
+              %h3.ShowUser__ItemGroup__Details__Title
+                =item.name
+              .ShowUser__ItemGroup__Details__Price
+                %p 
+                  =item.price.to_s(:delimited)
+                  円 (税込)
 
 :javascript
   $(function() {
