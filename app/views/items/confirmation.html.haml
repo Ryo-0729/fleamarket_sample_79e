@@ -3,6 +3,7 @@
   %head
     = stylesheet_link_tag 'modules/confirmation'
     = javascript_include_tag 'application'
+    = render 'layouts/notifications'
 
 
 = render "confirmation-header"
@@ -73,7 +74,7 @@
           %br
           = ("#{@address.post_first_name + @address.post_last_name}")
         .Delivery_right
-          = link_to root_path, class: "Delivery-registration" do
+          = link_to users_path, class: "Delivery-registration" do
             = icon('fas', 'plus-circle')
             %p.Delivery-registration__text 変更する
 

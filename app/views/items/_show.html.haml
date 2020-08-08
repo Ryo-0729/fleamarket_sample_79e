@@ -112,7 +112,7 @@
       = link_to 'この商品を編集する', edit_item_path, method: :get, class: 'Item-Delete'
     - else
       %btn
-        =link_to "#" ,class: 'Item-Purchase' do
+        =link_to confirmation_item_path(@item), class: 'Item-Purchase' do
           購入画面に進む
   .Showtop__Detail
   .Showtop__Footer

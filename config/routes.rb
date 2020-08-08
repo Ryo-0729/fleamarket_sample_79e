@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
       get 'confirmation'
       post 'buy'
       get 'card'
+      get 'set_item'
     end
   end
 

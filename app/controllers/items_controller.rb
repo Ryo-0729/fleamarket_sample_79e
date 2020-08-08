@@ -70,11 +70,12 @@ class ItemsController < ApplicationController
   end
   
   def confirmation
-    if card.present?
+    @address = User.where(id: current_user.id).first
+    if @card.present?
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       # Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
 
       @card_brand = @default_card_information.brand
       case @card_brand
@@ -95,6 +96,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    
     if Item.update(buyer_id: params[:buyer_id], id: params[:id])
       # redirect_to root_path
       Payjp::Charge.create(
@@ -102,12 +104,15 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id, 
       :currency => 'jpy', #日本円
       )
+
       redirect_to confirmation_item_path, notice: '購入が完了されました'
+
     else
       render :confirmation
     end
 
-    @address = User.where(id: current_user.id).first
+    # @address = User.where(id: current_user.id).first
+
   end
 
   def category_item_lists
