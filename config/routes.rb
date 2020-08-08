@@ -19,7 +19,6 @@ Rails.application.routes.draw do
       get 'confirmation'
       post 'buy'
       get 'card'
-      get 'set_item'
     end
   end
 
