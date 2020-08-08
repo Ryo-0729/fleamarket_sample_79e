@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @otheritems = Item.all.limit(12)
     @item = Item.find(params[:id])
     @it = Item.joins(:user).find(params[:id])
     @category = Item.joins(:category).find(params[:id])
@@ -27,6 +28,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def create
@@ -36,6 +38,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
+      @category_parent_array = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -99,14 +102,17 @@ class ItemsController < ApplicationController
       :customer => @card.customer_id, 
       :currency => 'jpy', #日本円
       )
-    
-
       redirect_to confirmation_item_path, notice: '購入が完了されました'
     else
       render :confirmation
     end
 
     @address = User.where(id: current_user.id).first
+  end
+
+  def category_item_lists
+    @items = @category.set_items
+    @items = @items.where(buyer_id: nil)
   end
 
   def search
@@ -142,6 +148,15 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end  
+
+  def set_category_links
+    @category = Category.find(params[:id])
+    if @category.has_children?
+      @category_links = @category.children
+    else
+      @category_links = @category.siblings
+    end
+  end
 
   def set_item
     @item = Item.find(params[:id])
