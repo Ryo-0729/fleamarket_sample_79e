@@ -37,7 +37,16 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
+      if @item[:category_id] != 0
+      @category = Category.find(@item[:category_id])
+      @ancestry_grandchildren = @category[:ancestry]
+      @ancestry_children = @ancestry_grandchildren.to_i.numerator
+      @category_children_array = Category.where(ancestry: @ancestry_children)
+      @category_grandchildren_array = Category.where(ancestry: @ancestry_grandchildren)
       render :new
+      else
+      render :new
+      end
     end
   end
 
@@ -128,11 +137,11 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :shipping_method_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def item_upgrade_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :shipping_method_id, :preparation_id, :seller_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def item_images_params

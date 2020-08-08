@@ -50,17 +50,14 @@
           カテゴリー
         .putup-item-middle__content__index__essential
           必須
-      #parent_box
-        %select#parent_category.select
-          %option{value: 0} 選択してください
-          - @category_parent_array.each do |parent|
-            %option{value: "#{parent.id}"} #{parent.name}
-      #children_box
-        %select#children_category.select
-          %option{"data-category": "", value: ""} 選択してください
-      #grandchildren_box
+      - if @category_children_array.present?
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください", selected: @item.category&.root_id}, class: "select", id: "parent_category"
+        = f.collection_select :category_id, @category_children_array, :id, :name, {include_blank: "選択してください", selected: @item.category.parent_id}, class: "select", id: "children_category"
+        = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {include_blank: "選択してください", selected: @item.category.id}, class: "select", id: "grandchildren_category"
+      - else
+        = f.collection_select :category_id, @category_parent_array, :id, :name, {include_blank: "選択してください"}, class: "select", id: "parent_category"
+        = f.collection_select :category_id, {}, :id, :name, {include_blank: "選択してください"}, class: "select", id: "children_category"
         = f.collection_select :category_id, {}, :id, :name, {include_blank: "選択してください"}, class: "select", id: "grandchildren_category"
-
     #size_box.putup-item-middle__content
       .putup-item-middle__content__index
         .putup-item-middle__content__index__title
