@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy, :confirmation, :buy]
   before_action :set_category_links, only: :category_item_lists
   before_action :set_card, only: [:confirmation, :buy]
+  before_action :set_category, only: [:new, :create]
 
   def index
     @items = Item.all.order(id: :desc)
@@ -126,11 +127,11 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :shipping_method_id, :preparation_id, :seller_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def item_upgrade_params
-    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_id, :seller_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :text, :brand, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :shipping_method_id, :preparation_id, :seller_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def item_images_params
