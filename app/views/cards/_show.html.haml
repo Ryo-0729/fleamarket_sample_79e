@@ -27,6 +27,7 @@
             .destroy__function__linktop
               = form_tag(root_path, method: :get) do
                 %button.top-btn トップページ
+                
             .destroy__function__link
               -# # 削除ボタンを作成、押すとdestroyメソッドが働くように
               = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form',  name: "inputForm") do
