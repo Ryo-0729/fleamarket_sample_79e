@@ -43,10 +43,11 @@
 .image_lists {
   margin: 20px 0;
   .Picup-item{
-    width: calc(100% / 3);
+    width: calc(97% / 3);
     text-decoration: none;
     color: black;
     display: inline-block;
+    margin: 0 5px 15px 0;
     &:hover{
       opacity: 0.7;
     }
@@ -82,4 +83,8 @@
   
     }
   }
+}
+
+img {
+  vertical-align: bottom;
 }
