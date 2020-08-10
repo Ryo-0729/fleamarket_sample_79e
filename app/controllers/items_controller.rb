@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @otheritems = Item.all.limit(12)
+    @otheritems = Item.all.limit(12).order(id: :desc)
     @item = Item.find(params[:id])
     @it = Item.joins(:user).find(params[:id])
     @category = Item.joins(:category).find(params[:id])

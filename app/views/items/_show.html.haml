@@ -59,7 +59,7 @@
           %td
             .CategoryName
               =link_to "#" do
-                = @category.category.name
+                = @item.category.name
 
         %tr.Showtop__Display__ListBox__List
           %th ブランド
@@ -143,14 +143,14 @@
 .ShowBottom
   .ShowUser
     %h3.ShowUser__Title
-      = @item.seller.nickname
-      さんのその他の出品
+      = icon('fas', 'star', class: 'star')
+      注目の商品
     .ShowUser__ItemGroup
       - @otheritems.each do |item|
         .ShowUser__ItemGroup__ItemBox
           = link_to item_path(item.id), class: "Picup-item" do
             .ShowUser__ItemGroup__ItemBox__Image
-              = image_tag item.item_images[0].image.to_s, size: "300x250"
+              = image_tag item.item_images[0].image.to_s, size: "220x220"
             .ShowUser__ItemGroup__ItemBox__Details
               %h3.ShowUser__ItemGroup__Details__Title
                 =item.name
