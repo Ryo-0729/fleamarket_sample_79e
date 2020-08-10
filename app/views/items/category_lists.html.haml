@@ -7,6 +7,30 @@
     -# = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'modules/TopPage', 'modules/category_lists'
     = javascript_include_tag 'application'
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type => "text/javascript"}
+    :javascript
+      $(function(){
+        $('a.parents').each(function(i){
+          $(this).attr('href', '#parent_name' + (i+1));
+        });
+        $('li.parents_title').each(function(i){
+          $(this).attr('id', 'parent_name' + (i+1));
+        });
+        // #で始まるアンカーをクリックした場合に処理
+        $('a[href^=#]').click(function() {
+            // スクロールの速度
+            var speed = 0; // ミリ秒
+            // アンカーの値取得
+            var href= $(this).attr("href");
+            // 移動先を取得
+            var target = $(href == "#" || href == "" ? 'html' : href);
+            // 移動先を数値で取得
+            var position = target.offset().top;
+            // スムーススクロール
+            $('body,html').animate({scrollTop:position}, speed, 'swing');
+            return false;
+        });
+      });
 
 -# 上記class名重複防止の記述
 
@@ -17,16 +41,24 @@
     .main_index
       .parent_category
         - @parents.each do |parent|
-          %li.parents= link_to "#{parent.name}", category_item_lists_item_path(parent)
+          -# %li.parents= link_to "#{parent.name}"
+          %li.parents
+            %a.parents #{parent.name}
+
         %ul.categories
           - @parents.each do |parent|
             %li.parents_title= link_to "#{parent.name}", category_item_lists_item_path(parent)
+            -# %li.parents_title
+            -#   %a.parent_top{href: category_item_lists_item_path(parent)} #{parent.name}
             %ul.categories__children
               - parent.children.each do |child|
                 %li.childern= link_to "#{child.name}", category_item_lists_item_path(child)
                 %ul.categories__grandchildren
                   - child.children.each do |grandchild|
                     %li= link_to "#{grandchild.name}", category_item_lists_item_path(grandchild)
+              %ul.return_top
+                %li
+                  %a.button{href: "#index"} ▲ トップに戻る
 
 =render "footer-img"
 
