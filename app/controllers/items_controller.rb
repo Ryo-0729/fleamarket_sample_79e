@@ -116,7 +116,7 @@ class ItemsController < ApplicationController
 
   def category_item_lists
     @items = @category.set_items
-    @items = @items.where(buyer_id: nil)
+    @items = @items.where(buyer_id: nil).order(created_at: :desc)
   end
 
   def search
