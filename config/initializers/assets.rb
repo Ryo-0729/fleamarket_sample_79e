@@ -21,4 +21,5 @@ Rails.application.config.assets.precompile += %w( modules/confirmation.css )
 Rails.application.config.assets.precompile += %w( modules/items.css )
 Rails.application.config.assets.precompile += %w( modules/category_lists.css )
 Rails.application.config.assets.precompile += %w( modules/category_item_lists.css )
+Rails.application.config.assets.precompile += %w( modules/login.css )
 

@@ -1,0 +1,110 @@
+.new-signup {
+  display: block;
+  background: whitesmoke;
+  .new-signup-content {
+    margin: 0 auto;
+    width: 460px;
+    background: white;
+    text-align: center;
+    padding-top: 30px;
+    border-bottom: 1px solid whitesmoke;
+    ＆__text {
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      font-size: 14px;
+    }
+    &__btn {
+      background: #0199E8;
+      border: 1px solid #0199E8;
+      color: #fff;
+      line-height: 40px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 0 60px;
+      margin-bottom: 30px;
+      .btn {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+
+.sns-login {
+  background: whitesmoke;
+  .sns-content {
+    width: 460px;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+    padding-top: 20px;
+    a{
+      text-decoration: none;
+    }
+    &__btn1 {
+      color: #fff;
+      border: 1px solid transparent;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 20px 60px;
+      background: #385185;
+      color: #fff;
+    }
+    &__btn2 {
+      border: #979797 solid 1px;
+      color: #333;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 0 60px;
+      text-decoration: none;
+    } 
+  }
+}
+
+
+
+.login-body {
+  display: block;
+  background: whitesmoke;
+  .login {
+    width: 460px;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+    padding-top: 30px;
+    .input-login {
+      width: 300px;
+      margin: 20px 0 0;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      line-height: 1.5;
+      font-size: 16px;
+      height: 30px;
+    }
+    &__actions {
+      margin: 0 60px;
+      padding-bottom: 30px;
+      .loginbtn {
+        margin: 24px 0 0;
+        background: red;
+        border: 1px solid red;
+        color: #fff;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+    &__forget {
+      text-align: left;
+      padding-left: 60px;
+      padding-bottom: 20px;
+      .forget {
+        color: #0199E8;
+        text-decoration: none;
+      }
+    }
+  } 
+}

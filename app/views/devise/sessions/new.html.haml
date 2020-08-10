@@ -1,0 +1,55 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FleamarketSample79e
+    = csrf_meta_tags
+    = csp_meta_tag
+    -# = stylesheet_link_tag '/modules/users.scss', media: 'all', 'data-turbolinks-track': 'reload'
+    -# - content_for :css do
+    = stylesheet_link_tag 'modules/login'
+    = javascript_include_tag 'application'
+
+
+.new-signup
+  .new-signup-content
+    .new-signup-content__text
+      アカウントをお持ちでない方はこちら
+    .new-signup-content__btn
+      = link_to "新規会員登録", new_user_registration_path, class: 'btn'
+      
+
+.sns-login
+  .sns-content
+    = link_to "#" , {class: "mail_text"} do
+      .sns-content__btn1
+        <i class="fab fa-facebook-square"></i>
+        Facebookでログイン
+    = link_to "#" , {class: "mail_text"} do
+      .sns-content__btn2
+        <i class="fab fa-google"></i>
+        Googleでログイン
+
+.login-body
+  .login
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .login__email
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-login"
+      .login__password
+        = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "input-login"
+      .login__actions
+        = f.submit "ログイン", class: "loginbtn"
+        //= render "devise/shared/links"
+      .login__forget
+        = link_to "パスワードをお忘れ方", new_password_path(resource_name), class: "forget"
+
+      .single-footer
+        .single-footer__content
+          .single-footer__content__1
+            プライバシーポリシー
+          .single-footer__content__2
+            メルカリ利用規約
+          .single-footer__content__3
+            特定商取引に関する表記
+        .single-footer__text
+          © 2019 Mercari

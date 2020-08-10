@@ -78,6 +78,7 @@ gem 'payjp'
 gem 'pry-byebug'
 gem 'dotenv-rails'
 gem 'ransack'
+gem 'erb2haml'
 
 group :production do
   gem 'unicorn'
