@@ -41,15 +41,12 @@
     .main_index
       .parent_category
         - @parents.each do |parent|
-          -# %li.parents= link_to "#{parent.name}"
           %li.parents
             %a.parents #{parent.name}
 
         %ul.categories
           - @parents.each do |parent|
             %li.parents_title= link_to "#{parent.name}", category_item_lists_item_path(parent)
-            -# %li.parents_title
-            -#   %a.parent_top{href: category_item_lists_item_path(parent)} #{parent.name}
             %ul.categories__children
               - parent.children.each do |child|
                 %li.childern= link_to "#{child.name}", category_item_lists_item_path(child)
