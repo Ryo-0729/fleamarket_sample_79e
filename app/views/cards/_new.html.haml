@@ -10,7 +10,13 @@
           %span
             必須
           = text_field_tag "card_number", "", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+        
         .CardImage
+          = image_tag "cards/card_visa_b.gif",width:'50',height:'50', alt:'master-card'
+          = image_tag "cards/card_master_b.gif",width:'50',height:'50', alt:'master-card'
+          = image_tag "cards/card_jcb_b.gif",width:'50',height:'50', alt:'master-card'
+          = image_tag "cards/card_amex_b.gif",width:'50',height:'50', alt:'master-card'
+          = image_tag "cards/card_diners_b.gif",width:'50',height:'50', alt:'master-card'
 
       .UserInfo
         .CardNumber

@@ -87,7 +87,8 @@
         = form_with url: buy_item_path, action: :buy, method: :post, class: "Purchase__inner-box", local:true do |form|
           = form.hidden_field :buyer_id, value: current_user.id
           - if @item.buyer_id.present? || @default_card_information.blank?
-            -# = form.submit value: "売り切れです",class: "Purchase__inner-btn", type:"submit"
+            .Items_not
+              %p.Item_not 購入できません
           - else
             = form.submit value: "購入する",class: "Purchase__inner-btn", type:"submit"
 = render "confirmation-footer"
