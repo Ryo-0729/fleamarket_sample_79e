@@ -9,6 +9,9 @@
       .Showtop__Display__Image__Main
         -if @item.item_images[0].present?
           = image_tag "#{@item.item_images[0].image}", alt: '写真', size: '300x300', class: 'mainImage'
+            -if @item.buyer_id.present? 
+            .items-box_photo__sold
+              .items-box_photo__sold__inner SOLD
         - else
       .Showtop__Display__Image__GroupLists
         .Showtop__Display__Image__GroupLists__List
