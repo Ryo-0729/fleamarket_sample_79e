@@ -96,10 +96,8 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    
-    if Item.update(buyer_id: params[:buyer_id])
-    # if Item.update(buyer_id: params[:buyer_id], id: params[:id])
-      # redirect_to root_path
+    if @item.update(buyer_id: params[:buyer_id])
+        # redirect_to root_path
       Payjp::Charge.create(
       :amount => @item.price, 
       :customer => @card.customer_id, 
