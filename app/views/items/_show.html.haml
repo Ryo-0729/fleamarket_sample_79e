@@ -59,6 +59,9 @@
           %td
             .CategoryName
               =link_to "#" do
+                - unless @item_category[:ancestry] == nil
+                  = @item_parent_category.name
+                  = @item_children_category.name
                 = @category.category.name
 
         %tr.Showtop__Display__ListBox__List
