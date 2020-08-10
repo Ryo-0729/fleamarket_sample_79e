@@ -23,6 +23,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @it = Item.joins(:user).find(params[:id])
     @category = Item.joins(:category).find(params[:id])
+    @item_category_id = @item[:category_id]
+    @item_category = Category.find(@item_category_id)
+    unless @item_category[:ancestry] == nil
+      @item_children_category = Category.find(@item_category.parent_id)
+      @item_parent_category = Category.find(@item_category.root_id)
+    end
   end
 
   def new

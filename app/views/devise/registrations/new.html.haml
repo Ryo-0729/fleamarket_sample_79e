@@ -29,7 +29,7 @@
               %p.important
                 必須
             .input_default
-              = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "input-default"
+              = f.text_field :nickname, autofocus: true, placeholder: "例）メルカリ太郎", class: "input-default"
 
           .content_form
             .content_name
@@ -37,7 +37,7 @@
               %p.important
                 必須
             .input_default
-              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
+              = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "input-default"
 
           .content_form
             .content_name
