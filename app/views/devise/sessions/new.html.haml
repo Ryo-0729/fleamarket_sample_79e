@@ -10,6 +10,10 @@
     = stylesheet_link_tag 'modules/login'
     = javascript_include_tag 'application'
 
+.single-header
+  .single-header__title
+    =link_to "/", class: "title__btn" do
+      = image_tag "logo.png", size: "200x50", alt: "test"
 
 .new-signup
   .new-signup-content
@@ -43,13 +47,14 @@
       .login__forget
         = link_to "パスワードをお忘れ方", new_password_path(resource_name), class: "forget"
 
-      .single-footer
-        .single-footer__content
-          .single-footer__content__1
-            プライバシーポリシー
-          .single-footer__content__2
-            メルカリ利用規約
-          .single-footer__content__3
-            特定商取引に関する表記
-        .single-footer__text
-          © 2019 Mercari
+.single-footer
+  .single-footer__content
+    .single-footer__content__1
+      ♦️プライバシーポリシー
+      %br>/
+      ♦️メルカリ利用規約
+      %br>/
+      ♦️特定商取引に関する表記
+  .single-footer__image
+    =link_to "/", class: "title__btn" do
+      = image_tag "logo.png", size: "100x50", alt: "test"

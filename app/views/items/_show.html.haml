@@ -57,12 +57,29 @@
         %tr.Showtop__Display__ListBox__List
           %th カテゴリー
           %td
-            .CategoryName
-              =link_to "#" do
-                - unless @item_category[:ancestry] == nil
+            - if @item_category[:ancestry] != nil
+              .CategoryName
+                =link_to "#" do
                   = @item_parent_category.name
+              .CategoryName
+                =link_to "#" do
+                  >
                   = @item_children_category.name
-                = @category.category.name
+              .CategoryName
+                =link_to "#" do
+                  >
+                  = @category.category.name
+            - elsif @item.category.parent.present?
+              .CategoryName
+                =link_to "#" do
+                  = @item_parent_category.name
+              .CategoryName
+                =link_to "#" do
+                  = @item_children_category.name
+            - else
+              .CategoryName
+                =link_to "#" do
+                  = @category.category.name
 
         %tr.Showtop__Display__ListBox__List
           %th ブランド
@@ -105,23 +122,41 @@
             .CategoryName
               =link_to "#" do
                 = @category.preparation.name
+                
+  - if @item.buyer_id.present?
+    .Showtop__PriceField
+      %span.Showtop__PriceField__Price
+        ¥
+        = @category.price.to_s(:delimited)
+      %span.Showtop__PriceField__Tax (税込)
+      %span.Showtop__PriceField__SendFee 送料込み
+    .Showtop__Alert
+      - if user_signed_in? && current_user.id == @item.user_id
+        %h3.Item-Delete
+          売却済み
+      - else
+        %h3.Item-Delete
+          売り切れ
+    .Showtop__Detail
+    .Showtop__Footer
 
-  .Showtop__PriceField
-    %span.Showtop__PriceField__Price
-      ¥
-      = @category.price.to_s(:delimited)
-    %span.Showtop__PriceField__Tax (税込)
-    %span.Showtop__PriceField__SendFee 送料込み
-  .Showtop__Alert
-    - if user_signed_in? && current_user.id == @item.user_id
-      = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
-      = link_to 'この商品を編集する', edit_item_path, method: :get, class: 'Item-Delete'
-    - else
-      %btn
-        =link_to confirmation_item_path(@item), class: 'Item-Purchase' do
-          購入画面に進む
-  .Showtop__Detail
-  .Showtop__Footer
+  - else
+    .Showtop__PriceField
+      %span.Showtop__PriceField__Price
+        ¥
+        = @category.price.to_s(:delimited)
+      %span.Showtop__PriceField__Tax (税込)
+      %span.Showtop__PriceField__SendFee 送料込み
+    .Showtop__Alert
+      - if user_signed_in? && current_user.id == @item.user_id
+        = link_to 'この商品を削除する', item_path, method: :delete, class: 'Item-Delete'
+        = link_to 'この商品を編集する', edit_item_path, method: :get, class: 'Item-Delete'
+      - else
+        %btn
+          =link_to confirmation_item_path(@item), class: 'Item-Purchase2' do
+            購入する
+    .Showtop__Detail
+    .Showtop__Footer
 
 .MessageField
   .ShowMessage
