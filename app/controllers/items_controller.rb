@@ -130,16 +130,9 @@ class ItemsController < ApplicationController
   end
 
   # privateの中に入れないでください
-  # def get_category_children
-    # @category_children = Category.find(params[:parent_name]).children
-    # 下のコードのコメントアウトを外して上のコードをコメントアウトすれば編集ページで最初から全てのカテゴリーを表示できます。でも出品できなくなる問題が発生します。
-    # @category_children_edit = Category.find(params[:category_id]).children
-  # end
-
   def get_category_children
     @category_children = Category.find(params[:parent_name]).children
   end
-
 
   def get_category_children_edit
     @category_children_edit = Category.find(params[:category_id]).children
