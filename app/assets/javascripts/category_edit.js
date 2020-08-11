@@ -35,9 +35,9 @@ $(function(){
 　　// 親カテゴリーのデータを取得して変数にいれる
     var parentCategoryEdit = document.getElementById('parent_category_edit').value;
     if (parentCategoryEdit != '選択してください'){
-　　　　// ajaxの処理。urlを/products/get_category_childrenにしないとrenderでeditに戻された時に上手く働かない
+　　　　// ajaxの処理。urlを/items/get_category_childrenにしないとrenderでeditに戻された時に上手く働かない
       $.ajax({
-        url: '/items/get_category_children',
+        url: '/items/get_category_children_edit',
         type: 'GET',
         data: { category_id: parentCategoryEdit },
         dataType: 'json'
