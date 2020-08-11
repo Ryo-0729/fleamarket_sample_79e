@@ -21,14 +21,18 @@
           .post__drop__box__container
             .prev-content
 
-            
+              - n = -1
               - @item.item_images.each do |image|
                 .preview-box
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
                     .update-box
-                      %label.edit-btn 編集
+                      %label.edit-btn
+                        編集
+                        - n += 1
+                        .js-file_group{"data-index": "#{n}"}
+                          %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][#{n}][image]", id: "item_item_images_attributes_#{n}_image" }
                     .delete-box
                       .delete-btn
                         %span 削除

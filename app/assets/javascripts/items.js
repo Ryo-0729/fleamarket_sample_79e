@@ -15,6 +15,7 @@ $(function(){
 
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る
+    console.log('#image-box')
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
@@ -31,7 +32,13 @@ $(function(){
                     </div>
                     <div class="lower-box">
                       <div class="update-box">
-                        <label class="edit_btn">編集</label>
+                        <label class="edit_btn">編集
+                          <div data-index="${count}" class="js-file_group">
+                            <input class="hidden-field" type="file"
+                            name="item[item_images_attributes][${count}][image]"
+                            id="item_item_images_attributes_${count}_image">
+                          </div>
+                        </label>
                       </div>
                       <div class="delete-box" id="delete_btn_${count}">
                         <span>削除</span>

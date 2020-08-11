@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy, :confirmation, :buy]
   before_action :set_category_links, only: :category_item_lists
   before_action :set_card, only: [:confirmation, :buy]
-  before_action :set_category, only: [:new, :create]
+  before_action :set_category, only: [:new, :create, :edit, :update]
 
   def index
     @items = Item.all.order(id: :desc)
@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def create
@@ -44,7 +43,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @item.item_images.new(item_images_params)
-      @category_parent_array = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -60,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @category_parent_array = Category.where(ancestry: nil)
+    
   end
 
   def update
