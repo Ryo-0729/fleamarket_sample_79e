@@ -11,11 +11,15 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_children_edit', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      
+      get 'get_category_children_render', defaults: { format: 'json' }
+      get 'get_category_grandchildren_render', defaults: { format: 'json' }
+
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_category_children_render', defaults: { format: 'json' }
+      get 'get_category_grandchildren_render', defaults: { format: 'json' }
       get 'category_item_lists'
       get 'confirmation'
       post 'buy'
