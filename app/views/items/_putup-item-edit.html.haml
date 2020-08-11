@@ -75,11 +75,11 @@
  
       .listing-select-wrapper--edit
         .listing-select-wrapper--edit__parent
-          = f.collection_select :category_id, Category.roots, :id, :name ,{prompt: "選択してください", selected:  @item.category.parent.parent_id}, {class: 'listing-select-wrapper--edit__parent--select select', id: 'parent_category_edit', name: "" }
+          = f.collection_select :category_id, Category.roots, :id, :name ,{prompt: "選択してください", selected:  @item.category.root_id}, {class: 'listing-select-wrapper--edit__parent--select select', id: 'parent_category_edit', name: "" }
         .listing-select-wrapper--edit__child
-          = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name ,{prompt: "選択してください", selected: @item.category.parent_id}, {class: 'listing-select-wrapper--edit__child--select select', id: 'child_category_edit', name: "" }
+          = f.collection_select :category_id, @item.category.root.children, :id, :name ,{prompt: "選択してください", selected: @item.category.parent_id}, {class: 'listing-select-wrapper--edit__child--select select', id: 'child_category_edit', name: "" }
         .listing-select-wrapper--edit__grandchild
-          = f.collection_select :category_id,@item.category.parent.children, :id, :name ,{prompt: "選択してください", selected: @item.category.id}, {class: 'listing-select-wrapper--edit__grandchild--select select', id: 'grandchild_category_edit', name: "item[category_id]" }
+          = f.collection_select :category_id,@item.category.siblings, :id, :name ,{prompt: "選択してください", selected: @item.category.id}, {class: 'listing-select-wrapper--edit__grandchild--select select', id: 'grandchild_category_edit', name: "item[category_id]" }
 
     .putup-item-middle__content
       .putup-item-middle__content__index
