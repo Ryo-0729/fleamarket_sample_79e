@@ -122,21 +122,28 @@
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
-                    .items__sold
-                      .items__sold__inner
-                        SOLD
-                        
-                  .Picup-item__body
-                    %h3 
-                      =item.name
-                    .Picup-item__details
-                      %ul.Picup-item__ul
-                        %li.Picup-item__li
-                          =item.price.to_s(:delimited)
-                          円 (税込)
-                        %li.Picup-item__li
-                          = icon('fas', 'star', class: 'star')
-                          0  
+                    .Picup-item__body__2
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            SOLD OUT
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
+                  - else
+                    .Picup-item__body
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            =item.price.to_s(:delimited)
+                            円 (税込)
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
       
       -# ピックアップブランドの部分
       .Main__picup
@@ -149,25 +156,32 @@
               - @ladies.first(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
                   = image_tag item.item_images[0].image.to_s
-  
+
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
-                    .items__sold
-                      .items__sold__inner
-                        SOLD
-
-                  .Picup-item__body
-                    %h3 
-                      =item.name
-                    .Picup-item__details
-                      %ul.Picup-item__ul
-                        %li.Picup-item__li
-                          =item.price.to_s(:delimited)
-                          円 (税込)
-                        %li.Picup-item__li
-                          = icon('fas', 'star', class: 'star')
-                          0  
+                    .Picup-item__body__2
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            SOLD OUT
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
+                  - else
+                    .Picup-item__body
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            =item.price.to_s(:delimited)
+                            円 (税込)
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
 
       .Main__picup
         .Main__picup-wrapper
@@ -183,21 +197,28 @@
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
-                    .items__sold
-                      .items__sold__inner
-                        SOLD
-
-                  .Picup-item__body
-                    %h3 
-                      =item.name
-                    .Picup-item__details
-                      %ul.Picup-item__ul
-                        %li.Picup-item__li
-                          =item.price.to_s(:delimited)
-                          円 (税込)
-                        %li.Picup-item__li
-                          = icon('fas', 'star', class: 'star')
-                          0  
+                    .Picup-item__body__2
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            SOLD OUT
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
+                  - else
+                    .Picup-item__body
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            =item.price.to_s(:delimited)
+                            円 (税込)
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
 
       .Main__picup
         .Main__picup-wrapper
@@ -213,21 +234,28 @@
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
-                    .items__sold
-                      .items__sold__inner
-                        SOLD
-
-                  .Picup-item__body
-                    %h3 
-                      =item.name
-                    .Picup-item__details
-                      %ul.Picup-item__ul
-                        %li.Picup-item__li
-                          =item.price.to_s(:delimited)
-                          円 (税込)
-                        %li.Picup-item__li
-                          = icon('fas', 'star' , class: 'star')
-                          0  
+                    .Picup-item__body__2
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            SOLD OUT
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
+                  - else
+                    .Picup-item__body
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            =item.price.to_s(:delimited)
+                            円 (税込)
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
 
       .Main__picup
         .Main__picup-wrapper
@@ -239,26 +267,32 @@
               - @hobby.first(4).each do |item|
                 = link_to item_path(item.id), class: "Picup-item" do
                   = image_tag item.item_images[0].image.to_s
-
+                  
                   -# buyer_idがある時は sold out を表示
                   - @item = Item.find(item.id)
                   - if @item.buyer_id.present?
-                    .items__sold
-                      .items__sold__inner
-                        SOLD
-
-                  .Picup-item__body
-                    %h3 
-                      =item.name
-                    .Picup-item__details
-                      %ul.Picup-item__ul
-                        %li.Picup-item__li
-                          =item.price.to_s(:delimited)
-                          円
-                        %li.Picup-item__li
-                          = icon('fas', 'star', class: 'star')
-                          0  
-                      %p.Picup-item__note (税込)
+                    .Picup-item__body__2
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            SOLD OUT
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
+                  - else
+                    .Picup-item__body
+                      %h3 
+                        =item.name
+                      .Picup-item__details
+                        %ul.Picup-item__ul
+                          %li.Picup-item__li
+                            =item.price.to_s(:delimited)
+                            円 (税込)
+                          %li.Picup-item__li
+                            = icon('fas', 'star', class: 'star')
+                            0  
 
       -# 今すぐ無料ダウンロードの部分
       .Main__lead
