@@ -15,7 +15,6 @@ $(function(){
 
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る
-    console.log('#image-box')
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
@@ -136,6 +135,7 @@ $(function(){
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
       $(`#preview-box__${id}`).remove();
+      var count = count - 1
 
       
       //新規登録時と編集時の場合分け==========================================================
