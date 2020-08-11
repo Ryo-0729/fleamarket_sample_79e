@@ -1,3 +1,13 @@
+.single-header{
+  display: flex;
+  justify-content: center;
+  background: whitesmoke;
+  &__title{
+    display: block;
+    background: whitesmoke;
+    padding: 20px;
+  }
+}
 .new-signup {
   display: block;
   background: whitesmoke;
@@ -30,6 +40,7 @@
 }
 
 .sns-login {
+  display: block;
   background: whitesmoke;
   .sns-content {
     width: 460px;
@@ -61,8 +72,6 @@
     } 
   }
 }
-
-
 
 .login-body {
   display: block;
@@ -107,4 +116,20 @@
       }
     }
   } 
+}
+
+.single-footer{
+  padding: 15px;
+  display: block;
+  background: whitesmoke;
+  &__content{
+    display: flex;
+    justify-content: space-around;
+    background: whitesmoke;
+    padding: 20px;
+  }
+  &__image{
+    display: flex;
+    justify-content: space-around;
+  }
 }

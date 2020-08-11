@@ -792,7 +792,20 @@ text-align: center;
   display: block;
   background: #ea352d;
   text-align: center;
-  
+}
+
+.Item-Purchase2{
+  margin-top: 70px;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 60px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  background: blue;
+  text-align: center;
 }
 
 .Item-Delete{
@@ -887,13 +900,13 @@ text-align: center;
         word-wrap: break-word;
       }
     }
-  }
+  // }
 
   //file_fieldのcss
-  .hidden-content {
-    .hidden-field {
-      display: none;
-    }
+  // .hidden-content {
+  //   .hidden-field {
+  //     display: none;
+  //   }
     .hidden-checkbox {
       display: none;
     }
