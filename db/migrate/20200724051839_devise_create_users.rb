@@ -23,7 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string       :post_last_name,       null:false, default: ""
       t.string       :post_first_name_kana, null:false, default: ""
       t.string       :post_last_name_kana,  null:false, default: ""
-      t.string      :post_cord,          null:false, default: ""
+      t.string       :post_cord,          null:false, default: ""
       t.string       :city,               null:false, default: ""
       t.string       :address,            null:false, default: ""
       t.text         :building
