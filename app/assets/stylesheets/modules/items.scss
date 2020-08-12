@@ -869,16 +869,50 @@ text-align: center;
     }
   }
 
-  //file_fieldのcss
   .hidden-content {
-    .hidden-field {
-      display: none;
-    }
-    .hidden-checkbox {
-      display: none;
-    }
+    padding: 10px;
+    display: flex;
   }
+  .hidden-content-box {
+    padding:2px;
+    width: 100px;
+    background-color: yellow;
+    margin: 1px;
+  }
+  
+  .hidden-content-boxs {
+    padding: 2px;
+    width:100px;
+    background-color: #0099e8;
+    display: flex;
+   
+  }
+  // file_fieldのcss
+  // .image_input_btn {
+  //   display: block;
+  //   background-color: #228B22;
+  //   width: 120px;
+  //   height: 30px;
+  //   margin-top: 10px;
+  //   margin-left: 10px;
+  //   border-radius: 5px;
+  //   padding-top: 2px;
+  //   color: white;
+  //   text-decoration: none;
+  //   text-align: center;
+  // }
+  .hidden-field {
+    color: #fff;
+    font-size: 1px;
+    // visibility: hidden；
+    // display: none;
+  }
+  // .hidden-checkbox {
+  //   display: none;
+  // }
+  
 }
+
 
 /////////////////image Sold/////////////////////
 .items-box_photo__sold{
@@ -904,4 +938,3 @@ text-align: center;
     font-weight: 600;
   }
 }
-

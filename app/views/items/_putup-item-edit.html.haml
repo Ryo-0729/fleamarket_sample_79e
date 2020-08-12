@@ -21,7 +21,6 @@
           .post__drop__box__container
             .prev-content
 
-            
               - @item.item_images.each do |image|
                 .preview-box
                   .upper-box
@@ -34,20 +33,24 @@
                         %span 削除
             .label-content
 
-            
               = f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
                 %pre.label-box__text-visible クリックしてファイルをアップロード
             .hidden-content
               = f.fields_for :item_images do |i|
-
-                //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
-                = i.file_field :image, class: "hidden-field"
-                = i.check_box:_destroy, class: "hidden-checkbox"
+                .hidden-content-box
+                  //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+                  = f.label :image, "画像をアップロード", class: "image_input_btn" do
+  
+                    = i.file_field :image, class: "hidden-field"
+                  
+                    = i.check_box:_destroy, class: "hidden-checkbox"
                 
               //5つのfile_fieldを準備するに当たって、足りない分を表示
-              - @item.item_images.length.upto(4) do |i|
-                %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
-        
+              .hidden-content-boxs
+              = f.label :image, "画像をアップロード", class: "image_input_btn" do
+                - @item.item_images.length.upto(4) do |i|
+                  %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
 
     .putup-item-middle__content
       .putup-item-middle__content__index
