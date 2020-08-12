@@ -21,14 +21,14 @@
           .post__drop__box__container
             .prev-content
 
-            
+              
               - @item.item_images.each do |image|
                 .preview-box
                   .upper-box
                     = image_tag image.image.url, width: "112", height: "112", alt: "preview"
                   .lower-box
                     .update-box
-                      = f.label :"item_images_attributes_#{@item.item_images.length - 1}_image", class: "label-box-edit", id: "label-box-edit--#{@item.item_images.length - 1}" do
+                      = f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box-edit", id: "label-box-edit--#{@item.item_images.length}" do
                         .edit-btn 編集
                     .delete-box
                       .delete-btn

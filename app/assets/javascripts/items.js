@@ -174,7 +174,8 @@ $(function(){
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 5){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
-        } 
+        }
+        
       }
       //=============================================================================
     });
@@ -186,8 +187,28 @@ $(function(){
       setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-     
+      
       $('.label-box-edit').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
       
     });
+
+    $(document).on('click', '.label-content', function() {
+      if($(`#item_item_images_attributes_0__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--0`,for: `item_item_images_attributes_0_image`});
+      }
+      if($(`#item_item_images_attributes_1__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--1`,for: `item_item_images_attributes_1_image`});
+      }
+      if($(`#item_item_images_attributes_2__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--2`,for: `item_item_images_attributes_2_image`});
+      }
+      if($(`#item_item_images_attributes_3__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--3`,for: `item_item_images_attributes_3_image`});
+      }
+      if($(`#item_item_images_attributes_4__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--4`,for: `item_item_images_attributes_4_image`});
+      }
+      
+    });
   });
+
