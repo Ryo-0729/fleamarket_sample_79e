@@ -143,6 +143,13 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def get_category_children_render
+    @category_children_render = Category.find(params[:parent_render]).children
+  end
+
+  def get_category_grandchildren_render
+    @category_grandchildren_render = Category.find(params[:child_id_render]).children
+  end
 
   private
   def item_params

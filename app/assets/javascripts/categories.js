@@ -104,3 +104,115 @@ $(function(){
     }
   });
 });
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//render用
+$(function(){
+  // カテゴリーセレクトボックスのオプションを作成
+  function appendOption(category){
+    let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+    return html;
+  }
+
+  //子カテゴリーのHTML
+  function appendChildrenBox(insertHTML) {
+    let childSelectHtml = '';
+    childSelectHtml = 
+      `<select class="select" id="children_category_render">
+         <option value="" data-category="" >選択してください</option>
+         ${insertHTML}</select>`;
+    $('#children_box_render').append(childSelectHtml);
+  }
+
+  //孫カテゴリーのHTML
+  function appendGrandchildrenBox(insertHTML) {
+    let grandchildSelectHtml = '';
+    grandchildSelectHtml = 
+      `<select class="select" id="grandchildren_category_render" name="item[category_id]">
+        <option value="" data-category="" >選択してください</option>
+        ${insertHTML}</select>`;
+    $('#grandchildren_box_render').append(grandchildSelectHtml);
+  }
+
+  //親カテゴリー選択によるイベント
+  $(document).on("change","#parent_category_render", function() {
+    //選択された親カテゴリーの名前取得 → コントローラーに送る
+    let parentCategory_render =  $("#parent_category_render").val();
+    if (parentCategory_render != "") {
+      $.ajax( {
+        type: 'GET',
+        url: '/items/get_category_children_render',
+        data: { parent_render: parentCategory_render },
+        dataType: 'json'
+      })
+      .done(function(children) {
+        //親カテゴリーが変更されたら、子/孫カテゴリー、サイズを削除し、初期値にする
+        $("#children_box_render").empty();
+        $("#grandchildren_box_render").empty();
+        $('.size_box').val('');
+        $('#size_box').css('display', 'none');
+        let insertHTML = '';
+        children.forEach(function(child) {
+          insertHTML += appendOption(child);
+        });
+        appendChildrenBox(insertHTML);
+      })
+      .fail(function() {
+        alert('error：子カテゴリーの取得に失敗');
+      })
+    }else{
+      $("#children_box_render").empty();
+      $("#grandchildren_box_render").empty();
+      $('.size_box').val('');
+      $('#size_box').css('display', 'none');
+    }
+  });
+
+  //子カテゴリー選択によるイベント発火
+  $(document).on('change', '#children_category_render', function() {
+    //選択された子カテゴリーidを取得
+    let childId_render = $('#children_category_render').val();
+    console.log(childId_render)
+    //子カテゴリーが初期値でない場合
+    if (childId_render != ""){
+      $.ajax({
+        url: '/items/get_category_grandchildren_render',
+        type: 'GET',
+        data: { child_id_render: childId_render },
+        datatype: 'json'
+      })
+      .done(function(grandchildren) {
+        if (grandchildren.length != 0) {
+          $("#grandchildren_box_render").empty();
+          $('.size_box').val('');
+          $('#size_box').css('display', 'none');
+          let insertHTML = '';
+          grandchildren.forEach(function(grandchild) {
+            insertHTML += appendOption(grandchild);
+          });
+          appendGrandchildrenBox(insertHTML);
+        }
+      })
+      .fail(function() {
+        alert('error:孫カテゴリーの取得に失敗');
+      })
+    }else{
+      $("#grandchildren_box_render").empty();
+      $('.size_box').val('');
+      $('#size_box').css('display', 'none');      
+    }
+  });
+  //孫カテゴリー選択によるイベント発火
+  $(document).on('change', '#grandchildren_box_render', function() {
+    let grandchildId = $('#grandchildren_category_render').data('category');
+    if (grandchildId != "") {
+      $('.size_box').val('');
+      $('#size_box').css('display', 'block');
+    } else {
+      $('.size_box').val('');
+      $('#size_box').css('display', 'none');
+    }
+  });
+});
+//////////////////////////////////////////////////////////////////////////////////////////
