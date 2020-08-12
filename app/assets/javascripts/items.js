@@ -21,6 +21,8 @@ $(function(){
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
   });
 });
+
+
   $(function(){
 
     //プレビューのhtmlを定義
@@ -30,8 +32,10 @@ $(function(){
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
-                      <div class="update-box">
-                        <label class="edit_btn">編集</label>
+                      <div class="update-box" id="edit_btn_${count}">
+                        <label class="label-box-edit" id="label-box-edit--${count}" for="item_item_images_attributes_${count}_image">
+                          <class="edit_btn">編集</class>
+                        </label>
                       </div>
                       <div class="delete-box" id="delete_btn_${count}">
                         <span>削除</span>
@@ -56,6 +60,12 @@ $(function(){
       $('.delete-box').each(function(index, box){
         $(box).attr('id', `delete_btn_${index}`);
       })
+
+      //編集ボタンにidを追加
+      $('.update-box').each(function(index, box){
+        $(box).attr('id', `update_btn_${index}`);
+      })
+
       var count = $('.preview-box').length;
       //プレビューが5あるときは、投稿ボックスを消しておく
       if (count == 5) {
@@ -148,16 +158,15 @@ $(function(){
         setLabel(count);
         if(id < 5){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
-
         }
       } else {
 
         //投稿編集時
         $(`#item_item_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
-        if (count == 4) {
+        if (count == 5) {
           $('.label-content').show();
-        }
+        } 
 
         //ラベルのwidth操作
         setLabel();
@@ -166,7 +175,40 @@ $(function(){
         if(id < 5){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
         }
+        
       }
       //=============================================================================
     });
+
+
+    // 編集ボタンのやつの実装
+    $(document).on('click', '.update-box', function() {
+      var count = $('.preview-box').length;
+      setLabel(count);
+      //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      
+      $('.label-box-edit').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
+      
+    });
+
+    $(document).on('click', '.label-content', function() {
+      if($(`#item_item_images_attributes_0__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--0`,for: `item_item_images_attributes_0_image`});
+      }
+      if($(`#item_item_images_attributes_1__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--1`,for: `item_item_images_attributes_1_image`});
+      }
+      if($(`#item_item_images_attributes_2__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--2`,for: `item_item_images_attributes_2_image`});
+      }
+      if($(`#item_item_images_attributes_3__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--3`,for: `item_item_images_attributes_3_image`});
+      }
+      if($(`#item_item_images_attributes_4__destroy`).prop('checked')){
+        $('.label-box').attr({id: `label-box--4`,for: `item_item_images_attributes_4_image`});
+      }
+      
+    });
   });
+
